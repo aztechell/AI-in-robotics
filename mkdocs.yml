@@ -1,0 +1,7 @@
+site_name: AI in robotics
+theme:
+  name: readthedocs
+nav:
+  - Введение: index.md
+  - ИИ помощники: assistants.md
+  - YOLO: yolo.md
