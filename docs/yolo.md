@@ -28,7 +28,6 @@ Ultralytics YOLO — это открытая библиотека на Python д
 
 ##### 6. Запустить тестовый скрип
 ```
-{
 import cv2
 from ultralytics import YOLO
 import torch
@@ -76,5 +75,4 @@ while True:
 # Отключение камеры и закрытие окна
 webcamera.release()
 cv2.destroyAllWindows()
-}
 ```
