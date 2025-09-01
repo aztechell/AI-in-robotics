@@ -3,5 +3,8 @@ theme:
   name: readthedocs
 nav:
   - Введение: index.md
+  - Способы внедрения: hardware.md
+  - ИИ камеры: cams.md
   - ИИ помощники: assistants.md
   - YOLO: yolo.md
+  - jetson-inference: jetson.md
