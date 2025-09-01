@@ -1,7 +1,7 @@
 name: mkdocs-deploy
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 permissions:
   contents: write
 jobs:
