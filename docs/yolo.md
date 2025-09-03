@@ -108,4 +108,97 @@ while cv2.waitKey(1) != 27:
 
 wc.release(); cv2.destroyAllWindows()
 ```
+### YOLO v11 имеет разные тренированные модели
+
+<img src="img/img_3.png" alt="desc" width="700"> 
+
+ChatGPT сказал:
+
+**Classify** — задача классификации изображений. Определяет один класс для всего изображения (или кропа).  
+**Detect** — задача обнаружения объектов. Находит каждый объект и присваивает класс, обрамляя прямоугольным bbox.  
+**Segment** — задача сегментации экземпляров. Находит каждый объект, присваивает класс и выдает пиксельную маску его контура (часто вместе с bbox).  
+**Track** — задача трекинга объектов во времени. Присваивает устойчивые ID уже найденным объектам в видеопотоке, связывая их между кадрами.  
+**Pose** — задача оценки позы. Находит объект (обычно человека) и предсказывает координаты ключевых точек скелета (часто вместе с bbox и классом).  
+**OBB** — задача обнаружения с повернутыми рамками. Находит объект, присваивает класс и выдает ориентированный прямоугольник (bbox с углом).  
+
+<table>
+  <thead>
+    <tr>
+      <th>Модель</th>
+      <th>Имена файлов</th>
+      <th>Задача</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>YOLO11</td>
+      <td>
+        <code>yolo11n.pt</code>
+        <code>yolo11s.pt</code>
+        <code>yolo11m.pt</code>
+        <code>yolo11l.pt</code>
+        <code>yolo11x.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/detect/">Обнаружение</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-seg</td>
+      <td>
+        <code>yolo11n-seg.pt</code>
+        <code>yolo11s-seg.pt</code>
+        <code>yolo11m-seg.pt</code>
+        <code>yolo11l-seg.pt</code>
+        <code>yolo11x-seg.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/segment/">Сегментация экземпляров</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-pose</td>
+      <td>
+        <code>yolo11n-pose.pt</code>
+        <code>yolo11s-pose.pt</code>
+        <code>yolo11m-pose.pt</code>
+        <code>yolo11l-pose.pt</code>
+        <code>yolo11x-pose.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/pose/">Поза/Ключевые точки</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-obb</td>
+      <td>
+        <code>yolo11n-obb.pt</code>
+        <code>yolo11s-obb.pt</code>
+        <code>yolo11m-obb.pt</code>
+        <code>yolo11l-obb.pt</code>
+        <code>yolo11x-obb.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/obb/">Ориентированное обнаружение</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-cls</td>
+      <td>
+        <code>yolo11n-cls.pt</code>
+        <code>yolo11s-cls.pt</code>
+        <code>yolo11m-cls.pt</code>
+        <code>yolo11l-cls.pt</code>
+        <code>yolo11x-cls.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/classify/">Классификация</a></td>
+    </tr>
+  </tbody>
+</table>
+
+### Дообучение моделей
+
+#### Датасет
+##### Предобученные модели и собранные датасеты 
+Сайты:
+- universe.roboflow.com
+- huggingface.co
+- github.com
+
+#### Разметка данных
+#### Дообучение
+
+
 

@@ -1,5 +1,6 @@
 # Jetson Nano
-![alt text](img/img_1.png)
+<img src="img/img_1.png" alt="desc" width="320">  
+
 **Jetson Nano:** базовый одноплатный компьютер NVIDIA для использования ИИ. 
 
 - Работает на SoC Tegra Х1
@@ -11,8 +12,7 @@
 - 40-контактный GPIO-разъём
 - Поддержка UART, I2C, SPI, 2 ШИМ порта
 
-![alt text](img/img.png)
-
+<img src="img/img.png" alt="desc" width="320"> 
 
 [**Jetson Inference**](https://github.com/dusty-nv/jetson-inference) — это библиотека и набор примеров для Jetson, упрощающие инференс моделей компьютерного зрения с ускорением TensorRT через API C++/Python.
 
