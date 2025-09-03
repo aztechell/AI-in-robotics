@@ -13,6 +13,8 @@
 Пример 1:  
 
 <img src="../img/img_6.png" alt="desc" width="300">  
+
+   
 Пример 2:  
 
 <img src="../img/img_7.png" alt="desc" width="600">
@@ -27,13 +29,13 @@
 
 ## 3. Слабое "железо"
 Слабое "железо" - это разного рода специализированные платы имеющие встроенный ИИ функционал.
-Например:
-- ESP32-CAM
-- Pixy 
-- Huskylens 
-- OpenMV Cam
-- Arduino Nicla Vision
-- ESP32-S3-EYE    
+Например:  
+- ESP32-CAM  
+- Pixy   
+- Huskylens   
+- OpenMV Cam  
+- Arduino Nicla Vision  
+- ESP32-S3-EYE     
 
 <img src="../img/img_9.png" alt="desc" width="300">    
 
