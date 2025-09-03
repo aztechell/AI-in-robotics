@@ -190,10 +190,10 @@ wc.release(); cv2.destroyAllWindows()
 
 #### Датасет
 ##### Предобученные модели и собранные датасеты 
-Сайты:
-- universe.roboflow.com
-- huggingface.co
-- github.com
+Сайты:  
+- universe.roboflow.com  
+- huggingface.co  
+- github.com  
 
 #### Разметка данных
 #### Дообучение

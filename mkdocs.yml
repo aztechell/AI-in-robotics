@@ -8,3 +8,5 @@ nav:
   - ИИ помощники: assistants.md
   - YOLO: yolo.md
   - jetson-inference: jetson.md
+  - Raspberry Pi: raspberry.md
+  - Telegram Bot + AI: tgai.md
