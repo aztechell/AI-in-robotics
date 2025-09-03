@@ -81,7 +81,8 @@ cv2.destroyAllWindows()
 
 Для смены камеры меняем цифру в строке 
 ``` webcamera = cv2.VideoCapture(0) ```  
-Проверка списка камер
+
+Python скрипт для проверки списка камер:
 ```
 import cv2
 for i in range(10):
@@ -90,7 +91,8 @@ for i in range(10):
     cap.release()
     if ok: print(i) 
 ```
-Либо через командную строку wmic path Win32_PnPEntity where "PNPClass='Camera' OR PNPClass='Image'" get Name,DeviceID
+Либо через командную строку:  
+```wmic path Win32_PnPEntity where "PNPClass='Camera' OR PNPClass='Image'" get Name,DeviceID```
 
 ##### Бонус:
 Сокращённая версия кода
