@@ -1,5 +1,5 @@
 # Jetson Nano
-<img src="img/img_1.png" alt="desc" width="320">  
+<img src="../img/img_1.png" alt="desc" width="320">  
 
 **Jetson Nano:** базовый одноплатный компьютер NVIDIA для использования ИИ. 
 
