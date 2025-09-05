@@ -250,8 +250,7 @@ wc.release(); cv2.destroyAllWindows()
 ```
 
 </details>
-<br>
-<br>
+&nbsp;
 
 Для отдельного нахождения координат одной ключевой точки, нужно извлечь её через results[0].keypoints.xy(0, **номер точки**). Например, правое запястье (точка 10).
 
@@ -298,9 +297,9 @@ webcamera.release()
 cv2.destroyAllWindows()
 
 ```
+
 </details>       
-<br>
-<br>
+&nbsp;
 
 Нахождение нескольких точек.
 
