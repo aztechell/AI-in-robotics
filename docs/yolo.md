@@ -220,13 +220,16 @@ wc.release(); cv2.destroyAllWindows()
         print(f"Object: {class_name} (ID: {track_id}) at X={center_x}, Y={center_y}")
 ```
 </details>
-  
+<br>
+<br>
+
 ### Примеры с Pose
 В модели позы YOLO11 по умолчанию имеется 17 ключевых точек, каждая из которых представляет собой отдельную часть человеческого тела. Ниже приведена схема соответствия каждого индекса соответствующему суставу тела:
 
 <details>
 <summary>Список ключевых точек YOLO11-pose</summary>
 
+```
 0. Нос  
 1. Левый глаз  
 2. Правый глаз  
@@ -244,8 +247,11 @@ wc.release(); cv2.destroyAllWindows()
 14. Правое колено  
 15. Левая лодыжка  
 16. Правая лодыжка  
+```
 
 </details>
+<br>
+<br>
 
 Для отдельного нахождения координат одной ключевой точки, нужно извлечь её через results[0].keypoints.xy(0, **номер точки**). Например, правое запястье (точка 10).
 
@@ -290,11 +296,14 @@ while cv2.waitKey(1) != 27:
 
 webcamera.release()
 cv2.destroyAllWindows()
-```
 
+```
 </details>       
+<br>
+<br>
 
 Нахождение нескольких точек.
+
 <details>
 <summary>Несколько точек</summary>
 
@@ -340,6 +349,8 @@ cv2.destroyAllWindows()
 
 ```
 </details>
+<br>
+<br>
 
 Несколько точек с линиями.
 <details>
@@ -393,6 +404,8 @@ cv2.destroyAllWindows()
 
 ```
 </details>
+<br>
+<br>
 
 Пример игры.
 <details>
