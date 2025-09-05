@@ -297,7 +297,7 @@ webcamera.release()
 cv2.destroyAllWindows()  
 ```  
 </details>  
-
+<br>
 
 Нахождение нескольких точек.
 
@@ -347,9 +347,9 @@ cv2.destroyAllWindows()
 ```
 </details>
 <br>
-<br>
 
 Несколько точек с линиями.
+
 <details>
 <summary>Линии</summary>
 
@@ -398,11 +398,10 @@ while cv2.waitKey(1) != 27:
 
 cap.release()
 cv2.destroyAllWindows()
-
 ```
 </details>
 <br>
-<br>
+
 
 Пример игры.
 <details>
@@ -470,8 +469,6 @@ while cv2.waitKey(1) != 27:
 
 cap.release()
 cv2.destroyAllWindows()
-
 ```
 </details>
-<br>
 <br>
