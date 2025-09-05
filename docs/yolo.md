@@ -221,6 +221,7 @@ wc.release(); cv2.destroyAllWindows()
 ```
 </details>
 <br>
+<br>
 
 ### Примеры с Pose
 
