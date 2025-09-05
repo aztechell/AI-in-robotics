@@ -220,7 +220,7 @@ wc.release(); cv2.destroyAllWindows()
         print(f"Object: {class_name} (ID: {track_id}) at X={center_x}, Y={center_y}")
 ```
 </details>
-
+  
 ### Примеры с Pose
 В модели позы YOLO11 по умолчанию имеется 17 ключевых точек, каждая из которых представляет собой отдельную часть человеческого тела. Ниже приведена схема соответствия каждого индекса соответствующему суставу тела:
 
@@ -291,6 +291,7 @@ while cv2.waitKey(1) != 27:
 webcamera.release()
 cv2.destroyAllWindows()
 ```
+
 </details>       
 
 Нахождение нескольких точек.
@@ -462,3 +463,5 @@ cv2.destroyAllWindows()
 
 ```
 </details>
+<br>
+<br>
