@@ -108,6 +108,7 @@ while cv2.waitKey(1) != 27:
 
 wc.release(); cv2.destroyAllWindows()
 ```
+
 ### YOLO v11 имеет разные тренированные модели
 
 <img src="../img/img_3.png" alt="desc" width="700">
@@ -196,7 +197,24 @@ wc.release(); cv2.destroyAllWindows()
 - github.com  
 
 #### Разметка данных
+
 #### Дообучение
 
+### Получение координат
+<details>
+<summary>Выводим координаты X, Y</summary>
 
+```
+    for box in results[0].boxes:
+        x1, y1, x2, y2 = map(int, box.xyxy[0])  # Получаем координаты bbox
+        center_x, center_y = (x1 + x2) // 2, (y1 + y2) // 2  # Находим центр
 
+        class_id = int(box.cls[0])  #Получаем id
+        class_name = model.names[class_id]  # Получаем название класса
+
+        # Extract tracking ID (if available)
+        track_id = int(box.id[0]) if box.id is not None else -1
+
+        print(f"Object: {class_name} (ID: {track_id}) at X={center_x}, Y={center_y}")
+```
+</details>
