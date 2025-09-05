@@ -24,7 +24,7 @@ Ultralytics YOLO — это открытая библиотека на Python д
 
 ##### 5. Скачать предобученную модель
 - для первого примера скачать YOLO11n из [https://docs.ultralytics.com/ru/tasks/detect/](https://docs.ultralytics.com/ru/tasks/detect/)
-Больше моделей и датасетов [https://docs.ultralytics.com/ru/datasets/](https://docs.ultralytics.com/ru/datasets/))
+Больше моделей и датасетов [https://docs.ultralytics.com/ru/datasets/](https://docs.ultralytics.com/ru/datasets/)
 
 ##### 6. Запустить тестовый скрип
 Запустить python IDLE -> file -> new file
@@ -294,12 +294,10 @@ while cv2.waitKey(1) != 27:
     cv2.imshow("Live Camera", frame)
 
 webcamera.release()
-cv2.destroyAllWindows()
+cv2.destroyAllWindows()  
+```  
+</details>  
 
-```
-
-</details>       
-&nbsp;
 
 Нахождение нескольких точек.
 
