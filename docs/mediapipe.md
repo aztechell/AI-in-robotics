@@ -9,7 +9,8 @@ MediaPipe Solutions предоставляет набор библиотек и 
 - Прямая ссылка на [Python 3.12.10](https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe) (100% рабочая)
 
 ##### 2. Установить нужные библиотеки
-- в командную строку написать: pip3 install mediapipe opencv-python
+- в командную строку написать: 
+> pip3 install mediapipe opencv-python
 
 ##### 3. Запустить тестовый скрип
 Запустить python IDLE -> file -> new file  

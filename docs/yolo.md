@@ -20,7 +20,8 @@ Ultralytics YOLO — это открытая библиотека на Python д
 Например: pip3 install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu129](https://download.pytorch.org/whl/cu129)
 
 ##### 4. Установить нужные библиотеки
-- в командную строку написать: pip3 install ultralytics opencv-python
+- в командную строку написать: 
+> pip3 install ultralytics opencv-python
 
 ##### 5. Скачать предобученную модель
 - для первого примера скачать YOLO11n из [https://docs.ultralytics.com/ru/tasks/detect/](https://docs.ultralytics.com/ru/tasks/detect/)
