@@ -1,5 +1,4 @@
 site_name: AI in robotics
-baseurl: "/ai-in-robotics"
 theme:
   name: readthedocs
 nav:

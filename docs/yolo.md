@@ -7,6 +7,7 @@ Ultralytics YOLO — это открытая библиотека на Python д
 - Скачать можно на официальном сайте [python.org](https://www.python.org/downloads/windows/).  
 - Самые новые версии могут временно не поддерживаться YOLO.  
 - Прямая ссылка на [Python 3.12.10](https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe), [Python 3.13.2](https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe) (100% рабочая)
+- При установке нужно устанавливать от имени администратора и поставить галочку в Add to PATH
 
 ##### 2. Установить драйверы NVIDIA (Только если есть видеокарта NVIDIA RTX)
 
