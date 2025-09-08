@@ -5,7 +5,7 @@
 ### Создание бота  
 
 - Заходим в Telegram- бота @BotFather.  
-<img src="./img/img_16.png" alt="desc" width="200">  
+<img src="../img/img_16.png" alt="desc" width="200">  
 
 
 -	Затем нажимаем «start» и из предложенного списка выбираем команду /newbot.
