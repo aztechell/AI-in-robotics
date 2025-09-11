@@ -172,7 +172,7 @@ if __name__ == "__main__":
 ##### YOLO + bot.
 
 <details>
-<summary>Пример с YOLO/summary>
+<summary>Пример с YOLO</summary>
 
 ```
 
