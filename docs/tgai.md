@@ -24,6 +24,8 @@
 
 > pip install aiogram
 
+Документация [aiogram](https://docs.aiogram.dev/en).
+
 - запустить тестовый код:
 
 ```
@@ -155,6 +157,67 @@ async def play(c: CallbackQuery):
         await c.message.answer("Новая игра. Твой ход: ❌", reply_markup=board_kb(nb))
 
 async def main():
+    bot = Bot(API_TOKEN)
+    dp = Dispatcher()
+    dp.include_router(router)
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
+```
+</details>
+<br>
+
+##### YOLO + bot.
+
+<details>
+<summary>Пример с YOLO/summary>
+
+```
+
+import asyncio, io
+import numpy as np
+import cv2
+import torch
+from ultralytics import YOLO
+from aiogram import Bot, Dispatcher, F, Router
+from aiogram.filters import CommandStart
+from aiogram.types import Message, BufferedInputFile
+
+API_TOKEN = "YOUR_BOT_TOKEN_HERE"
+
+router = Router()
+
+@router.message(CommandStart())
+async def start(m: Message):
+    await m.answer("Отправь фото и YOLO её обработает")
+
+@router.message(F.photo)
+async def on_photo(m: Message, bot: Bot):
+
+    buf = io.BytesIO()
+    await bot.download(m.photo[-1], destination=buf)
+    img = cv2.imdecode(np.frombuffer(buf.getvalue(), np.uint8), cv2.IMREAD_COLOR)
+
+    plotted = await asyncio.to_thread(
+    lambda: model(img, conf=0.5, imgsz=640, verbose=False)[0].plot()
+)
+
+    ok, enc = cv2.imencode(".jpg", plotted)
+    if not ok:
+        await m.answer("Encoding error")
+        return
+
+    await m.answer_photo(BufferedInputFile(enc.tobytes(), filename="pose.jpg"))
+
+
+async def main():
+    global model
+    model = YOLO("yolo11m-pose.pt")
+    if torch.cuda.is_available():
+        model.to("cuda")
+        
     bot = Bot(API_TOKEN)
     dp = Dispatcher()
     dp.include_router(router)
