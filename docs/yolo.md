@@ -192,6 +192,81 @@ wc.release(); cv2.destroyAllWindows()
 ### Дообучение моделей
 
 #### Датасет
+
+Датасет (англ. dataset) — это обработанный и структурированный массив данных.  
+Для YOLO необходим датасет определенной структуры:
+
+```
+dataset/
+├─ images/
+│  ├─ train/   
+│  ├─ val/
+│  └─ test/    (опционально)
+├─ labels/
+│  ├─ train/   
+│  ├─ val/
+│  └─ test/    (опционально)
+├─ train.py
+└─ dataset.yaml
+
+```
+
+<details>
+<summary>Пример dataset.yaml</summary>
+
+```
+
+train: ../images/train
+val: ../images/val
+test: images/test
+
+nc: 3  # количество классов
+names: ['person', 'car', 'dog']
+
+```
+
+</details>
+<br>
+
+<details>
+<summary>Пример train.py</summary> 
+
+```
+
+from ultralytics import YOLO
+
+model = YOLO("yolo11n.pt")  # выбираем модель для дообучения
+
+# Train the model
+model.train(
+    data="dataset.yaml",       # путь к dataset.yaml 
+    epochs=50,                   # количество эпох(кругов) обучения
+    imgsz=640,                   # размер картинок
+    batch=16,                    # количество картинок за один шаг
+    workers=4,                   # число параллельных процессов,
+    project="yolo11_train",    # папка для сохранения результатов
+    name="exp1",               # название эксперимента
+    exist_ok=True                # переписать если есть такая папка
+)
+
+```
+
+</details>
+<br>
+
+Скрип для автоматического создания шаблона датасета:  
+
+> [dataset.bat](files/dataset.bat)
+
+На 1 класс необходимо 200–500 изображений. Чем больше тем лучше.  
+Папки датасета: 
+- train — учит веса модели.
+- val — оценивает во время разработки, подбирает гиперпараметры и останавливает обучение.
+- test — финальная проверка один раз после выбора лучшей модели.  
+
+80% изображений идут в папку train, 20% в val.  
+Либо же 70% - train, 20% - val, 10% - test.  
+
 ##### Предобученные модели и собранные датасеты 
 Сайты:  
 - universe.roboflow.com  
@@ -199,6 +274,10 @@ wc.release(); cv2.destroyAllWindows()
 - github.com  
 
 #### Разметка данных
+
+Для разметки данных используется программа labelImg.exe:
+
+> [labelImg.exe](files/labelImg.exe)
 
 #### Дообучение
 
