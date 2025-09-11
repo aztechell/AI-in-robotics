@@ -17,8 +17,9 @@ Ultralytics YOLO — это открытая библиотека на Python д
 Выбирать версии для Windows 11.
 
 ##### 3. Установить pytorch
-- Выбрать нужную версию [здесь](https://pytorch.org/get-started/locally/) и установить через командную строку. (Win + R, cmd)  
-Например: pip3 install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cu129](https://download.pytorch.org/whl/cu129)
+- Выбрать нужную версию [**здесь**](https://pytorch.org/get-started/locally/) и установить через командную строку. (Win + R, cmd)  
+Например: 
+> pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu129
 
 ##### 4. Установить нужные библиотеки
 - в командную строку написать: 
@@ -259,7 +260,7 @@ model.train(
 > [dataset.bat](files/dataset.bat)
 
 На 1 класс необходимо 200–500 изображений. Чем больше тем лучше.  
-Папки датасета: 
+Папки датасета:  
 - train — учит веса модели.
 - val — оценивает во время разработки, подбирает гиперпараметры и останавливает обучение.
 - test — финальная проверка один раз после выбора лучшей модели.  
