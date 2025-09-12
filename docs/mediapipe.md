@@ -143,3 +143,128 @@ cv2.destroyAllWindows()
 
 </details>
 <br>
+
+Маска очков на лицо. В папку с кодом загрузить файл  
+> [glasses.png](img/glasses.png)
+
+<details>
+<summary>Очки</summary>
+
+```
+
+import cv2
+import mediapipe as mp
+import numpy as np
+import time, math, os
+
+mp_face  = mp.solutions.face_mesh
+mp_draw  = mp.solutions.drawing_utils
+mp_style = mp.solutions.drawing_styles
+
+# ==== Параметры ====
+PNG_PATH = "glasses.png"       # Опционально: PNG c альфа-каналом (очки), центр в середине файла
+TINT_ALPHA = 0.35              # Прозрачность затемнения "линз" (0..1)
+FRAME_THICK = 4                # Толщина контура "оправы" (px)
+SCALE_W = 3                  # Ширина очков = IPD * SCALE_W
+SCALE_H = 0.45                 # Относительная высота очков от ширины
+
+cap = cv2.VideoCapture(0)
+
+# Загрузка PNG, если есть
+png_rgba = None
+if os.path.isfile(PNG_PATH):
+    png_rgba = cv2.imread(PNG_PATH, cv2.IMREAD_UNCHANGED)
+
+def alpha_blend_rgba(bg_bgr, fg_rgba, cx, cy):
+    """Альфа-наложение RGBA поверх bg, центрируя в (cx,cy)."""
+    fh, fw = fg_rgba.shape[:2]
+    x1 = int(cx - fw // 2); y1 = int(cy - fh // 2)
+    x2 = x1 + fw;          y2 = y1 + fh
+
+    # Клип по границам
+    bh, bw = bg_bgr.shape[:2]
+    x1c, y1c = max(0, x1), max(0, y1)
+    x2c, y2c = min(bw, x2), min(bh, y2)
+    if x1c >= x2c or y1c >= y2c: 
+        return
+
+    roi_bg = bg_bgr[y1c:y2c, x1c:x2c]
+    roi_fg = fg_rgba[(y1c - y1):(y2c - y1), (x1c - x1):(x2c - x1)]
+
+    alpha = (roi_fg[..., 3:4].astype(np.float32)) / 255.0
+    fg_bgr = roi_fg[..., :3].astype(np.float32)
+    bg_bgr[y1c:y2c, x1c:x2c] = (alpha * fg_bgr + (1 - alpha) * roi_bg.astype(np.float32)).astype(np.uint8)
+
+def rotate_scale_rgba(img_rgba, angle_deg, scale):
+    """Поворот и масштаб RGBA."""
+    h, w = img_rgba.shape[:2]
+    M = cv2.getRotationMatrix2D((w/2, h/2), angle_deg, scale)
+    out = cv2.warpAffine(img_rgba, M, (w, h), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_TRANSPARENT)
+    return out
+
+def iris_center_px(lm_list, ids, W, H):
+    xs = [lm_list[i].x * W for i in ids]
+    ys = [lm_list[i].y * H for i in ids]
+    return (float(np.mean(xs)), float(np.mean(ys)))
+
+with mp_face.FaceMesh(
+    static_image_mode=False,        
+    max_num_faces=2,                
+    refine_landmarks=True,          # даёт 5 точек радужки на каждый глаз (всего 478)
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5
+) as face:
+    while cv2.waitKey(1) != 27:
+        ok, frame = cap.read()
+        if not ok: break
+
+        frame = cv2.flip(frame, 1)
+        start_time = time.perf_counter()
+
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        rgb.flags.writeable = False
+        res = face.process(rgb)
+        rgb.flags.writeable = True
+
+        H, W = frame.shape[:2]
+
+        if res.multi_face_landmarks:
+            # Берём первое лицо
+            lm = res.multi_face_landmarks[0].landmark
+
+            # Индексы радужек (mediapipe, при refine_landmarks=True)
+            right_iris = [469, 470, 471, 472, 468]  # правая (для пользователя — слева)
+            left_iris  = [474, 475, 476, 477, 473]  # левая  (для пользователя — справа)
+
+            # Центры радужек в пикселях
+            rx, ry = iris_center_px(lm, right_iris, W, H)
+            lx, ly = iris_center_px(lm, left_iris,  W, H)
+
+            # Межзрачковое расстояние и угол наклона
+            ipd = math.hypot(lx - rx, ly - ry)
+            angle = -math.degrees(math.atan2(ly - ry, lx - rx))
+            cx, cy = (rx + lx) * 0.5, (ry + ly) * 0.5
+
+            # Масштаб по ширине
+            target_w = max(1, int(ipd * SCALE_W))
+            scale = target_w / png_rgba.shape[1]
+            rotated = rotate_scale_rgba(png_rgba, angle, scale)
+            alpha_blend_rgba(frame, rotated, int(cx), int(cy))
+            
+        end_time = time.perf_counter()
+        fps = 1.0 / max(1e-6, (end_time - start_time))
+        cv2.putText(frame, f"FPS: {int(fps)}", (50, 90),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+        cv2.putText(frame, "Press 'Esc' to exit", (50, 50),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+
+        cv2.imshow("FaceMesh Virtual Try-On", frame)
+
+cap.release()
+cv2.destroyAllWindows()
+
+
+```
+
+</details>
+<br>
