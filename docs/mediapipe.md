@@ -66,6 +66,8 @@ cv2.destroyAllWindows()
 
 ```
 
+<img src="../img/img_22.png" alt="desc" width="500"> 
+
 #### Примеры
 
 ##### Facemesh
@@ -263,6 +265,116 @@ with mp_face.FaceMesh(
 cap.release()
 cv2.destroyAllWindows()
 
+```
+
+</details>
+<br>
+
+
+Измерение расстояния для лица. [Полная статья](https://github.com/google-ai-edge/mediapipe/blob/master/docs/solutions/iris.md)
+
+
+
+<details>
+<summary>Очки</summary>
+
+```
+
+import cv2
+import mediapipe as mp
+import time, math
+
+# ==== Параметры ====
+CALIB_DIST_M = 0.60           # метров: на каком расстоянии нажмёте 'C'
+SMOOTH_ALPHA = 0.85           # 0..1, больше — плавнее (эксп. сглаживание)
+
+mp_face  = mp.solutions.face_mesh
+cap = cv2.VideoCapture(0)
+
+calib_C = None                # константа масштаба = ipd_px_at_calib * CALIB_DIST_M
+dist_smooth = None
+
+# Индексы центра радужек (нужен refine_landmarks=True)
+RIGHT_IRIS_CENTER = 468
+LEFT_IRIS_CENTER  = 473
+
+with mp_face.FaceMesh(
+    static_image_mode=False,
+    max_num_faces=1,
+    refine_landmarks=True,      # включает точки радужки (всего 478)
+    min_detection_confidence=0.5,
+    min_tracking_confidence=0.5
+) as face:
+
+    while True:
+        ok, frame = cap.read()
+        if not ok: break
+
+        frame = cv2.flip(frame, 1)
+        start = time.perf_counter()
+
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        rgb.flags.writeable = False
+        res = face.process(rgb)
+        rgb.flags.writeable = True
+
+        H, W = frame.shape[:2]
+        ipd_px = None
+
+        if res.multi_face_landmarks:
+            lm = res.multi_face_landmarks[0].landmark
+
+            # Берём центры радужек
+            rx, ry = lm[RIGHT_IRIS_CENTER].x * W, lm[RIGHT_IRIS_CENTER].y * H
+            lx, ly = lm[LEFT_IRIS_CENTER].x  * W, lm[LEFT_IRIS_CENTER].y  * H
+
+            ipd_px = math.hypot(lx - rx, ly - ry)
+
+            # Визуализация центров
+            cv2.circle(frame, (int(rx), int(ry)), 3, (0,255,255), -1, cv2.LINE_AA)
+            cv2.circle(frame, (int(lx), int(ly)), 3, (0,255,255), -1, cv2.LINE_AA)
+            cv2.line(frame, (int(rx), int(ry)), (int(lx), int(ly)), (0,255,255), 2, cv2.LINE_AA)
+
+        # Оценка дистанции
+        if calib_C is not None and ipd_px and ipd_px > 1:
+            dist_m = calib_C / ipd_px                 # d ≈ (s0*d0)/s
+            if dist_smooth is None:
+                dist_smooth = dist_m
+            else:
+                dist_smooth = SMOOTH_ALPHA*dist_smooth + (1-SMOOTH_ALPHA)*dist_m
+            text = f"Distance: {dist_smooth:.2f} m"
+        else:
+            text = "Press 'C' at known distance"
+
+        # HUD
+        end = time.perf_counter()
+        fps = 1.0 / max(1e-6, (end - start))
+        cv2.putText(frame, f"FPS: {int(fps)}", (20, 40),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (0,255,0), 2, cv2.LINE_AA)
+        cv2.putText(frame, text, (20, 80),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (255,255,0), 2, cv2.LINE_AA)
+        if ipd_px:
+            cv2.putText(frame, f"IPD px: {ipd_px:.1f}", (20, 120),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255,0,255), 2, cv2.LINE_AA)
+        if calib_C is not None:
+            cv2.putText(frame, f"Calib C: {calib_C:.1f}", (20, 160),
+                        cv2.FONT_HERSHEY_SIMPLEX, 1, (0,200,255), 2, cv2.LINE_AA)
+        cv2.putText(frame, "C=Calibrate  Esc=Exit", (20, H-20),
+                    cv2.FONT_HERSHEY_SIMPLEX, 1, (200,200,200), 2, cv2.LINE_AA)
+
+        cv2.imshow("Iris distance meter", frame)
+
+        k = cv2.waitKey(1) & 0xFF
+        if k == 27:  # Esc
+            break
+        elif k in (ord('c'), ord('C')):
+            # Калибровка: на расстоянии CALIB_DIST_M нажмите 'C'
+            if ipd_px and ipd_px > 1:
+                calib_C = ipd_px * CALIB_DIST_M
+                dist_smooth = None  # сброс фильтра
+
+cap.release()
+cv2.destroyAllWindows()
 
 ```
 
