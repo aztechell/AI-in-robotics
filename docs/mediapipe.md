@@ -270,13 +270,10 @@ cv2.destroyAllWindows()
 </details>
 <br>
 
-
 Измерение расстояния для лица. [Полная статья](https://github.com/google-ai-edge/mediapipe/blob/master/docs/solutions/iris.md)
 
-
-
 <details>
-<summary>Очки</summary>
+<summary>Расстояние</summary>
 
 ```
 
