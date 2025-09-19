@@ -41,8 +41,8 @@ SFace — это модель распознавания лиц, доступн�
 
     <details>
     <summary>Face recognition</summary>
-    
-    ```
+   
+   ``````
     
     import os, time, cv2, numpy as np, mediapipe as mp
     from pathlib import Path
@@ -158,7 +158,7 @@ SFace — это модель распознавания лиц, доступн�
     
     cap.release(); cv2.destroyAllWindows()
         
-    ```
+    ``````
     
     </details>
     <br>
