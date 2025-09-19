@@ -37,8 +37,11 @@ SFace — это модель распознавания лиц, доступн�
        └─ barak.png
     ```
 
-4. Пишем код 
+4. Пишем код:
 
+    <details>
+    <summary>Face recognition</summary>
+    
     ```
     
     import os, time, cv2, numpy as np, mediapipe as mp
@@ -154,5 +157,8 @@ SFace — это модель распознавания лиц, доступн�
         cv2.imshow("MP+SFace", frame) #вывод изображения
     
     cap.release(); cv2.destroyAllWindows()
-    
+        
     ```
+    
+    </details>
+    <br>
