@@ -12,3 +12,4 @@ nav:
   - Raspberry Pi: raspberry.md
   - Telegram Bot + AI: tgai.md
   - XBOX Kinect: kinect.md
+  - Распознавание лица: face_recognition.md
