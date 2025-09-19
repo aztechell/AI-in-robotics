@@ -39,8 +39,8 @@ SFace — это модель распознавания лиц, доступн�
 
 4. Пишем код:
 
-    <details>
-    <summary>Face recognition</summary>
+<details>
+<summary>Face recognition</summary>
 
 ```
 import os, time, cv2, numpy as np, mediapipe as mp
@@ -159,5 +159,5 @@ cap.release(); cv2.destroyAllWindows()
 
 ```
 
-    </details>
-    <br>
+</details>
+<br>
