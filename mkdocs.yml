@@ -4,12 +4,14 @@ theme:
 nav:
   - Введение: index.md
   - Способы внедрения: hardware.md
-  - ИИ камеры: cams.md
-  - ИИ помощники: assistants.md
+  - Работа в PyCarm: pycharm.md
   - YOLO: yolo.md
   - MediaPipe: mediapipe.md
+  - Распознавание лица: face_recognition.md
+  - Распознавание речи: speech-to-text.md
   - jetson-inference: jetson.md
   - Raspberry Pi: raspberry.md
   - Telegram Bot + AI: tgai.md
   - XBOX Kinect: kinect.md
-  - Распознавание лица: face_recognition.md
+  - ИИ камеры: cams.md
+  - ИИ помощники: assistants.md
