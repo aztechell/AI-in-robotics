@@ -30,8 +30,23 @@ Whisper — это система автоматического распозн�
 1. установить python (не выше 3.11) и библиотеки 
    > pip install librosa, whisper
 2. Скачать модель из [таблицы](speech-to-text.md#доступные-модели) сверху и загрузить в папку с проектом.
-3. Записать или скачать аудиофайл с человеческой речью и загрузить в папку проекта.   
-Код для записи аудио прямо в IDE:  
+3. Записать или скачать аудиофайл с человеческой речью и загрузить в папку проекта.
+4. Написать код:
+    ```
+    
+    import librosa, whisper
+    
+    MODEL_PATH = r"C:\Users\aztec\PycharmProjects\whisper-test\tiny.pt"
+    
+    model = whisper.load_model(MODEL_PATH, device="cpu")
+    audio = librosa.load("2.wav", sr=16000, mono=True, dtype="float32")[0]
+    result = model.transcribe(audio, fp16=False)
+    
+    for seg in result["segments"]:
+        print(f"[{seg['start']:.2f} → {seg['end']:.2f}] {seg['text']}")
+        
+    ```
+<details><summary>Код для записи аудио прямо в IDE:</summary>
 Для работы надо установить: pip install sounddevice, soundfile  
 
     ``` 
@@ -46,21 +61,4 @@ Whisper — это система автоматического распозн�
     sf.write(fname, audio, RATE)
     print("Saved:", fname)
     ```   
-   
-4. Написать код:
-
-```
-
-import librosa, whisper
-
-MODEL_PATH = r"C:\Users\aztec\PycharmProjects\whisper-test\tiny.pt"
-
-model = whisper.load_model(MODEL_PATH, device="cpu")
-audio = librosa.load("2.wav", sr=16000, mono=True, dtype="float32")[0]
-result = model.transcribe(audio, fp16=False)
-
-for seg in result["segments"]:
-    print(f"[{seg['start']:.2f} → {seg['end']:.2f}] {seg['text']}")
-    
-```
-
+</details>
