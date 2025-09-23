@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Распознавание лица - AI in robotics</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0420\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0446\u0430";
+        var mkdocs_page_input_path = "face_recognition.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI in robotics
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Введение</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../hardware/">Способы внедрения</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pycharm/">Работа в PyCarm</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../yolo/">YOLO</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mediapipe/">MediaPipe</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Распознавание лица</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_2">Логика работы:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_3">НЕ рабочие варианты:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#_4">Рабочий вариант</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#mediapipe-sface">mediapipe + sface</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#opencv-yunet-sface">Чистый OpenCV (YuNet + sface)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../speech-to-text/">Распознавание речи</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../jetson/">jetson-inference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tgai/">Telegram Bot + AI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../kinect/">XBOX Kinect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cams/">ИИ камеры</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../assistants/">ИИ помощники</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI in robotics</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Распознавание лица</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">Распознавание лиц</h1>
+<p>Распознавание лиц – это биометрическая технология, которая позволяет идентифицировать или подтвердить личность человека по особенностям его лица, используя алгоритмы искусственного интеллекта и машинного обучения.  </p>
+<h2 id="_2">Логика работы:</h2>
+<ol>
+<li>Создаётся база данных известных лиц. Обычно это папка с фотографиями по типу: <br />
+./database/person1/1.jpg, 2.jpg <br />
+./database/person2/1.jpg, 2.jpg<br />
+   (Эти лица обрабатываются заранее или в при запуске кода)</li>
+<li>Детектор лиц (mediapipe, mtcnn и тд.) находит лицо</li>
+<li>Изображение лица обрезается и выравнивается</li>
+<li>Лицо преобразуется в векторное представление (vector embedding) с помощью моделей (SFace, ArcFace и тд.)</li>
+<li>Модель сравнивает полученное векторное представление с векторными представлениями полученных из базы данных. Обычно через метрику <a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine_similarity</a>. Выходное значение от -1 до 1. Чем выше значение, тем лица похожее</li>
+<li>Если значение точности выше порога, то человек распознан</li>
+</ol>
+<h2 id="_3">НЕ рабочие варианты:</h2>
+<ul>
+<li>Библиотека InsightFace - проблемы с совместимостью версий зависимостей, плохо работает   </li>
+<li>Библиотека DeepFace - кривая сборка разных тяжелых моделей, работает плохо   </li>
+<li>Библиотека <a href="https://github.com/ageitgey/face_recognition">face_recognition</a> - не работает на Windows   </li>
+</ul>
+<h2 id="_4">Рабочий вариант</h2>
+<h3 id="mediapipe-sface">mediapipe + sface</h3>
+<p><a href="../mediapipe/">Mediapipe</a> как детектор лиц.<br />
+SFace — это модель распознавания лиц, доступная в библиотеке OpenCV. Это модель, основанная на глубоком обучении, разработанная для эффективного и точного распознавания лиц.</p>
+<ol>
+<li>установить python (не выше 3.12) и библиотеки <blockquote>
+<p>pip install opencv-contrib-python mediapipe numpy</p>
+</blockquote>
+</li>
+<li>Скачать модель <a href="https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx">face_recognition_sface_2021dec.onnx</a> и загрузить в папку, где будет код. (Оригинальный источник <a href="https://github.com/opencv/opencv_zoo">Зоопарк моделей OpenCV</a>)</li>
+<li>
+<p>Создать папку для базы данных, например db. Внутри неё создать папки для каждого человека и загрузить туда фотографии. Пример:</p>
+<p><code>db/
+├─ Azat/
+│  └─ 1.jpg
+├─ Diana
+│  ├─ lol.jpg
+│  └─ kek.png
+└─ Obama
+   ├─ obama.jpg
+   └─ barak.png</code></p>
+</li>
+<li>
+<p>Пишем код:</p>
+</li>
+</ol>
+<details>
+<summary>Mediapipe+SFace</summary>
+
+
+<pre><code>import os, time, cv2, numpy as np, mediapipe as mp
+from pathlib import Path
+
+DB_PATH    = &quot;./db&quot;   
+SFACE_ONNX = &quot;./face_recognition_sface_2021dec.onnx&quot;
+THRESH     = 0.363  
+
+recognizer = cv2.FaceRecognizerSF_create(SFACE_ONNX, &quot;&quot;)
+mesh = mp.solutions.face_mesh.FaceMesh(static_image_mode=False,
+                                                                       max_num_faces=10,
+                                                                       refine_landmarks=True,
+                                                                       min_detection_confidence=0.5,
+                                                                       min_tracking_confidence=0.5)
+
+def list_images(root):        #создаем список фото
+    exts = (&quot;.jpg&quot;,&quot;.jpeg&quot;,&quot;.png&quot;,&quot;.bmp&quot;,&quot;.webp&quot;)
+    for d in sorted(Path(root).iterdir()):
+        if d.is_dir():
+            for p in d.rglob(&quot;*&quot;):
+                if p.suffix.lower() in exts:
+                    yield d.name, str(p)
+
+def mesh_5pts(lm, w, h):   #facemesh переводим в sface
+    L = lm.landmark
+    def px(i): return (int(L[i].x*w), int(L[i].y*h))
+
+    re = tuple(np.mean([px(33), px(133)], axis=0).astype(int))    # right eye center
+    le = tuple(np.mean([px(263), px(362)], axis=0).astype(int))  # left eye center
+    nt = px(1)                                                                              # nose tip
+    rmc = px(61)                                                                         # right mouth corner
+    lmc = px(291)                                                                       # left mouth corner
+
+    xs = [re[0], le[0], nt[0], rmc[0], lmc[0]]
+    ys = [re[1], le[1], nt[1], rmc[1], lmc[1]]                                  #координаты 5 точек
+    x, y = max(0, min(xs)), max(0, min(ys))                              #находим крайние точки
+    wbb, hbb = max(xs)-x+1, max(ys)-y+1                               #находим ширину и высоту 
+    cx, cy = x + wbb//2, y + hbb//2                                              #находим центр                                              
+    scale = 1.8                                                                           
+    nw, nh = int(wbb*scale), int(hbb*scale)                              #увеличиваем масштаб коробки
+    x = max(0, cx - nw//2)
+    y = max(0, cy - nh//2)
+    x2 = min(w-1, x + nw)
+    y2 = min(h-1, y + nh)
+    wbb, hbb = x2 - x, y2 - y
+
+    row = np.array([[x, y, wbb, hbb,
+                     re[0], re[1], le[0], le[1], nt[0], nt[1],
+                     rmc[0], rmc[1], lmc[0], lmc[1]]], dtype=np.float32)
+    return row, (x, y, wbb, hbb)
+
+def embed_from_img(img):    #преобразуем кадр в векторное предствление
+    h, w = img.shape[:2]
+    res = mesh.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    out = []
+    if res.multi_face_landmarks:
+        for lm in res.multi_face_landmarks:
+            row, (x,y,wb,hb) = mesh_5pts(lm, w, h)
+            try:
+                face = recognizer.alignCrop(img, row)
+            except Exception:
+                x2, y2 = min(w-1, x+wb), min(h-1, y+hb)
+                face = img[y:y2, x:x2].copy()
+            feat = recognizer.feature(face)
+            out.append((feat, (x,y,wb,hb)))
+    return out
+
+gallery = {}
+for label, path in list_images(DB_PATH):     #создаём галерею из фото в базе данных
+    img = cv2.imread(path)
+    if img is None: continue
+    fb = embed_from_img(img)
+    if not fb: continue
+    feat, _ = fb[0]
+    gallery.setdefault(label, []).append(feat)
+
+labels = sorted(gallery.keys())
+G = []
+for k in labels:
+    M = np.mean(np.vstack(gallery[k]), axis=0)
+    M = M / max(np.linalg.norm(M), 1e-9)
+    G.append(M)
+G = np.vstack(G).astype(np.float32)  # [N,512]
+
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cv2.namedWindow(&quot;MP+SFace&quot;, cv2.WINDOW_NORMAL)
+cv2.resizeWindow(&quot;MP+SFace&quot;, 640, 480)
+ema_fps = 0.0
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok: break
+    t0 = time.perf_counter()
+
+    fb = embed_from_img(frame)
+    for feat, (x,y,wb,hb) in fb:                                             #сравниваем лица
+        q = feat / max(np.linalg.norm(feat), 1e-9)
+        sims = (G @ q.ravel()).astype(np.float32)  # cosine similarity
+        i = int(np.argmax(sims))
+        s = float(sims[i])
+
+        name = labels[i] if s &gt;= THRESH else &quot;unknown&quot;    #пишем имя если нашли
+        cv2.rectangle(frame, (x,y), (x+wb, y+hb), (0,255,0), 2)
+        cv2.putText(frame, f&quot;{name} ({s:.2f})&quot;, (x, max(0,y-7)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2, cv2.LINE_AA)
+
+    dt = max(time.perf_counter() - t0, 1e-6)
+    ema_fps = (ema_fps*0.9 + 0.1*(1.0/dt)) if ema_fps else 1.0/dt   #Считаем фпс
+
+    cv2.putText(frame, f&quot;FPS: {ema_fps:.1f}&quot;, (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255,255,255), 2)  #Выводим фпс
+
+    cv2.imshow(&quot;MP+SFace&quot;, frame) #вывод изображения
+
+cap.release(); cv2.destroyAllWindows()
+
+</code></pre>
+
+
+</details>
+<p><br></p>
+<h3 id="opencv-yunet-sface">Чистый OpenCV (YuNet + sface)</h3>
+<p>YuNet — это детектор лиц на основе сверточной нейронной сети (CNN), известный своей высокой эффективностью и точностью, особенно при распознавании лиц под разными углами и с перекрытиями. <br />
+SFace — это модель распознавания лиц, доступная в библиотеке OpenCV. Это модель, основанная на глубоком обучении, разработанная для эффективного и точного распознавания лиц.<br />
+Обе модели являются частью библиотеки OpenCV, поэтому отлично работают вместе.   </p>
+<ol>
+<li>установить python (не выше 3.13) и библиотеки <blockquote>
+<p>pip install opencv-contrib-python numpy</p>
+</blockquote>
+</li>
+<li>Скачать модель <a href="https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx">face_recognition_sface_2021dec.onnx</a> и <a href="https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx">face_detection_yunet_2023mar.onnx</a> и загрузить в папку, где будет код. (Оригинальный источник <a href="https://github.com/opencv/opencv_zoo">Зоопарк моделей OpenCV</a>)</li>
+<li>
+<p>Создать папку для базы данных, например db. Внутри неё создать папки для каждого человека и загрузить туда фотографии. Пример:</p>
+<p><code>db/
+├─ Azat/
+│  └─ 1.jpg
+├─ Diana
+│  ├─ lol.jpg
+│  └─ kek.png
+└─ Obama
+   ├─ obama.jpg
+   └─ barak.png</code></p>
+</li>
+<li>
+<p>Пишем код:</p>
+</li>
+</ol>
+<details>
+<summary>YuNet+SFace</summary>
+
+
+<pre><code>import os, time, cv2, numpy as np
+from pathlib import Path
+
+DB_PATH     = &quot;./db&quot;
+SFACE_ONNX  = &quot;./face_recognition_sface_2021dec.onnx&quot;      
+YUNET_ONNX  = &quot;./face_detection_yunet_2023mar.onnx&quot;
+THRESH      = 0.363
+
+recognizer = cv2.FaceRecognizerSF_create(SFACE_ONNX, &quot;&quot;)
+detector   = cv2.FaceDetectorYN_create(YUNET_ONNX, &quot;&quot;, (320,320), score_threshold=0.6, nms_threshold=0.3, top_k=5000)
+
+def list_images(root):
+    exts = (&quot;.jpg&quot;,&quot;.jpeg&quot;,&quot;.png&quot;,&quot;.bmp&quot;,&quot;.webp&quot;)
+    for d in sorted(Path(root).iterdir()):
+        if d.is_dir():
+            for p in d.rglob(&quot;*&quot;):
+                if p.suffix.lower() in exts:
+                    yield d.name, str(p)
+
+def embed_from_img(img):
+    h, w = img.shape[:2]
+    detector.setInputSize((w, h))
+    ok, faces = detector.detect(img)
+    out = []
+    if ok and faces is not None and len(faces):
+        for f in faces:
+            x, y, wb, hb = f[:4].astype(int)
+            row = f[:14].astype(np.float32).reshape(1, 14)  # box + 5 keypoints
+            face = recognizer.alignCrop(img, row)
+            feat = recognizer.feature(face)
+            out.append((feat, (x, y, wb, hb)))
+    return out
+
+gallery = {}
+for label, path in list_images(DB_PATH):
+    img = cv2.imread(path)
+    if img is None: continue
+    fb = embed_from_img(img)
+    if not fb: continue
+    feat, _ = fb[0]                       # largest/first face per image
+    gallery.setdefault(label, []).append(feat)
+
+labels = sorted(gallery.keys())
+G = []
+for k in labels:
+    M = np.mean(np.vstack(gallery[k]), axis=0)
+    M = M / max(np.linalg.norm(M), 1e-9)
+    G.append(M)
+G = np.vstack(G).astype(np.float32)      
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cv2.namedWindow(&quot;YuNet+SFace&quot;, cv2.WINDOW_NORMAL)
+cv2.resizeWindow(&quot;YuNet+SFace&quot;, 640, 480)
+ema_fps = 0.0
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok: break
+    t0 = time.perf_counter()
+
+    fb = embed_from_img(frame)
+    for feat, (x,y,wb,hb) in fb:
+        q = feat / max(np.linalg.norm(feat), 1e-9)
+        sims = (G @ q.ravel()).astype(np.float32)   # cosine
+        i = int(np.argmax(sims)); s = float(sims[i])
+
+        name = labels[i] if s &gt;= THRESH else &quot;unknown&quot;
+        cv2.rectangle(frame, (x,y), (x+wb, y+hb), (0,255,0), 2)
+        cv2.putText(frame, f&quot;{name} ({s:.2f})&quot;, (x, max(0,y-7)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2, cv2.LINE_AA)
+
+    dt = max(time.perf_counter() - t0, 1e-6)
+    ema_fps = (ema_fps*0.9 + 0.1*(1.0/dt)) if ema_fps else 1.0/dt
+    cv2.putText(frame, f&quot;FPS: {ema_fps:.1f}&quot;, (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255,255,255), 2)
+    cv2.imshow(&quot;YuNet+SFace&quot;, frame)
+
+cap.release(); cv2.destroyAllWindows()
+
+</code></pre>
+
+
+</details>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../mediapipe/" class="btn btn-neutral float-left" title="MediaPipe"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../speech-to-text/" class="btn btn-neutral float-right" title="Распознавание речи">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../mediapipe/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../speech-to-text/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Распознавание речи - AI in robotics</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u0420\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0432\u0430\u043d\u0438\u0435 \u0440\u0435\u0447\u0438";
+        var mkdocs_page_input_path = "speech-to-text.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> AI in robotics
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Введение</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../hardware/">Способы внедрения</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../pycharm/">Работа в PyCarm</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../yolo/">YOLO</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../mediapipe/">MediaPipe</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../face_recognition/">Распознавание лица</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Распознавание речи</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#whisper-openai">Whisper от OpenAI</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">Доступные модели:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">Инструкция:</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../jetson/">jetson-inference</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../raspberry/">Raspberry Pi</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../tgai/">Telegram Bot + AI</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../kinect/">XBOX Kinect</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../cams/">ИИ камеры</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../assistants/">ИИ помощники</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">AI in robotics</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Распознавание речи</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="_1">Распознавание речи</h1>
+<p>Распознавание речи (speech-to-text (STT)) — автоматический процесс преобразования речевого сигнала в цифровую информацию (например, текстовые данные).</p>
+<h2 id="whisper-openai">Whisper от OpenAI</h2>
+<p>Whisper — это система автоматического распознавания речи от OpenAI, обученная на 680 000 часах многоязычных и многозадачных данных, собранных из интернета под наблюдением. Она умеет превращать речь в текст, переводить её на английский, автоматически определять язык и возвращать таймкоды для сегментов. Модель устойчива к шумам и акцентам, а всего поддерживает около 100 языков.<br />
+<a href="https://openai.com/index/whisper/">Сайт</a>, <a href="https://github.com/openai/whisper">GitHub</a>. </p>
+<h3 id="_2">Доступные модели:</h3>
+<table>
+  <thead>
+    <tr><th>Model</th><th>Size (GB)</th><th>Req. VRAM (~)</th><th>Download</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>tiny</td><td>0.076</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/65147644a518d12f04e32d6f3b26facc3f8dd46e5390956a9424a650c0ce22b9/tiny.pt">link</a></td></tr>
+    <tr><td>tiny.en</td><td>0.076</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03/tiny.en.pt">link</a></td></tr>
+    <tr><td>base</td><td>0.145</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt">link</a></td></tr>
+    <tr><td>base.en</td><td>0.145</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/25a8566e1d0c1e2231d1c762132cd20e0f96a85d16145c3a00adf5d1ac670ead/base.en.pt">link</a></td></tr>
+    <tr><td>small</td><td>0.484</td><td>~2 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/9ecf779972d90ba49c06d968637d720dd632c55bbf19d441fb42bf17a411e794/small.pt">link</a></td></tr>
+    <tr><td>small.en</td><td>0.484</td><td>~2 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/f953ad0fd29cacd07d5a9eda5624af0f6bcf2258be67c92b79389873d91e0872/small.en.pt">link</a></td></tr>
+    <tr><td>medium</td><td>1.528</td><td>~5 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt">link</a></td></tr>
+    <tr><td>medium.en</td><td>1.528</td><td>~5 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f/medium.en.pt">link</a></td></tr>
+    <tr><td>large-v1</td><td>3.087</td><td>~10 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/e4b87e7e0bf463eb8e6956e646f1e277e901512310def2c24bf0e11bd3c28e9a/large-v1.pt">link</a></td></tr>
+    <tr><td>large-v2</td><td>3.087</td><td>~10 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt">link</a></td></tr>
+    <tr><td>large-v3</td><td>3.087</td><td>~10 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/e5b1a55b89c1367dacf97e3e19bfd829a01529dbfdeefa8caeb59b3f1b81dadb/large-v3.pt">link</a></td></tr>
+    <tr><td>large-v3-turbo</td><td>1.618</td><td>~6 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/aff26ae408abcba5fbf8813c21e62b0941638c5f6eebfb145be0c9839262a19a/large-v3-turbo.pt">link</a></td></tr>
+  </tbody>
+</table>
+
+<h3 id="_3">Инструкция:</h3>
+<p>Рекомендую работать не в IDLE а в PyCharm (или другой нормальной IDE)<br />
+1. установить python (не выше 3.11) и библиотеки<br />
+    &gt; pip install librosa, whisper
+2. Скачать модель из <a href="./#доступные-модели">таблицы</a> сверху и загрузить в папку с проектом.
+3. Записать или скачать аудиофайл с человеческой речью и загрузить в папку проекта.
+4. Написать код:</p>
+<pre><code>
+import librosa, whisper
+
+MODEL_PATH = r&quot;C:\Users\aztec\PycharmProjects\whisper-test\tiny.pt&quot;
+
+model = whisper.load_model(MODEL_PATH, device=&quot;cpu&quot;)
+audio = librosa.load(&quot;2.wav&quot;, sr=16000, mono=True, dtype=&quot;float32&quot;)[0]
+result = model.transcribe(audio, fp16=False)
+
+for seg in result[&quot;segments&quot;]:
+    print(f&quot;[{seg['start']:.2f} → {seg['end']:.2f}] {seg['text']}&quot;)
+
+</code></pre>
+<p><br></p>
+<details><summary>Код для записи аудио прямо в IDE:</summary>
+
+Для работы надо установить: pip install sounddevice, soundfile  
+
+
+<pre><code>import sounddevice as sd, soundfile as sf, time
+
+RATE = 16000
+SECONDS = 10 #время записи в секндах
+print(&quot;Recording...&quot;)
+audio = sd.rec(int(SECONDS*RATE), samplerate=RATE, channels=1, dtype='float32')
+sd.wait()
+fname = f&quot;rec_{int(time.time())}.wav&quot;
+sf.write(fname, audio, RATE)
+print(&quot;Saved:&quot;, fname)
+</code></pre>
+
+
+</details>
+
+<p><br></p>
+<details><summary>Запись + распознание</summary>
+
+
+<pre><code>import librosa, whisper
+import sounddevice as sd, soundfile as sf, time
+
+MODEL_PATH = r&quot;C:\Users\aztec\PycharmProjects\whisper-test\tiny.pt&quot;
+model = whisper.load_model(MODEL_PATH, device=&quot;cpu&quot;)
+SECONDS = 10
+
+print(&quot;Recording for &quot;, SECONDS, &quot;seconds...&quot;)
+audio = sd.rec(int(SECONDS*16000), samplerate=16000, channels=1, dtype='float32')
+sd.wait()
+fname = f&quot;rec_{int(time.time())}.wav&quot;
+sf.write(fname, audio, 16000)
+print(&quot;Saved:&quot;, fname)
+
+audio = librosa.load(fname, sr=16000, mono=True, dtype=&quot;float32&quot;)[0]
+result = model.transcribe(audio, fp16=False)
+
+for seg in result[&quot;segments&quot;]:
+    print(f&quot;[{seg['start']:.2f} → {seg['end']:.2f}] {seg['text']}&quot;)
+
+</code></pre>
+
+
+</details>
+<p><br></p>
+<p><br></p>
+<details><summary>Распознание на лету</summary>
+</details>
+<p><br></p>
+<pre><code>
+import numpy as np, webrtcvad, sounddevice as sd, queue, threading, time, whisper, collections, os
+
+SR = 16000
+FRAME_MS = 20                           # 10/20/30 only
+FRAME_SAMPLES = SR * FRAME_MS // 1000
+VAD_AGGR = 2                            # 0..3
+PRE_MS, END_MS, MAX_SEG_MS = 300, 600, 30000
+
+# choose device automatically
+DEVICE = &quot;cuda&quot; if (os.environ.get(&quot;CUDA_VISIBLE_DEVICES&quot;, &quot;&quot;) != &quot;&quot; or
+                    (hasattr(__import__(&quot;torch&quot;), &quot;cuda&quot;) and __import__(&quot;torch&quot;).cuda.is_available())) else &quot;cpu&quot;
+
+model = whisper.load_model(&quot;turbo&quot;, device=DEVICE)  # or path to .pt
+
+# queues
+frames_q = queue.Queue(maxsize=128)     # raw int16 frames from audio callback
+segs_q   = queue.Queue(maxsize=32)      # finalized float32 segments for ASR
+stop = threading.Event()
+
+# audio callback: push fixed-size frames ASAP
+def audio_cb(indata, frames, time_info, status):
+    if status: pass
+    try:
+        frames_q.put_nowait(indata.copy())  # int16, shape (N,1)
+    except queue.Full:
+        pass
+
+# VAD segmenter: consume frames_q, emit speech segments to segs_q
+def segmenter():
+    vad = webrtcvad.Vad(VAD_AGGR)
+    ring = collections.deque(maxlen=PRE_MS // FRAME_MS)
+    triggered = False
+    segment = []
+    silence = 0
+    t = 0.0
+    seg_start_time = 0.0
+
+    def i16_to_f32(buf: np.ndarray) -&gt; np.ndarray:
+        x = buf.view(np.int16).astype(np.float32, copy=False) / 32768.0
+        return x
+
+    while not (stop.is_set() and frames_q.empty()):
+        try:
+            frame = frames_q.get(timeout=0.1)      # (N,1) int16
+        except queue.Empty:
+            continue
+
+        b = frame.tobytes()
+        is_speech = vad.is_speech(b, SR)
+
+        if not triggered:
+            ring.append(frame)
+            if is_speech:
+                triggered = True
+                seg_start_time = max(0.0, t - len(ring) * FRAME_MS / 1000.0)
+                segment = list(ring); ring.clear()
+                silence = 0
+        else:
+            segment.append(frame)
+            silence = 0 if is_speech else silence + 1
+
+            dur_ms = len(segment) * FRAME_MS
+            if silence * FRAME_MS &gt;= END_MS or dur_ms &gt;= MAX_SEG_MS:
+                seg = np.concatenate(segment, axis=0).reshape(-1, 1)  # int16 mono
+                audio = i16_to_f32(seg).flatten().astype(np.float32, copy=False)
+                try:
+                    segs_q.put_nowait((audio, seg_start_time))
+                except queue.Full:
+                    pass
+                triggered = False
+                segment = []
+                silence = 0
+
+        t += FRAME_MS / 1000.0
+        frames_q.task_done()
+
+# ASR worker: consume segs_q, run Whisper
+def transcriber():
+    while not (stop.is_set() and segs_q.empty()):
+        try:
+            audio, t0 = segs_q.get(timeout=0.1)
+        except queue.Empty:
+            continue
+        r = model.transcribe(audio, fp16=(DEVICE==&quot;cuda&quot;))
+        for s in r[&quot;segments&quot;]:
+            print(f&quot;[{t0 + s['start']:.2f} → {t0 + s['end']:.2f}] {s['text']}&quot;)
+        segs_q.task_done()
+
+# run
+stream = sd.InputStream(samplerate=SR, channels=1, dtype='int16',
+                        blocksize=FRAME_SAMPLES, callback=audio_cb)
+seg_th = threading.Thread(target=segmenter, daemon=True)
+asr_th = threading.Thread(target=transcriber, daemon=True)
+
+print(f&quot;Realtime VAD+ASR; device={DEVICE}. Ctrl+C to stop.&quot;)
+with stream:
+    seg_th.start(); asr_th.start()
+    try:
+        while True: time.sleep(0.2)
+    except KeyboardInterrupt:
+        stop.set()
+        seg_th.join(timeout=2); asr_th.join(timeout=2)
+
+
+</code></pre>
+<p><br></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../face_recognition/" class="btn btn-neutral float-left" title="Распознавание лица"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../jetson/" class="btn btn-neutral float-right" title="jetson-inference">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../face_recognition/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../jetson/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
