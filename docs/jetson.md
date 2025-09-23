@@ -14,6 +14,16 @@
 
 <img src="../img/img.png" alt="desc" width="320"> 
 
+## Установка
+
+**NVIDIA JetPack™** — это официальный программный стек для платформы NVIDIA Jetson™, предоставляющий вам комплексный набор инструментов и библиотек для разработки периферийных приложений на базе ИИ.
+
+Официальная инструкция [https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit)
+
+Официальная инструкция для NANO 4GB [https://www.yahboom.net/study/jetson-nano](https://www.yahboom.net/study/jetson-nano)
+
+## Jetson Inference
 [**Jetson Inference**](https://github.com/dusty-nv/jetson-inference) — это библиотека и набор примеров для Jetson, упрощающие инференс моделей компьютерного зрения с ускорением TensorRT через API C++/Python.
 
 ![alt text](img/img_2.png)
+
