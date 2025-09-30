@@ -1,6 +1,6 @@
 site_name: AI in robotics
 theme:
-  name: readthedocs
+  name: swan
 nav:
   - Введение: index.md
   - Способы внедрения: hardware.md
