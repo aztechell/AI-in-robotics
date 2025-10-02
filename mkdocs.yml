@@ -1,6 +1,7 @@
 site_name: AI in robotics
 theme:
   name: swan
+  logo: docs\img\logo.png
 nav:
   - Введение: index.md
   - Способы внедрения: hardware.md
