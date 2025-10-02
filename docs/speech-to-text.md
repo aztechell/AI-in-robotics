@@ -98,8 +98,6 @@ for seg in result["segments"]:
 </details>
 <br>
 
-<br>
-
 <details><summary>Распознание на лету</summary>
 
 ```

@@ -2,9 +2,9 @@
 **Поиск ключевых слов** или **Keyword spotting** (KWS) — это метод распознавания речи, который обнаруживает определенные ключевые слова или триггерные фразы в непрерывном аудиопотоке. 
 
 ## openWakeWord
-openWakeWord — это библиотека с открытым исходным кодом для распознавания слов-будильников, которую можно использовать для создания приложений и интерфейсов с голосовым управлением. Она включает в себя предварительно обученные модели для распространённых слов и фраз, которые хорошо работают в реальных условиях.  
+**openWakeWord** — это библиотека с открытым исходным кодом для распознавания слов-будильников, которую можно использовать для создания приложений и интерфейсов с голосовым управлением. Она включает в себя предварительно обученные модели для распространённых слов и фраз, которые хорошо работают в реальных условиях.  
 [GitHub](https://github.com/dscripka/openWakeWord), []()   
-openWakeWord работает с форматами .onnx и .tflite. Для Windows используется .onnx, а для Linux .tflite.
+**openWakeWord** работает с форматами **.onnx** и **.tflite.** Для Windows используется .onnx, а для Linux .tflite.
 
 ### Инструкция
 
@@ -28,7 +28,7 @@ THRESHOLD = 0.5          # tune for your room
 COOLDOWN_SEC = 1.0       # suppress duplicate prints
 
 # load only the “hey jarvis” model; omit arg to load all built-ins
-model = Model(wakeword_models=["./hey_jarvis_v0.1.onnx", "./yo_bitch.onnx"], vad_threshold=0.0)  # set >0 to enable VAD
+model = Model(wakeword_models=["./hey_jarvis_v0.1.onnx"], vad_threshold=0.0)  # set >0 to enable VAD
 
 _last_fired = 0.0
 
@@ -54,9 +54,11 @@ if __name__ == "__main__":
 
 ```
 
-Коллекция тренерованных слов: [https://github.com/fwartner/home-assistant-wakewords-collection/tree/main/en](https://github.com/fwartner/home-assistant-wakewords-collection/tree/main/en)   
+Коллекция тренированных слов: 
+> [https://github.com/fwartner/home-assistant-wakewords-collection/tree/main/en](https://github.com/fwartner/home-assistant-wakewords-collection/tree/main/en)   
 
-Автоматическая тренировка новых слов в Google Colab: [https://colab.research.google.com/drive/1q1oe2zOyZp7UsB3jJiQ1IFn8z5YfjwEb?usp=sharing](https://colab.research.google.com/drive/1q1oe2zOyZp7UsB3jJiQ1IFn8z5YfjwEb?usp=sharing)   
+Автоматическая тренировка новых слов в Google Colab: 
+> [https://colab.research.google.com/drive/1q1oe2zOyZp7UsB3jJiQ1IFn8z5YfjwEb?usp=sharing](https://colab.research.google.com/drive/1q1oe2zOyZp7UsB3jJiQ1IFn8z5YfjwEb?usp=sharing)   
 
 ### Примеры
 
@@ -80,7 +82,7 @@ FRAME_SAMPLES = SAMPLE_RATE * FRAME_MS // 1000  # 1280
 THRESHOLD = 0.5
 COOLDOWN_SEC = 1.0
 
-model = Model(wakeword_models=["./hey_jarvis_v0.1.onnx", "./yo_bitch.onnx"], vad_threshold=0.0)
+model = Model(wakeword_models=["./hey_jarvis_v0.1.onnx"], vad_threshold=0.0)
 #["./hey_jarvis_v0.1.onnx", "./yo_bitch.onnx"]
 _last_fired = 0.0
 JARVIS_WAV = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jarvis.wav")
