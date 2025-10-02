@@ -9,9 +9,10 @@ nav:
   - MediaPipe: mediapipe.md
   - Распознавание лица: face_recognition.md
   - Распознавание речи: speech-to-text.md
+  - Распознавание ключевых слов: KWS.md
+  - Telegram Bot + AI: tgai.md
   - Jetson Nano: jetson.md
   - Raspberry Pi: raspberry.md
-  - Telegram Bot + AI: tgai.md
   - XBOX Kinect: kinect.md
   - ИИ камеры: cams.md
   - ИИ помощники: assistants.md

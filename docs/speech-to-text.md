@@ -101,8 +101,6 @@ for seg in result["segments"]:
 <br>
 
 <details><summary>Распознание на лету</summary>
-</details>
-<br>
 
 ```
 
@@ -212,4 +210,5 @@ with stream:
 
 ```
 
+</details>
 <br>
