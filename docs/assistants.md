@@ -1,13 +1,4 @@
 # ИИ  Ассистенты
-## ChatGPT
-
-## Deepseek
-
-## Grok
-
-## Perplexity
-
-## Coursor
 
 <table>
   <thead>
@@ -15,6 +6,7 @@
       <th>Name</th>
       <th>iOS</th>
       <th>Android</th>
+      <th>Комментарий</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +14,7 @@
       <td><a href="https://chatgpt.com/">ChatGPT (OpenAI)</a></td>
       <td><a href="https://apps.apple.com/us/app/chatgpt/id6448311069">Yes</a></td>
       <td><a href="https://play.google.com/store/apps/details?id=com.openai.chatgpt">Yes</a></td>
+      <td>Самый универсальный</td>
     </tr>
     <tr>
       <td><a href="https://www.perplexity.ai/">Perplexity</a></td>
@@ -49,14 +42,15 @@
       <td><a href="https://play.google.com/store/apps/details?id=com.github.android">Via GitHub Mobile</a></td>
     </tr>
     <tr>
-      <td><a href="https://grok.com/">Grok (xAI)</a></td>
-      <td><a href="https://apps.apple.com/us/app/grok/id6670324846">Yes</a></td>
-      <td><a href="https://play.google.com/store/apps/details?id=ai.x.grok">Yes</a></td>
-    </tr>
-    <tr>
       <td><a href="https://copilot.microsoft.com/">Microsoft Copilot</a></td>
       <td><a href="https://apps.apple.com/us/app/microsoft-copilot/id6472538445">Yes</a></td>
       <td><a href="https://play.google.com/store/apps/details?id=com.microsoft.copilot">Yes</a></td>
     </tr>
+    <tr>
+      <td><a href="https://grok.com/">Grok (xAI)</a></td>
+      <td><a href="https://apps.apple.com/us/app/grok/id6670324846">Yes</a></td>
+      <td><a href="https://play.google.com/store/apps/details?id=ai.x.grok">Yes</a></td>
+    </tr>
+    
   </tbody>
 </table>
