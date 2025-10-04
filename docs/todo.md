@@ -1,0 +1,17 @@
+# Список для изучения на будущее
+
+- Платформа [https://gitverse.ru/](https://gitverse.ru/), GigaIDE Desktopv, GigaIDE Cloud, 
+- Платформа [https://colab.google/](https://colab.google/)
+- Проекты на [https://github.com/ai-forever](https://github.com/ai-forever), в частности генерация видео [https://github.com/ai-forever/Kandinsky-5](https://github.com/ai-forever/Kandinsky-5), замена лица [https://github.com/ai-forever/ghost](https://github.com/ai-forever/ghost), ruGPT [https://github.com/ai-forever/ru-gpts](https://github.com/ai-forever/ru-gpts).
+- Модели Вихрь [https://huggingface.co/Vikhrmodels](https://huggingface.co/Vikhrmodels), [https://t.me/vikhrlabs/](https://t.me/vikhrlabs/)
+- Лёгкий детектор лиц [https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)
+- Видео из фото [https://huggingface.co/spaces/Wan-AI/Wan2.2-Animate](https://huggingface.co/spaces/Wan-AI/Wan2.2-Animate), [https://github.com/Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2)
+- Что за Higgsfield [https://higgsfield.ai/](https://higgsfield.ai/)
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()
+- []()

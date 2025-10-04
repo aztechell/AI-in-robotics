@@ -139,3 +139,11 @@ swap — это участок памяти (файл или раздел на �
 
 ![alt text](img/img_2.png)
 
+Видеоуроки от NVIDIA:  
+> [https://www.youtube.com/watch?v=jSKHeYVcAB8&list=PL5B692fm6--uQRRDTPsJDp4o0xbzkoyf8](https://www.youtube.com/watch?v=jSKHeYVcAB8&list=PL5B692fm6--uQRRDTPsJDp4o0xbzkoyf8)
+
+Уроки именно по Jetson Inference начинаются с этого видео:  
+> [https://www.youtube.com/watch?v=QXIwdsyK7Rw&list=PL5B692fm6--uQRRDTPsJDp4o0xbzkoyf8&index=9](https://www.youtube.com/watch?v=QXIwdsyK7Rw&list=PL5B692fm6--uQRRDTPsJDp4o0xbzkoyf8&index=9)
+
+
+## Qengineering
