@@ -29,6 +29,12 @@
       <td></td>
     </tr>
     <tr>
+      <td><a href="https://qwen.ai/">Qwen AI (Alibaba)</a></td>
+      <td><a href="https://apps.apple.com/app/id6743778442">Yes</a></td>
+      <td><a href="https://play.google.com/store/apps/details?id=ai.qwenlm.chat.android&pli=1">Yes</a></td>
+      <td></td>
+    </tr>
+    <tr>
       <td><a href="https://claude.ai/">Claude (Anthropic)</a></td>
       <td><a href="https://apps.apple.com/us/app/claude-by-anthropic/id6473753684">Yes</a></td>
       <td><a href="https://play.google.com/store/apps/details?id=ai.claude.app">Yes</a></td>
@@ -62,43 +68,37 @@
       <td><a href="https://windsurf.com/">Windsurf</a></td>
       <td>No</td>
       <td>No</td>
-      <td></td>
+      <td>Не доступен в Казахстане</td>
     </tr>
     <tr>
       <td><a href="https://www.continue.dev/">Continue.dev</a></td>
       <td>No</td>
       <td>No</td>
-      <td></td>
+      <td>Плагин для IDE</td>
     </tr>
     <tr>
       <td><a href="https://cursor.com/">Cursor</a></td>
       <td>No</td>
       <td>No</td>
-      <td></td>
+      <td>Редактор кода</td>
     </tr>
     <tr>
-      <td><a href="https://www.datacamp.com/blog/best-ai-coding-assistants">Amazon Q Developer</a></td>
-      <td>No</td>
-      <td>No</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a href="https://codeium.com/">Codeium</a></td>
+      <td><a href="https://aws.amazon.com/ru/q/developer/">Amazon Q Developer</a></td>
       <td>No</td>
       <td>No</td>
       <td></td>
     </tr>
     <tr>
       <td><a href="https://www.qodo.ai/">Qodo</a></td>
-      <td>No/td>
+      <td>No</td>
       <td>No</td>
       <td></td>
     </tr>
     <tr>
       <td><a href="https://www.nomic.ai/gpt4all">GPT4All</a></td>
-      <td>No/td>
       <td>No</td>
-      <td></td>
+      <td>No</td>
+      <td>Для работы оффлайн</td>
     </tr>
     <tr>
       <td><a href="https://www.tabbyml.com/">Tabby</a></td>
@@ -110,13 +110,7 @@
       <td><a href="https://www.codegpt.co/">Code GPT</a></td>
       <td>No</td>
       <td>No</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><a href="https://www.datacamp.com/blog/best-ai-coding-assistants">Cody (Sourcegraph)</a></td>
-      <td>No</td>
-      <td>No</td>
-      <td></td>
+      <td>Плагин для IDE</td>
     </tr>
     
   </tbody>
