@@ -147,3 +147,8 @@ swap — это участок памяти (файл или раздел на �
 
 
 ## Qengineering
+[GitHub Qengineering](https://github.com/Qengineering) разные репозитории для Jetson Nano. [Сайт](https://qengineering.eu/)   
+- Образ на Ubuntu 20.04 [https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image](https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image)  
+- Кастомный образ [https://github.com/Qengineering/Jetson-Nano-image](https://github.com/Qengineering/Jetson-Nano-image)  
+- Распознание лиц [https://github.com/Qengineering/Face-Recognition-Jetson-Nano](https://github.com/Qengineering/Face-Recognition-Jetson-Nano), в маске [https://github.com/Qengineering/Face-Recognition-with-Mask-Jetson-Nano](https://github.com/Qengineering/Face-Recognition-with-Mask-Jetson-Nano)  
+

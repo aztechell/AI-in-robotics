@@ -7,10 +7,9 @@
 - Лёгкий детектор лиц [https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB](https://github.com/Linzaer/Ultra-Light-Fast-Generic-Face-Detector-1MB)
 - Видео из фото [https://huggingface.co/spaces/Wan-AI/Wan2.2-Animate](https://huggingface.co/spaces/Wan-AI/Wan2.2-Animate), [https://github.com/Wan-Video/Wan2.2](https://github.com/Wan-Video/Wan2.2)
 - Что за Higgsfield [https://higgsfield.ai/](https://higgsfield.ai/)
-- []()
-- []()
-- []()
-- []()
+- Rork ai [https://rork.com/](https://rork.com/)
+- Vosk распознание речи [https://alphacephei.com/vosk/](https://alphacephei.com/vosk/), [https://github.com/alphacep/vosk-api](https://github.com/alphacep/vosk-api)
+- Pyttsx3
 - []()
 - []()
 - []()
