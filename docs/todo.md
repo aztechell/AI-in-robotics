@@ -10,7 +10,7 @@
 - Rork ai [https://rork.com/](https://rork.com/)
 - Vosk распознание речи [https://alphacephei.com/vosk/](https://alphacephei.com/vosk/), [https://github.com/alphacep/vosk-api](https://github.com/alphacep/vosk-api)
 - Pyttsx3
-- []()
-- []()
+- n8n
+- [nanochat](https://github.com/karpathy/nanochat)
 - []()
 - []()

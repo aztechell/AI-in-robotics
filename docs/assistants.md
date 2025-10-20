@@ -1,5 +1,7 @@
 # ИИ  Ассистенты
 
+![alt text](img/img_27.png)
+
 <table>
   <thead>
     <tr>
