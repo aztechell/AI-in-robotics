@@ -4,21 +4,21 @@
 
 ## PC - USB - Arduino
 ### Подключаем плату Arduino по USB проводу к компьютеру. 
-- Светодиоды должны загореться. Если не горят - проверить провод и плату.
-- Далее нужно найти COM порт устройства.   
-Вариант 1: Через браузер Google Chrome: [https://googlechromelabs.github.io/serial-terminal](https://googlechromelabs.github.io/serial-terminal)   
-Вариант 2: Через Arduino IDE.   
-Вариант 3: через bat скрипт [comlist.bat](/docs/files/comlist.bat)   
-Вариант 4: python скрипт [comcheck.py](/docs/files/comcheck.py). Нужно установить pip install pyserial  
+Светодиоды должны загореться. Если не горят - проверить провод и плату.   
+Далее нужно найти **COM** порт устройства.   
+- Вариант 1: Через браузер **Google Chrome:** [https://googlechromelabs.github.io/serial-terminal](https://googlechromelabs.github.io/serial-terminal)   
+- Вариант 2: Через **Arduino IDE.**  
+- Вариант 3: через **bat** скрипт [comlist.bat](files/comlist.bat)   
+- Вариант 4: **python** скрипт [comcheck.py](files/comcheck.py). Нужно установить pip install pyserial  
 
-VID/PID — идентификаторы USB-устройства.  
-- VID (Vendor ID): 16-битный hex код производителя. Выдаёт USB-IF.
-- PID (Product ID): 16-битный hex код модели или прошивки. Задаёт производитель.
+**VID/PID** — идентификаторы USB-устройства.  
+- **VID** (Vendor ID): 16-битный hex код производителя. Выдаёт USB-IF.
+- **PID** (Product ID): 16-битный hex код модели или прошивки. Задаёт производитель.
 
-При подключении и отключении платы COM порт может поменяться, но VID/PID не меняется. Потому есть смысл искать COM порт через VID/PID.  
+При подключении и отключении платы **COM** порт может поменяться, но **VID/PID** не меняется. Потому есть смысл искать **COM** порт через **VID/PID.**
 
 <details>
-<summary>Пример VID/PID</summary> 
+<summary>Пример COM порт по VID/PID</summary> 
 
 ```
 
