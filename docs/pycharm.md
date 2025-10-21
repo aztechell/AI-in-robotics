@@ -136,8 +136,19 @@ deactivate
 
 <img src="../img/img_30.png" alt="desc" width="500">  
 
-Можно создать несколько сред, но это **НЕ рекомендуется** делать.
+Можно создать несколько сред, но это **НЕ рекомендуется** делать.   
 
+Удалить и пересоздать venv:  
+
+```
+
+deactivate; if (Test-Path .venv) { Remove-Item .venv -Recurse -Force }
+py -3.12 -m venv .venv
+Set-ExecutionPolicy -Scope Process Bypass -Force
+.\.venv\Scripts\Activate.ps1
+if (Test-Path requirements.txt) { pip install -r requirements.txt }
+
+```
 
 ### conda
 **conda** — менеджер окружений + пакетов. Сильная сторона — научный стек, пакеты с C/Fortran, CUDA/GPU, а также не только Python.

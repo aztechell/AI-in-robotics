@@ -13,6 +13,7 @@ nav:
   - Распознавание речи: speech-to-text.md
   - Распознавание ключевых слов: KWS.md
   - Telegram Bot + AI: tgai.md
+  - Python + Arduino: py+ard.md
   - Jetson Nano: jetson.md
   - Raspberry Pi: raspberry.md
   - XBOX Kinect: kinect.md
