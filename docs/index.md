@@ -52,4 +52,4 @@
 > [https://stepik.org/catalog](https://stepik.org/catalog)
 
 ### Автор
-По всем вопросам писать на aztechell@gmail.com или [t.me/aztechell](t.me/aztechell)
+По всем вопросам писать на aztechell@gmail.com или [https://t.me/aztechell](https://t.me/aztechell)

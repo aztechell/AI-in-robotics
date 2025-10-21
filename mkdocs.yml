@@ -6,7 +6,7 @@ theme:
 nav:
   - Введение: index.md
   - Способы внедрения: hardware.md
-  - Работа в PyCarm: pycharm.md
+  - Работа в PyCharm: pycharm.md
   - YOLO: yolo.md
   - MediaPipe: mediapipe.md
   - Распознавание лица: face_recognition.md
