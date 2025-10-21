@@ -12,5 +12,5 @@
 - Pyttsx3
 - n8n
 - [nanochat](https://github.com/karpathy/nanochat)
-- []()
+- [https://dtf.ru/ruslan-titov/3712667-15-luchshikh-ii-pomoschnikov-2025-goda](https://dtf.ru/ruslan-titov/3712667-15-luchshikh-ii-pomoschnikov-2025-goda)
 - []()

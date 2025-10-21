@@ -50,3 +50,6 @@
 
 Курсы на stepik
 > [https://stepik.org/catalog](https://stepik.org/catalog)
+
+### Автор
+По всем вопросам писать на aztechell@gmail.com или [t.me/aztechell](t.me/aztechell)
