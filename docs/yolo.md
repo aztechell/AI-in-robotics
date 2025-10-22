@@ -17,13 +17,26 @@ Ultralytics YOLO — это открытая библиотека на Python д
 Выбирать версии для Windows 11.
 
 ##### 3. Установить pytorch
-- Выбрать нужную версию [**здесь**](https://pytorch.org/get-started/locally/) и установить через командную строку. (Win + R, cmd)  
+- Выбрать нужную версию [https://pytorch.org/get-started/locally/](https://pytorch.org/get-started/locally/) и установить через командную строку. (Win + R, cmd)   
 Например: 
 > pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu129
 
 ##### 4. Установить нужные библиотеки
-- в командную строку написать: 
+- в командную строку написать:  
 > pip3 install ultralytics opencv-python
+
+##### 4.5 Проверка установок
+- для проверки установки драйверов и библиотек используйте скрипт [YOLOchecker.py](files/YOLOchecker.py)   
+
+Частая проблема когда [torch](#3-установить-pytorch) установлен неправильно.  
+
+<img src="../img/img_37.png" alt="desc" width="600">   
+
+Нужно удалить torch
+> python -m pip uninstall -y torch torchvision torchaudio   
+> python -m pip cache purge
+
+И установить заново [torch](#3-установить-pytorch).
 
 ##### 5. Скачать предобученную модель
 - для первого примера скачать YOLO11n из [https://docs.ultralytics.com/ru/tasks/detect/](https://docs.ultralytics.com/ru/tasks/detect/)
