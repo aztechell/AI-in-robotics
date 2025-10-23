@@ -1,0 +1,1682 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../pycharm/">
+      
+      
+        <link rel="next" href="../mediapipe/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>YOLO - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ultralytics-yolo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              YOLO
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Введение
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Способы внедрения
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа в PyCharm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    YOLO
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    YOLO
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Установка необходимого и первый запуск
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Установка необходимого и первый запуск">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-python-310" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Python 3.10 и выше
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nvidia-nvidia-rtx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Установить драйверы NVIDIA (Только если есть видеокарта NVIDIA RTX)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Установить pytorch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Установить нужные библиотеки
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Проверка установок
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Скачать предобученную модель
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Запустить тестовый скрип
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Бонус:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolo-v11" class="md-nav__link">
+    <span class="md-ellipsis">
+      YOLO v11 имеет разные тренированные модели
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Дообучение моделей
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Дообучение моделей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Датасет
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Датасет">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Скрип для автоматического создания шаблона датасета:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Или в виде архива:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Предобученные модели и собранные датасеты
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Разметка данных
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пошаговая инструкция:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Получение координат
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Примеры с Pose
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MediaPipe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание лица
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание речи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание ключевых слов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Telegram Bot + AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python + Arduino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    XBOX Kinect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ИИ камеры
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ИИ помощники
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    На будущее
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Установка необходимого и первый запуск
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Установка необходимого и первый запуск">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-python-310" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Python 3.10 и выше
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-nvidia-nvidia-rtx" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Установить драйверы NVIDIA (Только если есть видеокарта NVIDIA RTX)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-pytorch" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Установить pytorch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Установить нужные библиотеки
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.5 Проверка установок
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Скачать предобученную модель
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Запустить тестовый скрип
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Бонус:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#yolo-v11" class="md-nav__link">
+    <span class="md-ellipsis">
+      YOLO v11 имеет разные тренированные модели
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Дообучение моделей
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Дообучение моделей">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Датасет
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Датасет">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Скрип для автоматического создания шаблона датасета:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Или в виде архива:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Предобученные модели и собранные датасеты
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Разметка данных
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Пошаговая инструкция:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      Получение координат
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Примеры с Pose
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ultralytics-yolo">Использование Ultralytics YOLO</h1>
+<p><strong>Ultralytics YOLO</strong> — это открытая библиотека на Python для обучения и применения моделей YOLO предназначенных для задач компьютерного зрения: обнаружение объектов, сегментация, классификация.
+Официальный сайт <a href="https://docs.ultralytics.com/ru/">Ultralytics YOLO.</a>  </p>
+<h3 id="_1">Установка необходимого и первый запуск</h3>
+<h5 id="1-python-310">1. Python 3.10 и выше</h5>
+<ul>
+<li>Скачать можно на официальном сайте <a href="https://www.python.org/downloads/windows/">python.org</a>.  </li>
+<li>Самые новые версии могут временно не поддерживаться YOLO.  </li>
+<li>Прямая ссылка на <a href="https://www.python.org/ftp/python/3.12.10/python-3.12.10-amd64.exe">Python 3.12.10</a>, <a href="https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe">Python 3.13.2</a> (100% рабочая)</li>
+<li>При установке нужно устанавливать от имени администратора и поставить галочку в Add to PATH</li>
+</ul>
+<h5 id="2-nvidia-nvidia-rtx">2. Установить драйверы NVIDIA (Только если есть видеокарта NVIDIA RTX)</h5>
+<ul>
+<li><strong>CUDA Toolkit</strong> <a href="https://developer.nvidia.com/cuda-downloads">https://developer.nvidia.com/cuda-downloads</a></li>
+<li><strong>cuDNN</strong> <a href="https://developer.nvidia.com/cudnn-downloads">https://developer.nvidia.com/cudnn-downloads</a></li>
+</ul>
+<p>Выбирать версии для Windows 11.</p>
+<h5 id="3-pytorch">3. Установить pytorch</h5>
+<ul>
+<li>Выбрать нужную версию <a href="https://pytorch.org/get-started/locally/">https://pytorch.org/get-started/locally/</a> и установить через командную строку. (Win + R, cmd) <br />
+Например: <blockquote>
+<p>pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu129</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="4">4. Установить нужные библиотеки</h5>
+<ul>
+<li>в командную строку написать:  <blockquote>
+<p>pip3 install ultralytics opencv-python</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="45">4.5 Проверка установок</h5>
+<ul>
+<li>для проверки установки драйверов и библиотек используйте скрипт <a href="../files/YOLOchecker.py">YOLOchecker.py</a>. При работе в IDE запускать внутри виртуальной среды проекта.   </li>
+</ul>
+<p>Частая проблема когда <a href="#3-pytorch">torch</a> установлен неправильно.  </p>
+<p><img src="../img/img_37.png" alt="desc" width="600">   </p>
+<p>Нужно удалить <strong>torch</strong></p>
+<blockquote>
+<p>python -m pip uninstall -y torch torchvision torchaudio <br />
+python -m pip cache purge</p>
+</blockquote>
+<p>И установить заново <a href="#3-pytorch">torch</a>.</p>
+<h5 id="5">5. Скачать предобученную модель</h5>
+<ul>
+<li>для первого примера скачать YOLO11n из <a href="https://docs.ultralytics.com/ru/tasks/detect/">https://docs.ultralytics.com/ru/tasks/detect/</a>
+Больше моделей и датасетов <a href="https://docs.ultralytics.com/ru/datasets/">https://docs.ultralytics.com/ru/datasets/</a></li>
+</ul>
+<h5 id="6">6. Запустить тестовый скрип</h5>
+<p>Запустить python IDLE -&gt; file -&gt; new file
+Написать код и сохранить в папку со скаченной моделью YOLO11n</p>
+<pre><code>import cv2
+from ultralytics import YOLO
+import torch
+import time
+
+# Проверка используется gpu или cpu
+device = 'cuda' if torch.cuda.is_available() else  'cpu'
+print(f&quot;Using device: {device}&quot;)
+
+# Загружаем нужную модель
+model = YOLO('yolo11n.pt').to(device)
+print(&quot;Available classes:&quot;, model.names)
+
+# включаем камеру
+webcamera = cv2.VideoCapture(0)
+
+while True:
+    #проверяем что камера работает и получаем изображение
+    success, frame = webcamera.read()
+    if not success:
+        break
+
+    # засекаем время для подсчёта FPS
+    start_time = time.time()
+
+    # Применяем модель на кадр
+    results = model.track(frame, conf=0.8, imgsz=640)
+
+    # Подсчёт ФПС
+    end_time = time.time()
+    fps = 1 / (end_time - start_time)
+
+    # Отображение ФПС
+    cv2.putText(frame, f&quot;FPS: {int(fps)}&quot;, (200, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+    cv2.putText(frame, f&quot;Total: {len(results[0].boxes)}&quot;, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
+    cv2.putText(frame, f&quot;Press 'Esc' to exit&quot;, (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+
+    # Вывод изображения
+    cv2.imshow(&quot;Live Camera&quot;, results[0].plot())
+
+    # Нажать Esc для закрытия приложения
+    if cv2.waitKey(1) == 27:
+        break
+
+# Отключение камеры и закрытие окна
+webcamera.release()
+cv2.destroyAllWindows()
+</code></pre>
+<p>Для смены камеры меняем цифру в строке 
+<code>webcamera = cv2.VideoCapture(0)</code>  </p>
+<p>Python скрипт для проверки списка камер:</p>
+<pre><code>import cv2
+for i in range(10):
+    cap=cv2.VideoCapture(i, cv2.CAP_DSHOW)
+    ok=cap.isOpened()
+    cap.release()
+    if ok: print(i) 
+</code></pre>
+<p>Либо через командную строку:<br />
+<code>wmic path Win32_PnPEntity where "PNPClass='Camera' OR PNPClass='Image'" get Name,DeviceID</code></p>
+<h5 id="_2">Бонус:</h5>
+<p>Сокращённая версия кода</p>
+<pre><code>import cv2
+from ultralytics import YOLO
+model = YOLO('yolo11m-pose.pt').to('cuda')
+wc = cv2.VideoCapture(0)
+
+while cv2.waitKey(1) != 27:
+    results = model.track(wc.read()[1], conf=0.8, imgsz=640, verbose=False)
+    cv2.imshow(&quot;Live Camera&quot;, results[0].plot())
+
+wc.release(); cv2.destroyAllWindows()
+</code></pre>
+<p>Скрипт для обновления YOLO</p>
+<blockquote>
+<p><a href="../files/update_yolo.bat">update_yolo.bat</a></p>
+</blockquote>
+<h3 id="yolo-v11">YOLO v11 имеет разные тренированные модели</h3>
+<p><img src="../img/img_3.png" alt="desc" width="700"></p>
+<p><strong>Classify</strong> — задача классификации изображений. Определяет один класс для всего изображения (или кропа).<br />
+<strong>Detect</strong> — задача обнаружения объектов. Находит каждый объект и присваивает класс, обрамляя прямоугольным bbox.<br />
+<strong>Segment</strong> — задача сегментации экземпляров. Находит каждый объект, присваивает класс и выдает пиксельную маску его контура (часто вместе с bbox).<br />
+<strong>Track</strong> — задача трекинга объектов во времени. Присваивает устойчивые ID уже найденным объектам в видеопотоке, связывая их между кадрами.<br />
+<strong>Pose</strong> — задача оценки позы. Находит объект (обычно человека) и предсказывает координаты ключевых точек скелета (часто вместе с bbox и классом).<br />
+<strong>OBB</strong> — задача обнаружения с повернутыми рамками. Находит объект, присваивает класс и выдает ориентированный прямоугольник (bbox с углом).  </p>
+<table>
+  <thead>
+    <tr>
+      <th>Модель</th>
+      <th>Имена файлов</th>
+      <th>Задача</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>YOLO11</td>
+      <td>
+        <code>yolo11n.pt</code>
+        <code>yolo11s.pt</code>
+        <code>yolo11m.pt</code>
+        <code>yolo11l.pt</code>
+        <code>yolo11x.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/detect/">Обнаружение</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-seg</td>
+      <td>
+        <code>yolo11n-seg.pt</code>
+        <code>yolo11s-seg.pt</code>
+        <code>yolo11m-seg.pt</code>
+        <code>yolo11l-seg.pt</code>
+        <code>yolo11x-seg.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/segment/">Сегментация экземпляров</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-pose</td>
+      <td>
+        <code>yolo11n-pose.pt</code>
+        <code>yolo11s-pose.pt</code>
+        <code>yolo11m-pose.pt</code>
+        <code>yolo11l-pose.pt</code>
+        <code>yolo11x-pose.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/pose/">Поза/Ключевые точки</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-obb</td>
+      <td>
+        <code>yolo11n-obb.pt</code>
+        <code>yolo11s-obb.pt</code>
+        <code>yolo11m-obb.pt</code>
+        <code>yolo11l-obb.pt</code>
+        <code>yolo11x-obb.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/obb/">Ориентированное обнаружение</a></td>
+    </tr>
+    <tr>
+      <td>YOLO11-cls</td>
+      <td>
+        <code>yolo11n-cls.pt</code>
+        <code>yolo11s-cls.pt</code>
+        <code>yolo11m-cls.pt</code>
+        <code>yolo11l-cls.pt</code>
+        <code>yolo11x-cls.pt</code>
+      </td>
+      <td><a href="https://docs.ultralytics.com/ru/tasks/classify/">Классификация</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="_3">Дообучение моделей</h3>
+<h4 id="_4">Датасет</h4>
+<p><strong>Датасет</strong> (англ. dataset) — это обработанный и структурированный массив данных.<br />
+Для YOLO необходим датасет определенной структуры:</p>
+<pre><code>dataset/
+├─ images/
+│  ├─ train/   
+│  ├─ val/
+│  └─ test/    (опционально)
+├─ labels/
+│  ├─ train/   
+│  ├─ val/
+│  └─ test/    (опционально)
+├─ train.py
+├─ model.pt
+└─ dataset.yaml
+
+</code></pre>
+<details>
+<summary>Пример dataset.yaml</summary>
+
+
+<pre><code>
+train: ../images/train
+val: ../images/val
+test: images/test
+
+nc: 3  # количество классов
+names: ['person', 'car', 'dog']
+
+</code></pre>
+
+
+</details>
+<p><br></p>
+<details>
+<summary>Пример train.py</summary> 
+
+
+<pre><code>
+from ultralytics import YOLO
+
+model = YOLO(&quot;yolo11n.pt&quot;)  # выбираем модель для дообучения
+
+# Train the model
+model.train(
+    data=&quot;dataset.yaml&quot;,       # путь к dataset.yaml 
+    epochs=50,                   # количество эпох(кругов) обучения
+    imgsz=640,                   # размер картинок
+    batch=16,                    # количество картинок за один шаг
+    workers=4,                   # число параллельных процессов,
+    project=&quot;yolo11_train&quot;,    # папка для сохранения результатов
+    name=&quot;exp1&quot;,               # название эксперимента
+    exist_ok=True                # переписать если есть такая папка
+)
+
+</code></pre>
+
+
+</details>
+<p><br></p>
+<h5 id="_5">Скрип для автоматического создания шаблона датасета:</h5>
+<blockquote>
+<p><a href="../files/dataset.bat">dataset.bat</a></p>
+</blockquote>
+<h5 id="_6">Или в виде архива:</h5>
+<blockquote>
+<p><a href="../files/dataset.zip">dataset.zip</a></p>
+</blockquote>
+<p>На 1 класс необходимо 200–500 изображений. Чем больше тем лучше.<br />
+Папки датасета:<br />
+- train — учит веса модели.
+- val — оценивает во время разработки, подбирает гиперпараметры и останавливает обучение.
+- test — финальная проверка один раз после выбора лучшей модели.  </p>
+<p>80% изображений идут в папку train, 20% в val.<br />
+Либо же 70% - train, 20% - val, 10% - test.  </p>
+<p>Скрипт для автоматического распределения файлов датасета</p>
+<blockquote>
+<p><a href="../files/dataset_separator.bat">dataset_separator.bat</a></p>
+</blockquote>
+<p>Скрипт для подсчёта файлов датасета:</p>
+<blockquote>
+<p><a href="../files/dataset_analyze.bat">dataset_analyze.bat</a></p>
+</blockquote>
+<h5 id="_7">Предобученные модели и собранные датасеты</h5>
+<p>Сайты:<br />
+- universe.roboflow.com<br />
+- huggingface.co<br />
+- github.com  </p>
+<h4 id="_8">Разметка данных</h4>
+<p>Для разметки данных используется программа labelImg.exe:</p>
+<blockquote>
+<p><a href="../files/labelImg.exe">labelImg.exe</a>  </p>
+</blockquote>
+<p><a href="https://www.youtube.com/watch?v=p0nR2YsCY_U">Официальная инструкция от автора labelImg.exe</a></p>
+<h4 id="_9">Пошаговая инструкция:</h4>
+<ol>
+<li>Создать папку для датасета. В любом месте на компьютере.  </li>
+<li>Загрузить изображения для обучения в эту папку.  </li>
+<li>Загрузить и запустить <a href="../files/labelImg.exe">labelImg.exe</a>  </li>
+<li>Переключить режим на YOLO<br />
+<img src="../img/img25.png" alt="desc" width="200">   </li>
+<li>Включить режим автосохранения<br />
+<img src="../img/img_23.png" alt="desc" width="300">   </li>
+<li>Выбрать Open Dir и выбрать папку с датасетом, выбрать Change Save Dir и выбрать эту же папку<br />
+<img src="../img/img26.png" alt="desc" width="200">   </li>
+<li>Нажать на Create\nRectBox или на клавишу "W"<br />
+<img src="../img/img_24.png" alt="desc" width="100">  </li>
+<li>Нарисовать прямоугольник вокруг нужного объекта и написать название класса<br />
+<img src="../img/img_25.png" alt="desc" width="300"> </li>
+<li>Разметить все классы на картинке и нажать на <strong>Next Image</strong> или на клавишу "D"</li>
+<li>
+<p>Разметить все картинки датасета. <br />
+<strong>Скрипт для автоматического распределения файлов датасета.</strong> Пропустить шаги 11-12 при использованиию.<br />
+<a href="../files/dataset_separator.bat">dataset_separator.bat</a></p>
+</li>
+<li>
+<p>Создать папки и файлы структуры датасета YOLO <a href="./#датасет">(посмотреть тут)</a> или с помощью скрипта <a href="../files/dataset_analyze.bat">dataset_analyze.bat</a>, или скачать архив <a href="../files/dataset.zip">dataset.zip</a>.</p>
+</li>
+<li>Распределить файлы по папкам:<br />
+80% изображений в <strong>dataset/images/train</strong> и их пары <br />
+80% текстовых файлов в <strong>dataset/labels/train</strong> <br />
+20% изображений <strong>dataset/images/val</strong> и их пары <br />
+20% текстовых файлов в to <strong>dataset/labels/val</strong>  </li>
+<li>В yaml файле написать количество классов и названия классов</li>
+<li>В train.py выбрать модель в model = YOLO("yolo11n.pt"), скачать и поместить эту модель в папку датасета.</li>
+<li>Подобрать параметры тренировки и запустить обучение. Ждать завершения обучения.</li>
+<li>После тренировки в папке датасета появиться папка runs, в ней найти папку с файлами тренеровки, например runs\detect\train. В папке weight будут лежать натренерованные модели best.pt и last.pt. Обычно используют best.pt.</li>
+<li>Для оценки эффективности в папке тренеровки есть изображение с данными.</li>
+</ol>
+<p>Короткий ориентир для metrics/mAP50(B): <br />
+≥0.90 — отлично.<br />
+0.80–0.90 — хорошо.<br />
+0.60–0.80 — приемлемо.<br />
+&lt;0.60 — обычно слабовато.  </p>
+<p>По mAP50-95 ориентир такой:<br />
+≥0.70 — отлично<br />
+0.60–0.70 — очень хорошо<br />
+0.40–0.60 — рабочий уровень<br />
+0.30–0.40 — слабовато<br />
+&lt;0.30 — плохо  </p>
+<p><img src="../img/results.png" alt="desc" width="600">   </p>
+<details>
+<summary>Параметры</summary>
+
+
+<pre><code>train/box_loss → ошибка боксов на обучении. Должна падать.
+train/cls_loss → ошибка классификации на обучении. Должна падать.
+train/dfl_loss → Distribution Focal Loss для точности координат. Должна падать.
+val/box_loss → ошибка боксов на валидации. Главное смотреть её, не должна расти.
+val/cls_loss → ошибка классификации на валидации.
+val/dfl_loss → DFL на валидации.
+metrics/precision(B) → точность: доля верных предсказаний среди всех предсказаний. Меньше ложных срабатываний — выше.
+metrics/recall(B) → полнота: доля найденных объектов среди всех истинных. Меньше пропусков — выше.
+metrics/mAP50(B) → средняя AP при IoU≥0.50 на валидации.
+metrics/mAP50-95(B) → средняя AP по IoU 0.50…0.95 (COCO). Главная сводная метрика.
+
+</code></pre>
+
+</details>
+<p><br></p>
+<h3 id="_10">Получение координат</h3>
+<p>Для работы с данными полученными от ИИ обычно выводят центральную координату найденных объектов.</p>
+<details>
+<summary>Выводим координаты X, Y</summary>
+
+
+<pre><code>    for box in results[0].boxes:
+        x1, y1, x2, y2 = map(int, box.xyxy[0])  # Получаем координаты bbox
+        center_x, center_y = (x1 + x2) // 2, (y1 + y2) // 2  # Находим центр
+
+        class_id = int(box.cls[0])  #Получаем id
+        class_name = model.names[class_id]  # Получаем название класса
+
+        # Extract tracking ID (if available)
+        track_id = int(box.id[0]) if box.id is not None else -1
+
+        print(f&quot;Object: {class_name} (ID: {track_id}) at X={center_x}, Y={center_y}&quot;)
+</code></pre>
+
+</details>
+<p><br>
+<br></p>
+<h3 id="pose">Примеры с Pose</h3>
+<p>Скачать <a href="https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo11n-pose.pt">yolo11n-pose.pt</a>  </p>
+<p>В модели позы YOLO11 по умолчанию имеется 17 ключевых точек, каждая из которых представляет собой отдельную часть человеческого тела. Ниже приведена схема соответствия каждого индекса соответствующему суставу тела:</p>
+<details>
+<summary>Список ключевых точек YOLO11-pose</summary>
+
+
+<pre><code>0. Нос  
+1. Левый глаз  
+2. Правый глаз  
+3. Левое ухо  
+4. Правое ухо  
+5. Левое плечо  
+6. Правое плечо  
+7. Левый локоть  
+8. Правый локоть  
+9. Левое запястье  
+10. Правое запястье  
+11. Левое бедро  
+12. Правое бедро  
+13. Левое колено  
+14. Правое колено  
+15. Левая лодыжка  
+16. Правая лодыжка  
+</code></pre>
+
+
+</details>
+<p>&nbsp;</p>
+<p>Для отдельного нахождения координат одной ключевой точки, нужно извлечь её через results[0].keypoints.xy(0, <strong>номер точки</strong>). Например, правое запястье (точка 10).</p>
+<details>
+<summary>Одна точка</summary>
+
+
+<pre><code>import cv2
+from ultralytics import YOLO
+import torch
+import time
+
+device = 'cuda' if torch.cuda.is_available() else  'cpu'
+print(f&quot;Using device: {device}&quot;)
+
+model = YOLO('YOLO11n-pose.pt').to(device)
+print(&quot;Available classes:&quot;, model.names)
+
+webcamera = cv2.VideoCapture(0)
+
+j = 10  # правое запястье
+
+while cv2.waitKey(1) != 27:
+    success, frame = webcamera.read()
+    if not success:
+        break
+
+    start_time = time.time()
+    results = model.track(frame, conf=0.8, imgsz=640, verbose=False)
+
+    r = results[0]
+    if r.keypoints is not None and r.keypoints.xy.size(0) &gt; 0:
+        k = r.keypoints.xy[0, j]
+        x, y = int(k[0].item()), int(k[1].item())
+        cv2.circle(frame, (x, y), 6, (0,255,255), -1)
+
+    end_time = time.time()
+    fps = 1 / (end_time - start_time)
+
+    cv2.putText(frame, f&quot;FPS: {int(fps)}&quot;, (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+    cv2.imshow(&quot;Live Camera&quot;, frame)
+
+webcamera.release()
+cv2.destroyAllWindows()  
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Нахождение нескольких точек.</p>
+<details>
+<summary>Несколько точек</summary>
+
+
+<pre><code>import cv2
+from ultralytics import YOLO
+import torch
+import time
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model = YOLO('YOLO11n-pose.pt').to(device)
+
+cap = cv2.VideoCapture(0)
+
+points = [0, 1, 2]  
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok:
+        break
+
+    t0 = time.time()
+    results = model.track(frame, conf=0.8, imgsz=640, verbose=False)
+    r = results[0]
+
+    if r.keypoints is not None and r.keypoints.xy is not None:
+        kpts = r.keypoints.xy
+        np, nk = kpts.shape[0], kpts.shape[1]
+        for pid in range(np):
+            for idx in points:
+                if idx &gt;= nk:
+                    continue
+                x, y = map(int, kpts[pid, idx].tolist())
+                cv2.circle(frame, (x, y), 6, (0, 255, 255), -1)
+
+    fps = 1.0 / max(1e-6, time.time() - t0)
+    cv2.putText(frame, f&quot;FPS: {int(fps)}&quot;, (50, 50),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+    cv2.imshow(&quot;Live Camera&quot;, frame)
+
+cap.release()
+cv2.destroyAllWindows()
+
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Несколько точек с линиями.</p>
+<details>
+<summary>Линии</summary>
+
+
+<pre><code>import cv2
+from ultralytics import YOLO
+import torch
+import time
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model = YOLO('YOLO11n-pose.pt').to(device)
+
+cap = cv2.VideoCapture(0)
+
+pairs = [(1, 2), (5, 7), (7, 9), (6, 8), (8, 10)]  # индексы keypoints, которые соединяем
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok:
+        break
+
+    t0 = time.time()
+    results = model.track(frame, conf=0.8, imgsz=640, verbose=False)
+    r = results[0]
+
+    if r.keypoints is not None and r.keypoints.xy is not None:
+        kpts = r.keypoints.xy  # shape: (num_persons, num_kpts, 2)
+        num_persons, num_kpts = kpts.shape[0], kpts.shape[1]
+
+        for pid in range(num_persons):
+            for a, b in pairs:
+                if a &gt;= num_kpts or b &gt;= num_kpts:
+                    continue
+                x1, y1 = map(int, kpts[pid, a].tolist())
+                x2, y2 = map(int, kpts[pid, b].tolist())
+                cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 255), 2)
+                #точки:
+                cv2.circle(frame, (x1, y1), 4, (0, 255, 255), -1)
+                cv2.circle(frame, (x2, y2), 4, (0, 255, 255), -1)
+
+    fps = 1.0 / max(1e-6, time.time() - t0)
+    cv2.putText(frame, f&quot;FPS: {int(fps)}&quot;, (50, 50),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
+
+    cv2.imshow(&quot;Live Camera&quot;, frame)
+
+cap.release()
+cv2.destroyAllWindows()
+</code></pre>
+
+</details>
+<p><br></p>
+<p>Пример игры.</p>
+<details>
+<summary>Игра</summary>
+
+
+<pre><code>import cv2, math
+from ultralytics import YOLO
+import torch
+
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
+model = YOLO('YOLO11n-pose.pt').to(device)
+
+cap = cv2.VideoCapture(0)
+
+target = 0          # нос
+alpha = 0.05         # скорость подтягивания
+conf_th = 0.5        # порог уверенности
+
+cx = cy = tx = ty = None
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok:
+        break
+
+    h, w = frame.shape[:2]
+    if cx is None:
+        cx = tx = w / 2
+        cy = ty = h / 2
+
+    r = model.track(frame, classes=0, conf=0.8, imgsz=640, verbose=False)[0]
+
+    found = False
+    if r.keypoints is not None and r.keypoints.xy is not None and r.keypoints.xy.size(0) &gt; 0:
+        kxy = r.keypoints.xy
+        kcf = r.keypoints.conf  # может быть None
+        num_kp = kxy.shape[1]
+
+        if target &lt; num_kp:
+            x, y = float(kxy[0, target, 0]), float(kxy[0, target, 1])
+            ok_conf = True if kcf is None else float(kcf[0, target]) &gt;= conf_th
+            if ok_conf and not (x != x or y != y):  # проверка на NaN
+                tx, ty = x, y
+                found = True
+
+    # двигаем только если нашли новую цель
+    if found:
+        cx += (tx - cx) * alpha
+        cy += (ty - cy) * alpha
+
+    # рисуем
+    if found:
+        cv2.circle(frame, (int(tx), int(ty)), 4, (0, 255, 255), -1)  # цель
+    cv2.circle(frame, (int(cx), int(cy)), 14, (0, 0, 255), 2)        # игрок
+
+    # событие попадания
+    if math.hypot(cx - tx, cy - ty) &lt; 12:
+        fs, thick = 3, 7
+        (tw, th), _ = cv2.getTextSize(&quot;GAY&quot;, cv2.FONT_HERSHEY_SIMPLEX, fs, thick)
+        org = ((w - tw) // 2, (h + th) // 2)
+        cv2.putText(frame, &quot;GAY&quot;, org, cv2.FONT_HERSHEY_SIMPLEX, fs, (0, 0, 255), thick, cv2.LINE_AA)
+
+    cv2.imshow(&quot;Live Camera&quot;, frame)
+
+cap.release()
+cv2.destroyAllWindows()
+</code></pre>
+
+</details>
+<p><br></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>

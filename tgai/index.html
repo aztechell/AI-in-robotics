@@ -1,0 +1,965 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../KWS/">
+      
+      
+        <link rel="next" href="../py%2Bard/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Telegram Bot + AI - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Telegram Bot + AI
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Введение
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Способы внедрения
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа в PyCharm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    YOLO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MediaPipe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание лица
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание речи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание ключевых слов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Telegram Bot + AI
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Telegram Bot + AI
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание бота
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код для бота
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Код для бота">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yolo-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      YOLO + bot.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python + Arduino
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    XBOX Kinect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ИИ камеры
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ИИ помощники
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    На будущее
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Создание бота
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Код для бота
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Код для бота">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#yolo-bot" class="md-nav__link">
+    <span class="md-ellipsis">
+      YOLO + bot.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Создание телеграм бота и связка с ИИ</h1>
+<p>Телеграм бот это прикольно</p>
+<h3 id="_2">Создание бота</h3>
+<ul>
+<li>
+<p>Заходим в Telegram- бота @BotFather.<br />
+<img src="../img/img_16.png" alt="desc" width="200">  </p>
+</li>
+<li>
+<p>Затем нажимаем «start» и из предложенного списка выбираем команду /newbot.</p>
+</li>
+</ul>
+<p><img alt="bot" src="../img/img_17.png" /></p>
+<ul>
+<li>Вводим имя и ник вашего Telegram-бота. Ник должен оканчиваться на _bot</li>
+</ul>
+<p><img alt="bot" src="../img/img_18.png" /></p>
+<p>Нужно сохранить API TOKEN для дальнейшего использования. Никому не передавайте API TOKEN!</p>
+<h3 id="_3">Код для бота</h3>
+<ul>
+<li>Установить билиотеку aiogram (библиотека для создания Telegram-ботов на языке программирования Python):</li>
+</ul>
+<blockquote>
+<p>pip install aiogram</p>
+</blockquote>
+<p>Документация <a href="https://docs.aiogram.dev/en">aiogram</a>.</p>
+<ul>
+<li>запустить тестовый код:</li>
+</ul>
+<pre><code>import asyncio
+from aiogram import Bot, Dispatcher, F, Router
+from aiogram.types import Message
+from aiogram.filters import CommandStart
+
+API_TOKEN = &quot;YOUR_BOT_TOKEN_HERE&quot;  # вставь свой токен
+
+router = Router()
+
+@router.message(CommandStart())
+async def on_start(message: Message):
+    await message.answer(&quot;Привет! 👋 Напиши 'салам' или используй команды.&quot;)
+
+@router.message(F.text, F.text.lower() == &quot;салам&quot;)
+async def reply(message: Message):
+    await message.answer(&quot;Уалейкум! 👋&quot;)
+
+async def main():
+    bot = Bot(token=API_TOKEN)
+    dp = Dispatcher()
+    dp.include_router(router)
+    await dp.start_polling(bot)
+
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+</code></pre>
+<p>Пример игры.</p>
+<details>
+<summary>Крестики нолики</summary>
+
+
+<pre><code>import asyncio, random
+from aiogram import Bot, Dispatcher, F, Router
+from aiogram.filters import CommandStart
+from aiogram.types import Message, CallbackQuery
+from aiogram.utils.keyboard import InlineKeyboardBuilder
+
+API_TOKEN = &quot;YOUR_BOT_TOKEN_HERE&quot;
+
+router = Router()
+GAMES: dict[int, list[str]] = {}
+WIN = [(0,1,2),(3,4,5),(6,7,8),(0,3,6),(1,4,7),(2,5,8),(0,4,8),(2,4,6)]
+
+def new_board(): return [' '] * 9
+def avail(b): return [i for i,v in enumerate(b) if v == ' ']
+def winner(b):
+    for a,b1,c in WIN:
+        line = [b[a], b[b1], b[c]]
+        if line[0] != ' ' and len(set(line)) == 1:
+            return line[0]
+    return &quot;draw&quot; if not avail(b) else None
+
+def would_win(b, s, i):
+    t = b.copy(); t[i] = s
+    return winner(t) == s
+
+def bot_move(b):
+    for i in avail(b):
+        if would_win(b, 'O', i): return i
+    for i in avail(b):
+        if would_win(b, 'X', i): return i
+    if 4 in avail(b): return 4
+    for i in [0,2,6,8]:
+        if i in avail(b): return i
+    return random.choice(avail(b))
+
+def board_kb(b, finished=False):
+    kb = InlineKeyboardBuilder()
+    sym = lambda v: '❌' if v == 'X' else ('⭕' if v == 'O' else '·')
+    for i in range(9):
+        text = sym(b[i])
+        cb = &quot;ttt:noop&quot; if finished or b[i] != ' ' else f&quot;ttt:{i}&quot;
+        kb.button(text=text, callback_data=cb)
+    kb.adjust(3,3,3)
+    return kb.as_markup()
+
+def status_text(b):
+    w = winner(b)
+    if w == 'X': return &quot;Ты выиграл. ✅&quot;
+    if w == 'O': return &quot;Бот выиграл. ❌&quot;
+    if w == &quot;draw&quot;: return &quot;Ничья. ⏸&quot;
+    return &quot;Твой ход: ❌&quot;
+
+@router.message(CommandStart())
+async def start(m: Message):
+    GAMES[m.chat.id] = new_board()
+    await m.answer(&quot;Крестики-нолики. Ты играешь ❌.&quot;,
+                   reply_markup=board_kb(GAMES[m.chat.id]))
+
+@router.callback_query(F.data == &quot;ttt:noop&quot;)
+async def noop(c: CallbackQuery):
+    await c.answer()
+
+@router.callback_query(F.data.startswith(&quot;ttt:&quot;))
+async def play(c: CallbackQuery):
+    chat_id = c.message.chat.id
+    data = c.data.split(&quot;:&quot;)[1]
+
+    b = GAMES.get(chat_id) or new_board()
+    if data == &quot;noop&quot; or winner(b):
+        await c.answer()
+        return
+
+    i = int(data)
+    if b[i] != ' ':
+        await c.answer()
+        return
+
+    b[i] = 'X'
+    w = winner(b)
+
+    if not w:
+        j = bot_move(b)
+        b[j] = 'O'
+        w = winner(b)
+
+    finished = w is not None
+
+    await c.message.edit_text(status_text(b), reply_markup=board_kb(b, finished=finished))
+    await c.answer()
+
+    if finished:
+        nb = new_board()
+        GAMES[chat_id] = nb
+        await c.message.answer(&quot;Новая игра. Твой ход: ❌&quot;, reply_markup=board_kb(nb))
+
+async def main():
+    bot = Bot(API_TOKEN)
+    dp = Dispatcher()
+    dp.include_router(router)
+    await dp.start_polling(bot)
+
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+
+</code></pre>
+
+</details>
+<p><br></p>
+<h5 id="yolo-bot">YOLO + bot.</h5>
+<details>
+<summary>Пример с YOLO</summary>
+
+
+<pre><code>
+import asyncio, io
+import numpy as np
+import cv2
+import torch
+from ultralytics import YOLO
+from aiogram import Bot, Dispatcher, F, Router
+from aiogram.filters import CommandStart
+from aiogram.types import Message, BufferedInputFile
+
+API_TOKEN = &quot;YOUR_BOT_TOKEN_HERE&quot;
+
+router = Router()
+
+@router.message(CommandStart())
+async def start(m: Message):
+    await m.answer(&quot;Отправь фото и YOLO её обработает&quot;)
+
+@router.message(F.photo)
+async def on_photo(m: Message, bot: Bot):
+
+    buf = io.BytesIO()
+    await bot.download(m.photo[-1], destination=buf)
+    img = cv2.imdecode(np.frombuffer(buf.getvalue(), np.uint8), cv2.IMREAD_COLOR)
+
+    plotted = await asyncio.to_thread(
+    lambda: model(img, conf=0.5, imgsz=640, verbose=False)[0].plot()
+)
+
+    ok, enc = cv2.imencode(&quot;.jpg&quot;, plotted)
+    if not ok:
+        await m.answer(&quot;Encoding error&quot;)
+        return
+
+    await m.answer_photo(BufferedInputFile(enc.tobytes(), filename=&quot;pose.jpg&quot;))
+
+
+async def main():
+    global model
+    model = YOLO(&quot;yolo11m-pose.pt&quot;)
+    if torch.cuda.is_available():
+        model.to(&quot;cuda&quot;)
+
+    bot = Bot(API_TOKEN)
+    dp = Dispatcher()
+    dp.include_router(router)
+    await dp.start_polling(bot)
+
+if __name__ == &quot;__main__&quot;:
+    asyncio.run(main())
+
+</code></pre>
+
+</details>
+<p><br></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>
