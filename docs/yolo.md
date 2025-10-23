@@ -1,5 +1,5 @@
 # Использование Ultralytics YOLO
-Ultralytics YOLO — это открытая библиотека на Python для обучения и применения моделей YOLO предназначенных для задач компьютерного зрения: обнаружение объектов, сегментация, классификация.
+**Ultralytics YOLO** — это открытая библиотека на Python для обучения и применения моделей YOLO предназначенных для задач компьютерного зрения: обнаружение объектов, сегментация, классификация.
 Официальный сайт [Ultralytics YOLO.](https://docs.ultralytics.com/ru/)  
 
 ### Установка необходимого и первый запуск
@@ -11,8 +11,8 @@ Ultralytics YOLO — это открытая библиотека на Python д
 
 ##### 2. Установить драйверы NVIDIA (Только если есть видеокарта NVIDIA RTX)
 
-- CUDA Toolkit [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
--  cuDNN [https://developer.nvidia.com/cudnn-downloads](https://developer.nvidia.com/cudnn-downloads)
+- **CUDA Toolkit** [https://developer.nvidia.com/cuda-downloads](https://developer.nvidia.com/cuda-downloads)
+- **cuDNN** [https://developer.nvidia.com/cudnn-downloads](https://developer.nvidia.com/cudnn-downloads)
 
 Выбирать версии для Windows 11.
 
@@ -26,17 +26,17 @@ Ultralytics YOLO — это открытая библиотека на Python д
 > pip3 install ultralytics opencv-python
 
 ##### 4.5 Проверка установок
-- для проверки установки драйверов и библиотек используйте скрипт [YOLOchecker.py](files/YOLOchecker.py)   
+- для проверки установки драйверов и библиотек используйте скрипт [YOLOchecker.py](files/YOLOchecker.py). При работе в IDE запускать внутри виртуальной среды проекта.   
 
-Частая проблема когда [torch](#3-установить-pytorch) установлен неправильно.  
+Частая проблема когда [torch](#3-pytorch) установлен неправильно.  
 
 <img src="../img/img_37.png" alt="desc" width="600">   
 
-Нужно удалить torch
+Нужно удалить **torch**
 > python -m pip uninstall -y torch torchvision torchaudio   
 > python -m pip cache purge
 
-И установить заново [torch](#3-установить-pytorch).
+И установить заново [torch](#3-pytorch).
 
 ##### 5. Скачать предобученную модель
 - для первого примера скачать YOLO11n из [https://docs.ultralytics.com/ru/tasks/detect/](https://docs.ultralytics.com/ru/tasks/detect/)
@@ -212,7 +212,7 @@ wc.release(); cv2.destroyAllWindows()
 
 #### Датасет
 
-Датасет (англ. dataset) — это обработанный и структурированный массив данных.  
+**Датасет** (англ. dataset) — это обработанный и структурированный массив данных.  
 Для YOLO необходим датасет определенной структуры:
 
 ```

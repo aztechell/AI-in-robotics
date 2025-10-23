@@ -95,9 +95,80 @@ with serial.Serial(PORT, BAUD, timeout=0) as ser:
 
 ## PC - WiFi
 
+## WiFi - WiFi
+
 ## PC - Bluetooth
 
-## Jetson - UART
+## Jetson - UART - Arduino
+На **Jetson Nano** пины UART:   
+> 8 - UART1_TXD   
+> 10 - UART1_RXD   
+> 6 - GND
+
+Подключаются к UART Arduino, например Serial1 **Arduino MEGA**:
+> Arduino -  Jetson Nano   
+> TX1 18 --- UART1_RXD        
+> RX1 19 --- UART1_TXD    
+> GND    --- GND
+
+<details><summary>Код</summary> 
+
+Jetson - Python
+```
+
+import random, time, serial
+
+ser = serial.Serial('/dev/ttyTHS1',
+                    9600,
+                    timeout=1)
+
+while 1:
+    x = random.randint(0,100)
+    y = random.randint(0, 100)
+    ser.write(f"{x},{y},\n".encode("utf-8"))
+    time.sleep(0.1)
+    
+```
+Arduino Mega
+```
+
+int X, Y;
+String strArr[2];
+
+void setup() {
+  Serial.begin(9600);
+  Serial1.begin(9600);  // скорость связи должна совпадать с Jetson
+  Serial.println("Arduino ready");
+}
+
+void loop() {
+  if (Serial1.available()) {
+    String rxString = Serial1.readStringUntil('\n');
+    rxString.trim();
+
+    int start = 0, idx = 0;
+    int n = rxString.length();
+    for (int i = 0; i < n; ++i) {
+      if (rxString[i] == ',') {
+        strArr[idx++] = rxString.substring(start, i);
+        start = i + 1;
+      }
+    }
+
+    if (start < n) strArr[idx++] = rxString.substring(start);
+
+    X = strArr[0].toInt();
+    Y = strArr[1].toInt();
+
+    Serial.print(X);
+    Serial.print(" ");
+    Serial.println(Y);
+  }
+}
+
+```
+
+</details>
 
 ## Raspberry - UART
 
