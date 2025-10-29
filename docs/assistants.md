@@ -84,7 +84,7 @@
       <td><a href="https://chat.mistral.ai/chat">Mistral AI</a></td>
       <td><a href="https://apps.apple.com/us/app/le-chat-by-mistral-ai">Yes</a></td>
       <td><a href="https://play.google.com/store/apps/details?id=ai.mistral.chat">Yes</a></td>
-      <td>Не доступен в Казахстане</td>
+      <td></td>
     </tr>
     <tr>
       <td><a href="https://windsurf.com/">Windsurf</a></td>

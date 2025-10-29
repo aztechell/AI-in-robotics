@@ -12,7 +12,7 @@ nav:
   - Распознавание лица: face_recognition.md
   - Распознавание речи: speech-to-text.md
   - Распознавание ключевых слов: KWS.md
-  - Большие языковые моделb: llm.md
+  - Большие языковые модели: llm.md
   - Telegram Bot + AI: tgai.md
   - Python + Arduino: py+ard.md
   - Jetson Nano: jetson.md
