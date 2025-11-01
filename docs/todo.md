@@ -13,5 +13,6 @@
 - n8n
 - [nanochat](https://github.com/karpathy/nanochat)
 - [https://dtf.ru/ruslan-titov/3712667-15-luchshikh-ii-pomoschnikov-2025-goda](https://dtf.ru/ruslan-titov/3712667-15-luchshikh-ii-pomoschnikov-2025-goda)
+- [https://www.nvidia.com/en-in/ai-on-rtx/chat-with-rtx-generative-ai/?utm_source=chatgpt.com](https://www.nvidia.com/en-in/ai-on-rtx/chat-with-rtx-generative-ai/?utm_source=chatgpt.com)
 - Boost python, pybind11 или Cython 
 - []()

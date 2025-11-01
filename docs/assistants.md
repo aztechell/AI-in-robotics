@@ -1,8 +1,14 @@
 # ИИ помощники
 
-ИИ помощники — это программное приложение, которое использует искусственный интеллект для понимания естественного языка и выполнения задач для пользователей.  
+**ИИ помощники** — это программное приложение, которое использует искусственный интеллект для понимания естественного языка и выполнения задач для пользователей.  
 
 ![alt text](img/img_27.png)
+
+Сайт со сравнением разных моделей [https://lmarena.ai/](https://lmarena.ai/) и таблица для сравнения [https://lmarena.ai/leaderboard](https://lmarena.ai/leaderboard).   
+Еще сайт для сравнения [https://scale.com/leaderboard](https://scale.com/leaderboard)
+
+
+## Доступные ИИ помощники: 
 
 <table>
   <thead>
@@ -45,9 +51,9 @@
       <td></td>
     </tr>
     <tr>
-      <td><a href="https://codeassist.google">Gemini Code Assist</a></td>
-      <td>No</td>
-      <td>No</td>
+      <td><a href="https://gemini.google.com">Gemini (Google)</a></td>
+      <td><a href="https://apps.apple.com/us/app/google-gemini">Yes</a></td>
+      <td><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.bard"> Yes</a></td>
       <td></td>
     </tr>
     <tr>
@@ -66,6 +72,18 @@
       <td><a href="https://grok.com/">Grok (xAI)</a></td>
       <td><a href="https://apps.apple.com/us/app/grok/id6670324846">Yes</a></td>
       <td><a href="https://play.google.com/store/apps/details?id=ai.x.grok">Yes</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a href="https://ai.meta.com/meta-ai/">Meta AI (xAI)</a></td>
+      <td><a href="https://apps.apple.com/us/app/meta-ai-vibes-ai-glasses">Yes</a></td>
+      <td><a href="https://play.google.com/store/apps/details?id=com.facebook.stella">Yes</a></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><a href="https://chat.mistral.ai/chat">Mistral AI</a></td>
+      <td><a href="https://apps.apple.com/us/app/le-chat-by-mistral-ai">Yes</a></td>
+      <td><a href="https://play.google.com/store/apps/details?id=ai.mistral.chat">Yes</a></td>
       <td></td>
     </tr>
     <tr>
