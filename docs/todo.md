@@ -13,4 +13,5 @@
 - n8n
 - [nanochat](https://github.com/karpathy/nanochat)
 - [https://dtf.ru/ruslan-titov/3712667-15-luchshikh-ii-pomoschnikov-2025-goda](https://dtf.ru/ruslan-titov/3712667-15-luchshikh-ii-pomoschnikov-2025-goda)
+- Boost python, pybind11 или Cython 
 - []()
