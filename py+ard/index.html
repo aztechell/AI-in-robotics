@@ -1,0 +1,1020 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tgai/">
+      
+      
+        <link rel="next" href="../jetson/">
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+    
+    
+      
+        <title>Python + Arduino - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-arduino" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Python + Arduino
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Введение
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Способы внедрения
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Работа в PyCharm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    YOLO
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MediaPipe
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание лица
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание речи
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Распознавание ключевых слов
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Большие языковые модели
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Telegram Bot + AI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Python + Arduino
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python + Arduino
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pc-usb-arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC - USB - Arduino
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PC - USB - Arduino">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключаем плату Arduino по USB проводу к компьютеру.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Передача данных
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pc-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC - WiFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi - WiFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pc-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC - Bluetooth
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jetson-uart-arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jetson - UART - Arduino
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raspberry-uart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raspberry - UART
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jetson Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Raspberry Pi
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    XBOX Kinect
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ИИ камеры
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ИИ помощники
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    На будущее
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pc-usb-arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC - USB - Arduino
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PC - USB - Arduino">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arduino-usb" class="md-nav__link">
+    <span class="md-ellipsis">
+      Подключаем плату Arduino по USB проводу к компьютеру.
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Передача данных
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pc-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC - WiFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wifi-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      WiFi - WiFi
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pc-bluetooth" class="md-nav__link">
+    <span class="md-ellipsis">
+      PC - Bluetooth
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jetson-uart-arduino" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jetson - UART - Arduino
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raspberry-uart" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raspberry - UART
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="python-arduino">Python + Arduino</h1>
+<p>Из статьи <a href="/docs/hardware.md">о способах внедрения</a> видно, что ИИ пишется на python на мощном железе, но сам робот обычно контролируется через платы Arduino.  </p>
+<h2 id="pc-usb-arduino">PC - USB - Arduino</h2>
+<h3 id="arduino-usb">Подключаем плату Arduino по USB проводу к компьютеру.</h3>
+<p>Светодиоды должны загореться. Если не горят - проверить провод и плату. <br />
+Далее нужно найти <strong>COM</strong> порт устройства. <br />
+- Вариант 1: Через браузер <strong>Google Chrome:</strong> <a href="https://googlechromelabs.github.io/serial-terminal">https://googlechromelabs.github.io/serial-terminal</a> <br />
+- Вариант 2: Через <strong>Arduino IDE.</strong><br />
+- Вариант 3: через <strong>bat</strong> скрипт <a href="../files/comlist.bat">comlist.bat</a> <br />
+- Вариант 4: <strong>python</strong> скрипт <a href="../files/comcheck.py">comcheck.py</a>. Нужно установить pip install pyserial  </p>
+<p><strong>VID/PID</strong> — идентификаторы USB-устройства.<br />
+- <strong>VID</strong> (Vendor ID): 16-битный hex код производителя. Выдаёт USB-IF.
+- <strong>PID</strong> (Product ID): 16-битный hex код модели или прошивки. Задаёт производитель.</p>
+<p>При подключении и отключении платы <strong>COM</strong> порт может поменяться, но <strong>VID/PID</strong> не меняется. Потому есть смысл искать <strong>COM</strong> порт через <strong>VID/PID.</strong></p>
+<details>
+<summary>Пример COM порт по VID/PID</summary> 
+
+
+<pre><code>
+from serial.tools import list_ports
+
+def com_ports_by_vid_pid(vid, pid, serial_substr=None):
+
+    if isinstance(vid, str):
+        vid = int(vid, 16)
+    if isinstance(pid, str):
+        pid = int(pid, 16)
+
+    out = []
+    for p in list_ports.comports():
+        if p.vid == vid and p.pid == pid:
+            if serial_substr and (not p.serial_number or serial_substr not in p.serial_number):
+                continue
+            out.append(p.device)
+    return out
+
+
+ports = com_ports_by_vid_pid(&quot;2341&quot;, &quot;0043&quot;)
+print(ports[0] if ports else &quot;not found&quot;)
+
+</code></pre>
+
+
+</details>
+
+<h3 id="_1">Передача данных</h3>
+<p>1 Включаем и выключаем светодиод. Отправляем 1 - чтобы включить светодиод, 2 - чтобы выключить светодиод.  </p>
+<details>
+<summary>Пример 1</summary> 
+
+Arduino
+
+<pre><code>
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  while (Serial.available() &gt; 0) {
+    char c = Serial.read();
+    if (c == '1') digitalWrite(LED_BUILTIN, HIGH);   // ON
+    else if (c == '2') digitalWrite(LED_BUILTIN, LOW); // OFF
+  }
+}
+
+</code></pre>
+
+
+Python
+
+<pre><code>
+import serial, time
+
+PORT = &quot;COM11&quot;
+BAUD = 9600
+
+with serial.Serial(PORT, BAUD, timeout=0) as ser:
+    time.sleep(2)
+    print(&quot;Type. Enter sends. Ctrl+C exits.&quot;)
+    try:
+        while True:
+            s = input()
+            ser.write(s.encode(&quot;utf-8&quot;))
+    except KeyboardInterrupt:
+        pass
+
+</code></pre>
+
+
+</details>
+
+<h2 id="pc-wifi">PC - WiFi</h2>
+<h2 id="wifi-wifi">WiFi - WiFi</h2>
+<h2 id="pc-bluetooth">PC - Bluetooth</h2>
+<h2 id="jetson-uart-arduino">Jetson - UART - Arduino</h2>
+<p>На <strong>Jetson Nano</strong> пины UART:   </p>
+<blockquote>
+<p>8 - UART1_TXD <br />
+10 - UART1_RXD <br />
+6 - GND</p>
+</blockquote>
+<p>Подключаются к UART Arduino, например Serial1 <strong>Arduino MEGA</strong>:</p>
+<blockquote>
+<p>Arduino -  Jetson Nano <br />
+TX1 18 --- UART1_RXD      <br />
+RX1 19 --- UART1_TXD  <br />
+GND    --- GND</p>
+</blockquote>
+<details><summary>Код</summary> 
+
+Jetson - Python
+
+<pre><code>
+import random, time, serial
+
+ser = serial.Serial('/dev/ttyTHS1',
+                    9600,
+                    timeout=1)
+
+while 1:
+    x = random.randint(0,100)
+    y = random.randint(0, 100)
+    ser.write(f&quot;{x},{y},\n&quot;.encode(&quot;utf-8&quot;))
+    time.sleep(0.1)
+
+</code></pre>
+
+Arduino Mega
+
+<pre><code>
+int X, Y;
+String strArr[2];
+
+void setup() {
+  Serial.begin(9600);
+  Serial1.begin(9600);  // скорость связи должна совпадать с Jetson
+  Serial.println(&quot;Arduino ready&quot;);
+}
+
+void loop() {
+  if (Serial1.available()) {
+    String rxString = Serial1.readStringUntil('\n');
+    rxString.trim();
+
+    int start = 0, idx = 0;
+    int n = rxString.length();
+    for (int i = 0; i &lt; n; ++i) {
+      if (rxString[i] == ',') {
+        strArr[idx++] = rxString.substring(start, i);
+        start = i + 1;
+      }
+    }
+
+    if (start &lt; n) strArr[idx++] = rxString.substring(start);
+
+    X = strArr[0].toInt();
+    Y = strArr[1].toInt();
+
+    Serial.print(X);
+    Serial.print(&quot; &quot;);
+    Serial.println(Y);
+  }
+}
+
+</code></pre>
+
+
+</details>
+
+<h2 id="raspberry-uart">Raspberry - UART</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>
