@@ -11,6 +11,7 @@ nav:
   - MediaPipe: mediapipe.md
   - Распознавание лица: face_recognition.md
   - Распознавание речи: speech-to-text.md
+  - Синтез речи: tts.md
   - Распознавание ключевых слов: KWS.md
   - Большие языковые модели: llm.md
   - Telegram Bot + AI: tgai.md
