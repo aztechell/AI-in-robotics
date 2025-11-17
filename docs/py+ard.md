@@ -94,6 +94,9 @@ with serial.Serial(PORT, BAUD, timeout=0) as ser:
 </details>
 
 ## PC - WiFi
+### Python - WiFi - ESP
+Проект с демо кодом:
+>[https://github.com/aztechell/esp-discover-rest](https://github.com/aztechell/esp-discover-rest)
 
 ## WiFi - WiFi
 

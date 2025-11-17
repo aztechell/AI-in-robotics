@@ -3,10 +3,8 @@
 **ИИ помощники** — это программное приложение, которое использует искусственный интеллект для понимания естественного языка и выполнения задач для пользователей.  
 
 ![alt text](img/img_27.png)
-
 Сайт со сравнением разных моделей [https://lmarena.ai/](https://lmarena.ai/) и таблица для сравнения [https://lmarena.ai/leaderboard](https://lmarena.ai/leaderboard).   
 Еще сайт для сравнения [https://scale.com/leaderboard](https://scale.com/leaderboard)
-
 
 ## Доступные ИИ помощники: 
 
