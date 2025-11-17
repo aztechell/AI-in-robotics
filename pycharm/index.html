@@ -1,0 +1,1138 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../hardware/">
+      
+      
+        <link rel="next" href="../yolo/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Работа в PyCharm - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pycharm" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Работа в PyCharm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Способы внедрения
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycharm-vs-idle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyCharm vs IDLE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Виртуальные среды
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Виртуальные среды">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        venv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Начало работы
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Большие языковые модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegram Bot + AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python + Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XBOX Kinect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ камеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ помощники
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    На будущее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pycharm-vs-idle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyCharm vs IDLE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Виртуальные среды
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Виртуальные среды">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#venv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        venv
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conda
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Начало работы
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="pycharm">PyCharm</h1>
+<p><strong>PyCharm</strong> — кроссплатформенная интегрированная среда разработки для языка программирования Python, разработанная компанией JetBrains.<br />
+- Основные функции бесплатные.<br />
+- Есть учебная лицензия, но недоступна в Казахстане. :(<br />
+Официальный сайт: <a href="https://www.jetbrains.com/pycharm/">https://www.jetbrains.com/pycharm/</a></p>
+<h2 id="_1">Установка</h2>
+<ol>
+<li>Скачать по ссылке <a href="https://www.jetbrains.com/pycharm/download/">https://www.jetbrains.com/pycharm/download/</a>  </li>
+<li>Установить. 🗿  </li>
+</ol>
+<h2 id="pycharm-vs-idle">PyCharm vs IDLE</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Критерий</th>
+      <th>PyCharm (единый с 2025.1)</th>
+      <th>IDLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Что это</td>
+      <td>Полноценная IDE: проекты, навигация, интеграции</td>
+      <td>Встроенная учебная среда: редактор + REPL</td>
+    </tr>
+    <tr>
+      <td>Для кого</td>
+      <td>Учёба и реальные проекты</td>
+      <td>Первые шаги, маленькие скрипты</td>
+    </tr>
+    <tr>
+      <td>Установка</td>
+      <td>Отдельная установка; базовое ядро бесплатно; 30-дн. Pro-триал</td>
+      <td>Ставится вместе с Python</td>
+    </tr>
+    <tr>
+      <td>Подсветка и автодополнение</td>
+      <td>Расширенные, с анализом кода</td>
+      <td>Базовые</td>
+    </tr>
+    <tr>
+      <td>Отладка</td>
+      <td>Полный UI: брейкпоинты, шаги, watch</td>
+      <td>Простой отладчик</td>
+    </tr>
+    <tr>
+      <td>Тесты</td>
+      <td>Интеграция pytest/unittest</td>
+      <td>Ручной запуск</td>
+    </tr>
+    <tr>
+      <td>Git и управление версиями</td>
+      <td>Встроено</td>
+      <td>Нет</td>
+    </tr>
+    <tr>
+      <td>Виртуальные окружения</td>
+      <td>Создание и привязка venv/conda</td>
+      <td>Только вне IDLE</td>
+    </tr>
+    <tr>
+      <td>Плагины / Marketplace</td>
+      <td>Есть Marketplace</td>
+      <td>Нет</td>
+    </tr>
+    <tr>
+      <td>Jupyter</td>
+      <td>Поддержка ноутбуков в бесплатной части</td>
+      <td>Нет</td>
+    </tr>
+    <tr>
+      <td>AI-функции</td>
+      <td>JetBrains AI Assistant в Pro; расширенные функции по подписке</td>
+      <td>Нет</td>
+    </tr>
+    <tr>
+      <td>Итог</td>
+      <td>Для серьёзной учёбы и работы</td>
+      <td>Для старта и учебных примеров</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="_2">Виртуальные среды</h2>
+<p><strong>Виртуальная среда</strong> — это «песочница» для проекта. Внутри лежит свой интерпретатор Python и свои пакеты. Проекты не конфликтуют друг с другом, а система остаётся чистой. Например, для одного проекта нужен Python 3.12 а для другого Python 3.9. Для каждого проекта создаётся своя виртуальная среда с нужной версией. То же самое касается версий библиотек. </p>
+<p><strong>Зачем это нужно:</strong>  <br />
+- Разные проекты требуют разные версии библиотек.
+- Легко повторить окружение на другом компьютере.
+- Безопаснее экспериментировать: сломали среду — удалили папку, проект цел.</p>
+<p>В <strong>IDLE</strong> нет возможности использовать виртуальные среды. В <strong>PyCharm</strong> при создании проекта есть возможность создать среду <strong>venv</strong> или <strong>conda.</strong></p>
+<h3 id="venv">venv</h3>
+<p><strong>venv</strong> — стандартный и лёгкий. Подходит для большинства задач: веб-проект, скрипты, обучение. Идёт вместе с Python.</p>
+<pre><code>
+# Windows (PowerShell)
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+
+# Windows (Cmd)
+py -3.12 -m venv .venv
+.\.venv\Scripts\activate.bat
+
+# macOS / Linux
+python3 -m venv .venv
+source .venv/bin/activate
+
+</code></pre>
+<p>Работа внутри среды</p>
+<pre><code>
+python -m pip install --upgrade pip
+pip install &lt;пакет&gt;
+pip freeze &gt; requirements.txt          # зафиксировать зависимости
+pip install -r requirements.txt        # восстановить на другом ПК
+deactivate
+
+</code></pre>
+<p>Когда выбрать venv: нужен простой, быстрый старт без тяжёлых нативных зависимостей. <br />
+В <strong>PyCharm</strong> при создании проекта просто нужно выбрать версию python (можно установить нужную версию прямо там).  </p>
+<p><img src="../img/img_28.png" alt="desc" width="600">   </p>
+<p>Будет создана папка .venv  </p>
+<p><img src="../img/img_29.png" alt="desc" width="300">   </p>
+<p>В терминале будет показано <strong>(.venv)</strong> если среда активирована. При запуске проекта среда активируется автоматически.  </p>
+<p><img src="../img/img_30.png" alt="desc" width="500">  </p>
+<p>Можно создать несколько сред, но это <strong>НЕ рекомендуется</strong> делать.   </p>
+<p>Удалить и пересоздать venv:  </p>
+<pre><code>
+deactivate; if (Test-Path .venv) { Remove-Item .venv -Recurse -Force }
+py -3.12 -m venv .venv
+Set-ExecutionPolicy -Scope Process Bypass -Force
+.\.venv\Scripts\Activate.ps1
+if (Test-Path requirements.txt) { pip install -r requirements.txt }
+
+</code></pre>
+<h3 id="conda">conda</h3>
+<p><strong>conda</strong> — менеджер окружений + пакетов. Сильная сторона — научный стек, пакеты с C/Fortran, CUDA/GPU, а также не только Python.
+Существует Miniconda, mamba или Anaconda. Сам <strong>PyCharm</strong> предлагает установить <strong>Miniconda</strong> - то лучший вариант.</p>
+<details>
+<summary>Разница</summary> 
+
+- Anaconda  
+«Толстая» сборка: conda + Navigator + сотни пакетов сразу. Плюс — можно работать офлайн «из коробки». Минусы — вес и долгие обновления.  
+
+- Miniconda  
+Минимальный установщик: conda + Python. Ставите только нужное. Плюсы — лёгкая, чистая. Минус — всё докачивать самим. Navigator ставится отдельно при желании.  
+
+- mamba  
+Быстрая замена командам conda (тот же формат команд). Решает зависимости быстрее и качает параллельно. Ставится в тот же base или берите дистрибутивы с mamba сразу.  
+
+- Miniforge / Mambaforge  
+Мини-сборки с mamba и каналом conda-forge по умолчанию. Удобно, если живёте на conda-forge.  
+
+</details>
+
+<p><img src="../img/img_31.png" alt="desc" width="600">   </p>
+<p><img src="../img/img_32.png" alt="desc" width="500">  </p>
+<p>Создание отдельного окружения:<br />
+Вариант 1:</p>
+<pre><code>Среда создаётся в папке самой conda, например C:\Users\aztec\miniconda3\envs  
+conda create -n proj python=3.12
+conda activate proj
+conda deactivate #декативировать
+</code></pre>
+<p><img src="../img/img_33.png" alt="desc" width="500">  </p>
+<p>Или вариант 2:</p>
+<pre><code>Среда создаётся в папке проекта
+conda create -p .\.conda python=3.12
+conda activate .\.conda
+conda deactivate #декативировать
+</code></pre>
+<p><img src="../img/img_34.png" alt="desc" width="600">  </p>
+<h2 id="_3">Начало работы</h2>
+<ul>
+<li>Создать файлы</li>
+</ul>
+<p><img src="../img/img_35.png" alt="desc" width="400"> </p>
+<ul>
+<li>Написать код  </li>
+<li>Запустить код</li>
+</ul>
+<p><img src="../img/img_36.png" alt="desc" width="300"> </p>
+<p><br></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>
