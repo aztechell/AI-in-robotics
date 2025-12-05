@@ -16,3 +16,4 @@
 - [https://www.nvidia.com/en-in/ai-on-rtx/chat-with-rtx-generative-ai/?utm_source=chatgpt.com](https://www.nvidia.com/en-in/ai-on-rtx/chat-with-rtx-generative-ai/?utm_source=chatgpt.com)
 - Boost python, pybind11 или Cython 
 - []()
+- []()

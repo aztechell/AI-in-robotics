@@ -97,6 +97,12 @@
       <td>Плагин для IDE</td>
     </tr>
     <tr>
+      <td><a href="https://oylan.nu.edu.kz/">Oylan2.5</a></td>
+      <td>No</td>
+      <td>No</td>
+      <td>Национальный ИИ</td>
+    </tr>
+    <tr>
       <td><a href="https://cursor.com/">Cursor</a></td>
       <td>No</td>
       <td>No</td>
