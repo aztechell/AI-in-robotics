@@ -24,5 +24,6 @@ nav:
     - Raspberry Pi: raspberry.md
     - XBOX Kinect: kinect.md
     - ИИ камеры: cams.md
+  - Работа с API: api.md
   - ИИ помощники: assistants.md
   - На будущее: todo.md
