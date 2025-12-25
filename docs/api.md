@@ -15,12 +15,17 @@ API - часто, но не всегда требуют оплату для ра
 
 ## Stability Ai 
 
+Stability AI — это компания, которая разрабатывает и поддерживает открытые генеративные модели ИИ, в первую очередь для создания изображений, а также текста, аудио и видео.  
+[https://platform.stability.ai/](https://platform.stability.ai/)   
+[https://platform.stability.ai/docs/api-reference](https://platform.stability.ai/docs/api-reference)
+
 Код берёт текст, отправляет его в Stability AI и сохраняет сгенерированную картинку на диск. Модель stable-diffusion-xl-1024-v1-0.
 
 <details>
-<summary>Игра</summary>
+<summary>Код</summary>
 
 ```
+
 import os
 import base64
 import requests
@@ -115,7 +120,9 @@ if __name__ == "__main__":
         negative_prompt="blurry, lowres, watermark, text",
     )
     print("Saved:", paths)
+    
 ```
+
 </details>
 
 <details>
@@ -123,6 +130,6 @@ if __name__ == "__main__":
 <img src="../img/robot_lab.png" alt="desc" width="500">   
 </details>
 
-# OpenRouter
+## OpenRouter
 
-# Groq
+## Groq
