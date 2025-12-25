@@ -9,4 +9,5 @@
 
 ## VibeVoice
 
-Скачать [VibeVoicePortable_v3.bat](files/VibeVoicePortable_v3.bat)
+Скачать [VibeVoicePortable_v3.bat](files/VibeVoicePortable_v3.bat).   
+Запустить файл и выбрать запуск установки. После установки можно будет запустить веб интерфейс.

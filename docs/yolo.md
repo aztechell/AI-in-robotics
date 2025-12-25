@@ -380,7 +380,7 @@ metrics/mAP50-95(B) → средняя AP по IoU 0.50…0.95 (COCO). Глав�
 
 #### Google colab
 Google Colab — это бесплатная облачная среда, разработанная Google для написания и выполнения кода на языке Python прямо в браузере.  
-Модели можно тренировать в Google Colab с помощью [https://colab.research.google.com/github/EdjeElectronics/Train-and-Deploy-YOLO-Models/blob/main/Train_YOLO_Models.ipynb](https://colab.research.google.com/github/EdjeElectronics/Train-and-Deploy-YOLO-Models/blob/main/Train_YOLO_Models.ipynb)
+Модели можно тренировать в Google Colab с помощью: [https://colab.research.google.com/github/EdjeElectronics/Train-and-Deploy-YOLO-Models/blob/main/Train_YOLO_Models.ipynb](https://colab.research.google.com/github/EdjeElectronics/Train-and-Deploy-YOLO-Models/blob/main/Train_YOLO_Models.ipynb), 
 [GitHub](https://github.com/EdjeElectronics/Train-and-Deploy-YOLO-Models)   
 Переведенная версия [https://colab.research.google.com/github/aztechell/ru_Train-and-Deploy-YOLO-Models/blob/main/Train_YOLO_Models.ipynb](https://colab.research.google.com/github/aztechell/ru_Train-and-Deploy-YOLO-Models/blob/main/Train_YOLO_Models.ipynb), [GitHub](https://github.com/aztechell/ru_Train-and-Deploy-YOLO-Models?tab=readme-ov-file)
 

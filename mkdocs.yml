@@ -5,20 +5,24 @@ theme:
   favicon: img/logo.png
 nav:
   - Введение: index.md
-  - Способы внедрения: hardware.md
   - Работа в PyCharm: pycharm.md
-  - YOLO: yolo.md
-  - MediaPipe: mediapipe.md
-  - Распознавание лица: face_recognition.md
-  - Распознавание речи: speech-to-text.md
-  - Синтез речи: tts.md
-  - Распознавание ключевых слов: KWS.md
-  - Большие языковые модели: llm.md
-  - Telegram Bot + AI: tgai.md
-  - Python + Arduino: py+ard.md
-  - Jetson Nano: jetson.md
-  - Raspberry Pi: raspberry.md
-  - XBOX Kinect: kinect.md
-  - ИИ камеры: cams.md
+  - Способы внедрения:
+      - Подходы к внедрению: hardware.md
+      - Telegram Bot + AI: tgai.md
+  - Фреймфорки:
+    - YOLO: yolo.md
+    - MediaPipe: mediapipe.md
+  - Технологии:
+    - Распознавание лица: face_recognition.md
+    - Распознавание речи: speech-to-text.md
+    - Синтез речи: tts.md
+    - Распознавание ключевых слов: KWS.md
+    - Большие языковые модели: llm.md
+  - Hardware:
+    - Python + Arduino: py+ard.md
+    - Jetson Nano: jetson.md
+    - Raspberry Pi: raspberry.md
+    - XBOX Kinect: kinect.md
+    - ИИ камеры: cams.md
   - ИИ помощники: assistants.md
   - На будущее: todo.md
