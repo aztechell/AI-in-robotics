@@ -134,7 +134,8 @@ if __name__ == "__main__":
 
 ## OpenRouter
 
-**OpenRouter** — это агрегатор API для больших языковых моделей. Проще: единая точка входа к куче разных LLM от разных провайдеров, через один и тот же HTTP-API.
+**OpenRouter** — это агрегатор API для больших языковых моделей. Проще: единая точка входа к куче разных LLM от разных провайдеров, через один и тот же HTTP-API.  
+[https://openrouter.ai/](https://openrouter.ai/)
 
 OpenRouter позволяет:
 
@@ -144,6 +145,8 @@ OpenRouter позволяет:
 - автоматически маршрутизировать запросы между провайдерами (отсюда и название)
 
 ### Пример
+
+Код читает текстовый промпт из терминала, отправляет его в OpenRouter с ключом и выводит ответ языковой модели **meta-llama/llama-3.1-8b-instruct** обратно в терминал.
 
 <details>
 <summary>Требования</summary>
@@ -234,10 +237,94 @@ Kanye West is widely regarded as one of the most influential artists of the 21st
 
 How's that for a brief introduction? Do you have any specific questions about Kanye West?
 
-
 ```
 
 </details>
 
 
 ## Groq
+
+**Groq** — это компания, которая делает специализированные процессоры для ИИ и сервис, где можно очень быстро запускать LLM-модели (типа LLaMA, Mixtral и т.п.).
+
+**Groq API** — это сервис для запуска LLM-моделей через HTTP, почти один в один как OpenAI API, но:
+
+- очень низкая задержка
+- очень высокая скорость генерации
+- часто бесплатно или почти бесплатно
+- без обучения моделей, только инференс
+
+### Пример
+
+Код читает текстовый промпт из терминала, отправляет его в Groq API с ключом и выводит ответ языковой модели **llama-3.1-8b-instant** обратно в терминал.
+
+<details>
+<summary>Требования</summary>
+
+python 3.12
+```commandline
+pip install groq
+```
+</details>
+
+<details>
+<summary>Код</summary>
+
+```python
+
+from groq import Groq
+
+client = Groq(
+    api_key="gsk_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+)
+
+print("Groq CLI (hardcoded key edition). Ctrl+C to exit.\n")
+
+while True:
+    try:
+        prompt = input("You: ")
+        if not prompt.strip():
+            continue
+
+        response = client.chat.completions.create(
+            model="llama-3.1-8b-instant",
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.6,
+            max_tokens=500
+        )
+
+        print("\n" + "Groq: " + response.choices[0].message.content + "\n")
+
+    except KeyboardInterrupt:
+        print("\nbye")
+        break
+
+```
+</details>
+
+<details>
+<summary>Пример выходного текста</summary>
+
+```markdown
+
+You: Who is Eminem?
+
+Groq: Eminem, whose real name is Marshall Bruce Mathers III, is an American rapper, songwriter, record producer, and actor. He is one of the most successful and influential rappers of all time.
+
+Born on October 17, 1972, in St. Joseph, Missouri, Eminem grew up in a low-income household in Warren, Michigan. He began rapping at a young age and formed his first group, D12, in the late 1990s.
+
+Eminem's music career took off in the late 1990s with the release of his major-label debut album, "The Slim Shady LP," in 1999. The album was a massive commercial success, thanks in part to the hit single "My Name Is." The album's success was followed by "The Marshall Mathers LP" in 2000, which is often cited as one of the greatest hip-hop albums of all time.
+
+Eminem's subsequent albums, including "The Eminem Show" (2002), "Encore" (2004), and "Relapse" (2009), solidified his position as a hip-hop icon. He has won 15 Grammy Awards and has been named one of the greatest rappers of all time by various publications, including Rolling Stone and Billboard.
+
+Eminem is known for his provocative and often dark lyrics, which frequently incorporate humor, satire, and social commentary. He has been praised for his technical skill and lyrical complexity, as well as his ability to push the boundaries of what is considered acceptable in popular music.
+
+Throughout his career, Eminem has been involved in several high-profile feuds with other rappers, including Insane Clown Posse, Ja Rule, and Machine Gun Kelly. He has also been open about his struggles with addiction and mental health, which have been reflected in his music.
+
+In addition to his music career, Eminem has also acted in several films, including "8 Mile" (2002), which was loosely based on his own life experiences. He has also made appearances in TV shows and documentaries, including "South Park" and "The Up in Smoke Tour."
+
+Overall, Eminem is a highly influential and successful rapper who has left an indelible mark on the music industry. His music continues to be widely popular and influential, and he remains one of the most recognizable and respected figures in hip-hop.
+
+```
+</details>
