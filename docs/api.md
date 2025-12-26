@@ -6,9 +6,68 @@
 - что придёт в ответ
 - и что будет, если ты накосячишь
 
+API - часто, но не всегда требуют оплату для работы, с лимитами по количеству токенов или других единиц.  
+
 **API-ключ** — это уникальная строка, по которой сервис понимает, кто ты, что тебе можно, и сколько ты уже совершил запросов.   
 
-API - часто, но не всегда требуют оплату для работы, с лимитами по количеству токенов или других единиц.
+## Использование API-ключа
+
+API-ключ — это по сути пароль к сервису. Если ключ утёк — платить будешь ты. Сервису вообще всё равно, кто именно сделал запрос. По этой причине нужно защищать свой ключ. Все API сервисы имеют панели для наблюдения за трафиком использования. При подозрительной активности можно удалить ключ и создать новый.   
+
+**Нельзя:**
+- Хардкодить ключ в код, как в примерах ниже
+- Прописывать ключ в frontend
+- Отправлять ключ в публичные репозитории, например в GitHub
+- Использовать один ключ на всё и навсегда
+- Передавать ключ другим людям
+
+**Нужно:**
+- Хранить ключ через переменные окружения
+- Через .env файл (с игнором в git)
+- Использовать отдельные ключи под разные проекты
+   
+<details>
+<summary>Добавление API ключа как переменную окружения</summary>
+ 
+Windows:
+```commandline
+setx OPENAI_API_KEY "sk-XXXXXXXXXXXXXXXX"
+```
+Linux:
+```bash
+export OPENAI_API_KEY="sk-XXXXXXXXXXXXXXXX"
+```
+Чтение ключа в python:
+```python
+import os
+api_key = os.environ["OPENAI_API_KEY"]
+```
+</details>
+
+<details>
+<summary>Использование .env файла</summary>
+
+В папке с проектом / кодом создается файл **.env**   
+В файл .gitignore добавляется .env (чтобы файл не попал на GitHub).
+
+Нужна библиотека:
+
+```commandline
+pip install python-dotenv
+```
+
+Чтение ключа в python:
+```python
+
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # читает .env и кладёт всё в окружение
+
+api_key = os.environ["OPENAI_API_KEY"]
+
+```
+</details>
 
 ## Stability Ai 
 
@@ -244,7 +303,9 @@ How's that for a brief introduction? Do you have any specific questions about Ka
 
 ## Groq
 
-**Groq** — это компания, которая делает специализированные процессоры для ИИ и сервис, где можно очень быстро запускать LLM-модели (типа LLaMA, Mixtral и т.п.).
+**Groq** — это компания, которая делает специализированные процессоры для ИИ и сервис, где можно очень быстро запускать LLM-модели (типа LLaMA, Mixtral и т.п.).  
+[https://groq.com/](https://groq.com/)
+[https://console.groq.com/playground](https://console.groq.com/playground)
 
 **Groq API** — это сервис для запуска LLM-моделей через HTTP, почти один в один как OpenAI API, но:
 
@@ -327,4 +388,74 @@ In addition to his music career, Eminem has also acted in several films, includi
 Overall, Eminem is a highly influential and successful rapper who has left an indelible mark on the music industry. His music continues to be widely popular and influential, and he remains one of the most recognizable and respected figures in hip-hop.
 
 ```
+</details>
+
+## OpenAI
+
+**OpenAI** — это компания, занимающаяся исследованием и разработкой искусственного интеллекта, которая создала большие языковые модели (GPT‑3.5, GPT‑4, GPT‑4o), генерацию изображений (DALL·E) и модели для анализа и генерации аудио (Whisper, TTS). Она предоставляет **API** для доступа к этим моделям через HTTP.  
+[https://openai.com/](https://openai.com/)  
+[https://platform.openai.com/docs/api-reference](https://platform.openai.com/docs/api-reference)  
+
+**OpenAI API** - не имеет бесплатных тарифов / токенов / запросов, всё только после покупки кредитов.
+### Пример
+
+Код ниже читает текстовый промпт из терминала, отправляет его в API OpenAI с ключом и выводит ответ языковой модели **gpt‑4o** обратно в терминал.
+
+<details>
+<summary>Требования</summary>
+
+python 3.12
+
+```commandline
+
+pip install openai
+
+```
+</details>
+
+<details>
+<summary>Код</summary>
+
+```python
+
+import os
+import openai
+
+def chat(prompt: str,
+         model: str = "gpt-4o",
+         temperature: float = 0.7) -> str:
+    api_key = os.environ["OPENAI_API_KEY"] = "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    if not api_key:
+        raise RuntimeError("Missing OPENAI_API_KEY env var.")
+
+    client = openai.OpenAI(api_key=api_key)
+    response = client.chat.completions.create(
+        model=model,
+        messages=[{"role": "user", "content": prompt}],
+        temperature=temperature,
+    )
+    return response.choices[0].message.content
+
+if __name__ == "__main__":
+    print("OpenAI CLI. Type 'exit' to quit.\n")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ("exit", "quit"):
+            break
+        reply = chat(user_input)
+        print("\nChatGPT:", reply, "\n")
+
+```
+
+</details>
+
+<details>
+<summary>Пример выходного текста</summary>
+
+```markdown
+You: Who is Ada Lovelace?
+
+ChatGPT: Ada Lovelace (1815–1852) was an English mathematician and writer who is often regarded as one of the world's first computer programmers. She worked with Charles Babbage on his proposed mechanical general-purpose computer, the Analytical Engine. Lovelace recognized that the machine could go beyond mere number‑crunching to perform more complex tasks, and she wrote a set of notes, including an algorithm for computing Bernoulli numbers, which many historians consider the first published computer program. Her vision of machines manipulating symbols and creating music or art foreshadowed modern computing, and she has become an important figure in the history of technology.
+```
+
 </details>
