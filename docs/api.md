@@ -47,7 +47,7 @@ api_key = os.environ["OPENAI_API_KEY"]
 <details>
 <summary>Использование .env файла</summary>
 
-В папке с проектом / кодом создается файл **.env**   
+В папке с проектом / кодом создается файл .env   
 В файл .gitignore добавляется .env (чтобы файл не попал на GitHub).
 
 Нужна библиотека:
@@ -304,7 +304,7 @@ How's that for a brief introduction? Do you have any specific questions about Ka
 ## Groq
 
 **Groq** — это компания, которая делает специализированные процессоры для ИИ и сервис, где можно очень быстро запускать LLM-модели (типа LLaMA, Mixtral и т.п.).  
-[https://groq.com/](https://groq.com/)
+[https://groq.com/](https://groq.com/)   
 [https://console.groq.com/playground](https://console.groq.com/playground)
 
 **Groq API** — это сервис для запуска LLM-моделей через HTTP, почти один в один как OpenAI API, но:
