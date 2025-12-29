@@ -1,10 +1,11 @@
 # Создание телеграм бота и связка с ИИ
 
-Телеграм бот это прикольно
+Телеграм бот это прикольно. Можно использовать как часть робототехнического проекта или как отдельный проект.
 
 ### Создание бота  
 
 - Заходим в Telegram- бота @BotFather.  
+- 
 <img src="../img/img_16.png" alt="desc" width="200">  
 
 
@@ -28,7 +29,7 @@
 
 - запустить тестовый код:
 
-```
+```python
 import asyncio
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.types import Message
@@ -56,11 +57,12 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-Пример игры.
+#### Пример игры.
+
 <details>
 <summary>Крестики нолики</summary>
 
-```
+```python
 import asyncio, random
 from aiogram import Bot, Dispatcher, F, Router
 from aiogram.filters import CommandStart
@@ -169,12 +171,12 @@ if __name__ == "__main__":
 </details>
 <br>
 
-##### YOLO + bot.
+#### YOLO + bot.
 
 <details>
 <summary>Пример с YOLO</summary>
 
-```
+```python
 
 import asyncio, io
 import numpy as np

@@ -157,6 +157,7 @@ if (Test-Path requirements.txt) { pip install -r requirements.txt }
 <details>
 <summary>Разница</summary> 
 
+```text
 - Anaconda  
 «Толстая» сборка: conda + Navigator + сотни пакетов сразу. Плюс — можно работать офлайн «из коробки». Минусы — вес и долгие обновления.  
 
@@ -168,6 +169,7 @@ if (Test-Path requirements.txt) { pip install -r requirements.txt }
 
 - Miniforge / Mambaforge  
 Мини-сборки с mamba и каналом conda-forge по умолчанию. Удобно, если живёте на conda-forge.  
+```
 
 </details>
 
@@ -177,7 +179,8 @@ if (Test-Path requirements.txt) { pip install -r requirements.txt }
 
 Создание отдельного окружения:  
 Вариант 1:
-```
+
+```commandline
 Среда создаётся в папке самой conda, например C:\Users\aztec\miniconda3\envs  
 conda create -n proj python=3.12
 conda activate proj
@@ -186,7 +189,8 @@ conda deactivate #декативировать
 <img src="../img/img_33.png" alt="desc" width="500">  
 
 Или вариант 2:
-```
+
+```commandline
 Среда создаётся в папке проекта
 conda create -p .\.conda python=3.12
 conda activate .\.conda
