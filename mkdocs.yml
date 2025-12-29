@@ -4,6 +4,9 @@ theme:
   logo: img/logo.png
   favicon: img/logo.png
 markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.keys
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
@@ -33,3 +36,4 @@ nav:
   - Работа с API: api.md
   - ИИ помощники: assistants.md
   - На будущее: todo.md
+  - Тестовая страница: mkdocktest.md

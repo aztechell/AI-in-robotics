@@ -46,7 +46,7 @@
 Запустить python IDLE -> file -> new file
 Написать код и сохранить в папку со скаченной моделью YOLO11n
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 import torch
@@ -100,7 +100,7 @@ cv2.destroyAllWindows()
 ``` webcamera = cv2.VideoCapture(0) ```  
 
 Python скрипт для проверки списка камер:
-```
+```python
 import cv2
 for i in range(10):
     cap=cv2.VideoCapture(i, cv2.CAP_DSHOW)
@@ -113,7 +113,7 @@ for i in range(10):
 
 ##### Бонус:
 Сокращённая версия кода
-```
+```python
 import cv2
 from ultralytics import YOLO
 model = YOLO('yolo11m-pose.pt').to('cuda')
@@ -234,7 +234,7 @@ dataset/
 <details>
 <summary>Пример dataset.yaml</summary>
 
-```
+```yaml
 
 train: ../images/train
 val: ../images/val
@@ -251,7 +251,7 @@ names: ['person', 'car', 'dog']
 <details>
 <summary>Пример train.py</summary> 
 
-```
+```python
 
 from ultralytics import YOLO
 
@@ -362,7 +362,7 @@ model.train(
 <details>
 <summary>Параметры</summary>
 
-```
+```text
 train/box_loss → ошибка боксов на обучении. Должна падать.
 train/cls_loss → ошибка классификации на обучении. Должна падать.
 train/dfl_loss → Distribution Focal Loss для точности координат. Должна падать.
@@ -390,7 +390,7 @@ Google Colab — это бесплатная облачная среда, раз
 <details>
 <summary>Выводим координаты X, Y</summary>
 
-```
+```python
     for box in results[0].boxes:
         x1, y1, x2, y2 = map(int, box.xyxy[0])  # Получаем координаты bbox
         center_x, center_y = (x1 + x2) // 2, (y1 + y2) // 2  # Находим центр
@@ -416,7 +416,7 @@ Google Colab — это бесплатная облачная среда, раз
 <details>
 <summary>Список ключевых точек YOLO11-pose</summary>
 
-```
+```text
 0. Нос  
 1. Левый глаз  
 2. Правый глаз  
@@ -444,7 +444,7 @@ Google Colab — это бесплатная облачная среда, раз
 <details>
 <summary>Одна точка</summary>
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 import torch
@@ -491,7 +491,7 @@ cv2.destroyAllWindows()
 <details>
 <summary>Несколько точек</summary>
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 import torch
@@ -540,7 +540,7 @@ cv2.destroyAllWindows()
 <details>
 <summary>Линии</summary>
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 import torch
@@ -594,7 +594,7 @@ cv2.destroyAllWindows()
 <details>
 <summary>Игра</summary>
 
-```
+```python
 import cv2, math
 from ultralytics import YOLO
 import torch
@@ -656,6 +656,8 @@ while cv2.waitKey(1) != 27:
 
 cap.release()
 cv2.destroyAllWindows()
+
 ```
+
 </details>
 <br>
