@@ -19,13 +19,15 @@
 - []()
 
 === "Simple"
-    Text, images, GIFs, whatever.
+
+    Text goes here.
 
     ```python
-    # code A
+    print("hello")
     ```
 
 === "More accurate"
+
     ```python
-    # code B
+    print("better hello")
     ```
