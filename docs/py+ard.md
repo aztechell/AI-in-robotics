@@ -20,7 +20,7 @@
 <details>
 <summary>Пример COM порт по VID/PID</summary> 
 
-```
+```python
 
 from serial.tools import list_ports
 
@@ -54,7 +54,7 @@ print(ports[0] if ports else "not found")
 <summary>Пример 1</summary> 
 
 Arduino
-```
+```c++
 
 void setup() {
   Serial.begin(9600);
@@ -72,7 +72,7 @@ void loop() {
 ```
 
 Python
-```
+```python
 
 import serial, time
 
@@ -117,7 +117,7 @@ with serial.Serial(PORT, BAUD, timeout=0) as ser:
 <details><summary>Код</summary> 
 
 Jetson - Python
-```
+```python
 
 import random, time, serial
 
@@ -133,7 +133,7 @@ while 1:
     
 ```
 Arduino Mega
-```
+```c++
 
 int X, Y;
 String strArr[2];

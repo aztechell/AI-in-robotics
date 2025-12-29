@@ -37,14 +37,14 @@
 - Huskylens   
 - OpenMV Cam  
 - Arduino Nicla Vision  
-- ESP32-S3-EYE     
-
-!!! note
-    Подробнее [тут](cams.md).
+- ESP32-S3-EYE
 
 <img src="../img/img_9.png" alt="desc" width="300">    
 
 Чаще всего они обрабатывают данные и отправляют их на плату Arduino на роботе.
+
+!!! Подробнее
+    Подробнее про ИИ камеры [тут](cams.md).
 
 Пример 1: Робот – Умная мусорка.  
 ESP32-CAM — недорогая плата на ESP32 с разъёмом под камеру Wi-Fi/BLE и слотом microSD.  

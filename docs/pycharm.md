@@ -113,7 +113,7 @@ source .venv/bin/activate
 
 Работа внутри среды
 
-```
+```commandline
 
 python -m pip install --upgrade pip
 pip install <пакет>
@@ -140,7 +140,7 @@ deactivate
 
 Удалить и пересоздать venv:  
 
-```
+```commandline
 
 deactivate; if (Test-Path .venv) { Remove-Item .venv -Recurse -Force }
 py -3.12 -m venv .venv
@@ -154,24 +154,21 @@ if (Test-Path requirements.txt) { pip install -r requirements.txt }
 **conda** — менеджер окружений + пакетов. Сильная сторона — научный стек, пакеты с C/Fortran, CUDA/GPU, а также не только Python.
 Существует Miniconda, mamba или Anaconda. Сам **PyCharm** предлагает установить **Miniconda** - то лучший вариант.
 
-<details>
-<summary>Разница</summary> 
+??? Разница
 
-```text
-- Anaconda  
-«Толстая» сборка: conda + Navigator + сотни пакетов сразу. Плюс — можно работать офлайн «из коробки». Минусы — вес и долгие обновления.  
-
-- Miniconda  
-Минимальный установщик: conda + Python. Ставите только нужное. Плюсы — лёгкая, чистая. Минус — всё докачивать самим. Navigator ставится отдельно при желании.  
-
-- mamba  
-Быстрая замена командам conda (тот же формат команд). Решает зависимости быстрее и качает параллельно. Ставится в тот же base или берите дистрибутивы с mamba сразу.  
-
-- Miniforge / Mambaforge  
-Мини-сборки с mamba и каналом conda-forge по умолчанию. Удобно, если живёте на conda-forge.  
-```
-
-</details>
+    ```text
+    - Anaconda  
+    «Толстая» сборка: conda + Navigator + сотни пакетов сразу. Плюс — можно работать офлайн «из коробки». Минусы — вес и долгие обновления.  
+    
+    - Miniconda  
+    Минимальный установщик: conda + Python. Ставите только нужное. Плюсы — лёгкая, чистая. Минус — всё докачивать самим. Navigator ставится отдельно при желании.  
+    
+    - mamba  
+    Быстрая замена командам conda (тот же формат команд). Решает зависимости быстрее и качает параллельно. Ставится в тот же base или берите дистрибутивы с mamba сразу.  
+    
+    - Miniforge / Mambaforge  
+    Мини-сборки с mamba и каналом conda-forge по умолчанию. Удобно, если живёте на conda-forge.  
+    ```
 
 <img src="../img/img_31.png" alt="desc" width="600">   
   
