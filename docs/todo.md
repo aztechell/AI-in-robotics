@@ -17,3 +17,15 @@
 - Boost python, pybind11 или Cython 
 - []()
 - []()
+
+=== "Simple"
+    Text, images, GIFs, whatever.
+
+    ```python
+    # code A
+    ```
+
+=== "More accurate"
+    ```python
+    # code B
+    ```

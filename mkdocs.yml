@@ -3,6 +3,12 @@ theme:
   name: swan
   logo: img/logo.png
   favicon: img/logo.png
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+extra_css:
+  - css/tabs.css
 nav:
   - Введение: index.md
   - Работа в PyCharm: pycharm.md
