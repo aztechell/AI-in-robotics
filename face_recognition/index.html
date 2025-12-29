@@ -1,0 +1,1501 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../mediapipe/">
+      
+      
+        <link rel="next" href="../speech-to-text/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Распознавание лица - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/tabs.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Распознавание лица
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Способы внедрения
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Способы внедрения
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подходы к внедрению
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegram Bot + AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фреймфорки
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Фреймфорки
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Технологии
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Технологии
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Логика работы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        НЕ рабочие варианты:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Рабочие варианты
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Рабочие варианты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opencv-yunet-sface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Чистый OpenCV (YuNet + sface)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediapipe-sface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mediapipe + sface
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Большие языковые модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python + Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XBOX Kinect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ камеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа с API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ помощники
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    На будущее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocktest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тестовая страница
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Логика работы:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        НЕ рабочие варианты:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Рабочие варианты
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Рабочие варианты">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opencv-yunet-sface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Чистый OpenCV (YuNet + sface)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mediapipe-sface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mediapipe + sface
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Распознавание лиц</h1>
+<p>Распознавание лиц – это биометрическая технология, которая позволяет идентифицировать или подтвердить личность человека по особенностям его лица, используя алгоритмы искусственного интеллекта и машинного обучения.  </p>
+<h2 id="_2">Логика работы:</h2>
+<ol>
+<li>Создаётся база данных известных лиц. Обычно это папка с фотографиями по типу: <br />
+./database/person1/1.jpg, 2.jpg <br />
+./database/person2/1.jpg, 2.jpg<br />
+   (Эти лица обрабатываются заранее или в при запуске кода)</li>
+<li>Детектор лиц (mediapipe, mtcnn и тд.) находит лицо</li>
+<li>Изображение лица обрезается и выравнивается</li>
+<li>Лицо преобразуется в векторное представление (vector embedding) с помощью моделей (SFace, ArcFace и тд.)</li>
+<li>Модель сравнивает полученное векторное представление с векторными представлениями полученных из базы данных. Обычно через метрику <a href="https://en.wikipedia.org/wiki/Cosine_similarity">Cosine_similarity</a>. Выходное значение от -1 до 1. Чем выше значение, тем лица похожее</li>
+<li>Если значение точности выше порога, то человек распознан</li>
+</ol>
+<h2 id="_3">НЕ рабочие варианты:</h2>
+<ul>
+<li>Библиотека InsightFace - проблемы с совместимостью версий зависимостей, плохо работает   </li>
+<li>Библиотека DeepFace - кривая сборка разных тяжелых моделей, работает плохо   </li>
+<li>Библиотека <a href="https://github.com/ageitgey/face_recognition">face_recognition</a> - не работает на Windows   </li>
+</ul>
+<h2 id="_4">Рабочие варианты</h2>
+<h3 id="opencv-yunet-sface">Чистый OpenCV (YuNet + sface)</h3>
+<p>YuNet — это детектор лиц на основе сверточной нейронной сети (CNN), известный своей высокой эффективностью и точностью, особенно при распознавании лиц под разными углами и с перекрытиями. <br />
+SFace — это модель распознавания лиц, доступная в библиотеке OpenCV. Это модель, основанная на глубоком обучении, разработанная для эффективного и точного распознавания лиц.<br />
+Обе модели являются частью библиотеки OpenCV, поэтому отлично работают вместе.   </p>
+<ol>
+<li>установить python (не выше 3.13) и библиотеки <blockquote>
+<p>pip install opencv-contrib-python numpy</p>
+</blockquote>
+</li>
+<li>Скачать модель <a href="https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx">face_recognition_sface_2021dec.onnx</a> и <a href="https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx">face_detection_yunet_2023mar.onnx</a> и загрузить в папку, где будет код. (Оригинальный источник <a href="https://github.com/opencv/opencv_zoo">Зоопарк моделей OpenCV</a>)</li>
+<li>
+<p>Создать папку для базы данных, например db. Внутри неё создать папки для каждого человека и загрузить туда фотографии. Пример:</p>
+<div class="highlight"><pre><span></span><code>db/
+├─ Azat/
+│  └─ 1.jpg
+├─ Diana
+│  ├─ lol.jpg
+│  └─ kek.png
+└─ Obama
+   ├─ obama.jpg
+   └─ barak.png
+</code></pre></div>
+</li>
+<li>
+<p>Пишем код:</p>
+</li>
+</ol>
+<details>
+<summary>YuNet+SFace</summary>
+
+<div class="highlight"><pre><span></span><code>import os, time, cv2, numpy as np
+from pathlib import Path
+
+DB_PATH     = &quot;./db&quot;
+SFACE_ONNX  = &quot;./face_recognition_sface_2021dec.onnx&quot;      
+YUNET_ONNX  = &quot;./face_detection_yunet_2023mar.onnx&quot;
+THRESH      = 0.363
+
+recognizer = cv2.FaceRecognizerSF_create(SFACE_ONNX, &quot;&quot;)
+detector   = cv2.FaceDetectorYN_create(YUNET_ONNX, &quot;&quot;, (320,320), score_threshold=0.6, nms_threshold=0.3, top_k=5000)
+
+def list_images(root):
+    exts = (&quot;.jpg&quot;,&quot;.jpeg&quot;,&quot;.png&quot;,&quot;.bmp&quot;,&quot;.webp&quot;)
+    for d in sorted(Path(root).iterdir()):
+        if d.is_dir():
+            for p in d.rglob(&quot;*&quot;):
+                if p.suffix.lower() in exts:
+                    yield d.name, str(p)
+
+def embed_from_img(img):
+    h, w = img.shape[:2]
+    detector.setInputSize((w, h))
+    ok, faces = detector.detect(img)
+    out = []
+    if ok and faces is not None and len(faces):
+        for f in faces:
+            x, y, wb, hb = f[:4].astype(int)
+            row = f[:14].astype(np.float32).reshape(1, 14)  # box + 5 keypoints
+            face = recognizer.alignCrop(img, row)
+            feat = recognizer.feature(face)
+            out.append((feat, (x, y, wb, hb)))
+    return out
+
+gallery = {}
+for label, path in list_images(DB_PATH):
+    img = cv2.imread(path)
+    if img is None: continue
+    fb = embed_from_img(img)
+    if not fb: continue
+    feat, _ = fb[0]                       # largest/first face per image
+    gallery.setdefault(label, []).append(feat)
+
+labels = sorted(gallery.keys())
+G = []
+for k in labels:
+    M = np.mean(np.vstack(gallery[k]), axis=0)
+    M = M / max(np.linalg.norm(M), 1e-9)
+    G.append(M)
+G = np.vstack(G).astype(np.float32)      
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cv2.namedWindow(&quot;YuNet+SFace&quot;, cv2.WINDOW_NORMAL)
+cv2.resizeWindow(&quot;YuNet+SFace&quot;, 640, 480)
+ema_fps = 0.0
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok: break
+    t0 = time.perf_counter()
+
+    fb = embed_from_img(frame)
+    for feat, (x,y,wb,hb) in fb:
+        q = feat / max(np.linalg.norm(feat), 1e-9)
+        sims = (G @ q.ravel()).astype(np.float32)   # cosine
+        i = int(np.argmax(sims)); s = float(sims[i])
+
+        name = labels[i] if s &gt;= THRESH else &quot;unknown&quot;
+        cv2.rectangle(frame, (x,y), (x+wb, y+hb), (0,255,0), 2)
+        cv2.putText(frame, f&quot;{name} ({s:.2f})&quot;, (x, max(0,y-7)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2, cv2.LINE_AA)
+
+    dt = max(time.perf_counter() - t0, 1e-6)
+    ema_fps = (ema_fps*0.9 + 0.1*(1.0/dt)) if ema_fps else 1.0/dt
+    cv2.putText(frame, f&quot;FPS: {ema_fps:.1f}&quot;, (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255,255,255), 2)
+    cv2.imshow(&quot;YuNet+SFace&quot;, frame)
+
+cap.release(); cv2.destroyAllWindows()
+</code></pre></div>
+
+</details>
+<p><br></p>
+<h3 id="mediapipe-sface">mediapipe + sface</h3>
+<p><a href="../mediapipe/">Mediapipe</a> как детектор лиц.<br />
+SFace — это модель распознавания лиц, доступная в библиотеке OpenCV. Это модель, основанная на глубоком обучении, разработанная для эффективного и точного распознавания лиц.</p>
+<ol>
+<li>установить python (не выше 3.12) и библиотеки <blockquote>
+<p>pip install opencv-contrib-python mediapipe numpy</p>
+</blockquote>
+</li>
+<li>Скачать модель <a href="https://github.com/opencv/opencv_zoo/raw/refs/heads/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx">face_recognition_sface_2021dec.onnx</a> и загрузить в папку, где будет код. (Оригинальный источник <a href="https://github.com/opencv/opencv_zoo">Зоопарк моделей OpenCV</a>)</li>
+<li>
+<p>Создать папку для базы данных, например db. Внутри неё создать папки для каждого человека и загрузить туда фотографии. Пример:</p>
+<div class="highlight"><pre><span></span><code>db/   
+├─ Azat/   
+│  └─ 1.jpg   
+├─ Diana   
+│  ├─ lol.jpg   
+│  └─ kek.png   
+└─ Obama   
+   ├─ obama.jpg   
+   └─ barak.png   
+</code></pre></div>
+</li>
+<li>
+<p>Пишем код:</p>
+</li>
+</ol>
+<details>
+<summary>Mediapipe+SFace</summary>
+
+<div class="highlight"><pre><span></span><code>import os, time, cv2, numpy as np, mediapipe as mp
+from pathlib import Path
+
+DB_PATH    = &quot;./db&quot;   
+SFACE_ONNX = &quot;./face_recognition_sface_2021dec.onnx&quot;
+THRESH     = 0.363  
+
+recognizer = cv2.FaceRecognizerSF_create(SFACE_ONNX, &quot;&quot;)
+mesh = mp.solutions.face_mesh.FaceMesh(static_image_mode=False,
+                                                                       max_num_faces=10,
+                                                                       refine_landmarks=True,
+                                                                       min_detection_confidence=0.5,
+                                                                       min_tracking_confidence=0.5)
+
+def list_images(root):        #создаем список фото
+    exts = (&quot;.jpg&quot;,&quot;.jpeg&quot;,&quot;.png&quot;,&quot;.bmp&quot;,&quot;.webp&quot;)
+    for d in sorted(Path(root).iterdir()):
+        if d.is_dir():
+            for p in d.rglob(&quot;*&quot;):
+                if p.suffix.lower() in exts:
+                    yield d.name, str(p)
+
+def mesh_5pts(lm, w, h):   #facemesh переводим в sface
+    L = lm.landmark
+    def px(i): return (int(L[i].x*w), int(L[i].y*h))
+
+    re = tuple(np.mean([px(33), px(133)], axis=0).astype(int))    # right eye center
+    le = tuple(np.mean([px(263), px(362)], axis=0).astype(int))  # left eye center
+    nt = px(1)                                                                              # nose tip
+    rmc = px(61)                                                                         # right mouth corner
+    lmc = px(291)                                                                       # left mouth corner
+
+    xs = [re[0], le[0], nt[0], rmc[0], lmc[0]]
+    ys = [re[1], le[1], nt[1], rmc[1], lmc[1]]                                  #координаты 5 точек
+    x, y = max(0, min(xs)), max(0, min(ys))                              #находим крайние точки
+    wbb, hbb = max(xs)-x+1, max(ys)-y+1                               #находим ширину и высоту 
+    cx, cy = x + wbb//2, y + hbb//2                                              #находим центр                                              
+    scale = 1.8                                                                           
+    nw, nh = int(wbb*scale), int(hbb*scale)                              #увеличиваем масштаб коробки
+    x = max(0, cx - nw//2)
+    y = max(0, cy - nh//2)
+    x2 = min(w-1, x + nw)
+    y2 = min(h-1, y + nh)
+    wbb, hbb = x2 - x, y2 - y
+
+    row = np.array([[x, y, wbb, hbb,
+                     re[0], re[1], le[0], le[1], nt[0], nt[1],
+                     rmc[0], rmc[1], lmc[0], lmc[1]]], dtype=np.float32)
+    return row, (x, y, wbb, hbb)
+
+def embed_from_img(img):    #преобразуем кадр в векторное предствление
+    h, w = img.shape[:2]
+    res = mesh.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+    out = []
+    if res.multi_face_landmarks:
+        for lm in res.multi_face_landmarks:
+            row, (x,y,wb,hb) = mesh_5pts(lm, w, h)
+            try:
+                face = recognizer.alignCrop(img, row)
+            except Exception:
+                x2, y2 = min(w-1, x+wb), min(h-1, y+hb)
+                face = img[y:y2, x:x2].copy()
+            feat = recognizer.feature(face)
+            out.append((feat, (x,y,wb,hb)))
+    return out
+
+gallery = {}
+for label, path in list_images(DB_PATH):     #создаём галерею из фото в базе данных
+    img = cv2.imread(path)
+    if img is None: continue
+    fb = embed_from_img(img)
+    if not fb: continue
+    feat, _ = fb[0]
+    gallery.setdefault(label, []).append(feat)
+
+labels = sorted(gallery.keys())
+G = []
+for k in labels:
+    M = np.mean(np.vstack(gallery[k]), axis=0)
+    M = M / max(np.linalg.norm(M), 1e-9)
+    G.append(M)
+G = np.vstack(G).astype(np.float32)  # [N,512]
+
+
+cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+cv2.namedWindow(&quot;MP+SFace&quot;, cv2.WINDOW_NORMAL)
+cv2.resizeWindow(&quot;MP+SFace&quot;, 640, 480)
+ema_fps = 0.0
+
+while cv2.waitKey(1) != 27:
+    ok, frame = cap.read()
+    if not ok: break
+    t0 = time.perf_counter()
+
+    fb = embed_from_img(frame)
+    for feat, (x,y,wb,hb) in fb:                                             #сравниваем лица
+        q = feat / max(np.linalg.norm(feat), 1e-9)
+        sims = (G @ q.ravel()).astype(np.float32)  # cosine similarity
+        i = int(np.argmax(sims))
+        s = float(sims[i])
+
+        name = labels[i] if s &gt;= THRESH else &quot;unknown&quot;    #пишем имя если нашли
+        cv2.rectangle(frame, (x,y), (x+wb, y+hb), (0,255,0), 2)
+        cv2.putText(frame, f&quot;{name} ({s:.2f})&quot;, (x, max(0,y-7)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,0), 2, cv2.LINE_AA)
+
+    dt = max(time.perf_counter() - t0, 1e-6)
+    ema_fps = (ema_fps*0.9 + 0.1*(1.0/dt)) if ema_fps else 1.0/dt   #Считаем фпс
+
+    cv2.putText(frame, f&quot;FPS: {ema_fps:.1f}&quot;, (10,30), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255,255,255), 2)  #Выводим фпс
+
+    cv2.imshow(&quot;MP+SFace&quot;, frame) #вывод изображения
+
+cap.release(); cv2.destroyAllWindows()
+</code></pre></div>
+
+</details>
+<p><br></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1439 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../pycharm/">
+      
+      
+        <link rel="next" href="../tgai/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Подходы к внедрению - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/tabs.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Подходы к внедрению
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Способы внедрения
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Способы внедрения
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подходы к внедрению
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подходы к внедрению
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Имитация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Имитация+
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Связь кода с железом
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Слабое "железо"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Микрокомпьютеры
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Микрокомпьютеры">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspbery-pi-45-ai-kit-orange-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raspbery PI 4/5 + AI Kit также разные клоны Orange Pi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-jetson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVIDIA Jetson
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegram Bot + AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фреймфорки
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Фреймфорки
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Технологии
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Технологии
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Большие языковые модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python + Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XBOX Kinect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ камеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа с API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ помощники
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    На будущее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocktest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тестовая страница
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Имитация
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Имитация+
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Связь кода с железом
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Слабое "железо"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Микрокомпьютеры
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Микрокомпьютеры">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspbery-pi-45-ai-kit-orange-pi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Raspbery PI 4/5 + AI Kit также разные клоны Orange Pi
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nvidia-jetson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NVIDIA Jetson
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Физические способы внедрения</h1>
+<h2 id="1">1. Имитация</h2>
+<p>Отдельно создается тело проекта и отдельно ИИ на ноутбуке. Для демонстрации используется встроенная камера ноутбука (или микрофон). Обычно это делается на начальных этапах разработки, на уровне городских/областных конкурсов. 
+Во время выступления рассказывают о дальнейшей интеграции. </p>
+<p><img src="../img/img_4.png" alt="desc" width="500">  </p>
+<h2 id="11">1.1 Имитация+</h2>
+<p>Также отдельно создается тело проекта и отдельно ИИ на ноутбуке, но вместо камеры на ноутбуке используется USB вебкамера или беспроводная камера.  </p>
+<p>Пример 1:  </p>
+<p><img src="../img/img_6.png" alt="desc" width="300">  </p>
+<p>Пример 2:  </p>
+<p><img src="../img/img_7.png" alt="desc" width="600"></p>
+<h2 id="2">2. Связь кода с железом</h2>
+<p>ИИ также находиться на ноутбуке, вебкамера находиться на роботе и подключена к ноутбуку. Но также Arduino (или любое другое железо робота) подключено ноутбуку. Скрипт ИИ обрабатывает данные и отправляет в Arduino.</p>
+<p>Пример 1:  </p>
+<p>При обнаружении мусора на пути движения, программа отправляет сигнал на Arduino, которая управляет рукой и собирает мусор.</p>
+<p><img src="../img/img_8.png" alt="desc" width="400"></p>
+<h2 id="3">3. Слабое "железо"</h2>
+<p>Слабое "железо" - это разного рода специализированные платы имеющие встроенный ИИ функционал.
+Например:<br />
+- ESP32-CAM<br />
+- Pixy <br />
+- Huskylens <br />
+- OpenMV Cam<br />
+- Arduino Nicla Vision<br />
+- ESP32-S3-EYE</p>
+<p><img src="../img/img_9.png" alt="desc" width="300">    </p>
+<p>Чаще всего они обрабатывают данные и отправляют их на плату Arduino на роботе.</p>
+<div class="admonition подробнее">
+<p class="admonition-title">Подробнее</p>
+<p>Подробнее про ИИ камеры <a href="../cams/">тут</a>.</p>
+</div>
+<p>Пример 1: Робот – Умная мусорка.<br />
+ESP32-CAM — недорогая плата на ESP32 с разъёмом под камеру Wi-Fi/BLE и слотом microSD.<br />
+ESP-WHO — открытый фреймворк Espressif для компьютерного зрения на ESP32/ESP32-S3.</p>
+<p><img src="../img/img_10.png" alt="desc" width="400">  </p>
+<p>Пример 2: Проект Robocare с финала Samsung Solve for tomorrow 2025. 
+Робот помощник использует Huskylens камеру для определения номеров палат по AprilTag.
+<img src="../img/img_11.png" alt="desc" width="400"> </p>
+<h2 id="4">4. Микрокомпьютеры</h2>
+<p>Можно использовать как отдельно для запуска ИИ в связке с Arduino, так и полностью управлять всем железом с них.</p>
+<h3 id="raspbery-pi-45-ai-kit-orange-pi">Raspbery PI 4/5 + AI Kit также разные клоны Orange Pi</h3>
+<p>Raspberry Pi - серия недорогих одноплатных компьютеров общего назначения, созданных Raspberry Pi Foundation для обучения и проектов. Используются как полноценные ПК и встраиваемые системы. </p>
+<p>Raspberry Pi AI Kit - комплект для Raspberry Pi 5: предустановленный модуль Hailo-8L на M.2 HAT+. Даёт до 13 TOPS для ускорения инференса нейросетей. Интегрирован в стек камер Raspberry Pi OS и автоматически задействуется в rpicam-apps.</p>
+<p>Нативная поддержка в rpicam-apps для пост-обработки видео с камер. Подходит для детекции, сегментации, трекинга и др. в реальном времени.</p>
+<p><img src="../img/img_12.png" alt="desc" width="200"> </p>
+<p>Клоны и подобные платы: </p>
+<table>
+  <thead>
+    <tr>
+      <th>Плата</th>
+      <th>Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Orange Pi 5 Pro</td>
+      <td>Флагман Orange Pi для настольных и edge-проектов, активная экосистема и официальные образы.</td>
+    </tr>
+    <tr>
+      <td>Radxa ROCK 5B</td>
+      <td>Производительная плата Radxa с упором на мультимедиа и задачи CV/ИИ, богатые интерфейсы.</td>
+    </tr>
+    <tr>
+      <td>Banana Pi BPI-M6</td>
+      <td>Современный Banana Pi с акцентом на мультимедиа и ввод/вывод видео, подходит для встраиваемых систем.</td>
+    </tr>
+    <tr>
+      <td>Khadas VIM4</td>
+      <td>Компактная плата Khadas с установщиком OOWOW и расширениями для проектов makers/IoT.</td>
+    </tr>
+    <tr>
+      <td>ODROID-M1S</td>
+      <td>Актуальный ODROID с акцентом на надёжность и длительную поставку для индустрии.</td>
+    </tr>
+    <tr>
+      <td>Libre Computer Le Potato (AML-S905X-CC)</td>
+      <td>Доступная альтернатива Raspberry Pi с поддержкой популярных Linux-дистрибутивов и активным сообществом.</td>
+    </tr>
+    <tr>
+      <td>Orange Pi Zero 3</td>
+      <td>Компактная плата для IoT и медиаприложений, подходит для headless-сценариев.</td>
+    </tr>
+    <tr>
+      <td>Radxa ZERO 3W</td>
+      <td>Миниатюрная плата форм-фактора Pi Zero с современными беспроводными возможностями.</td>
+    </tr>
+    <tr>
+      <td>ASUS Tinker Board 2</td>
+      <td>Серия ASUS для IoT и встраиваемых задач, ориентирована на стабильность и поддержку.</td>
+    </tr>
+    <tr>
+      <td>BeagleBone Black</td>
+      <td>Классическая платформа с сильным сообществом и быстрым стартом разработки.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Пример 1: Проект Soyle с финала Samsung solve for tomorrow 2025. Проекты полностью работают на Raspberry PI. В одном устройстве устная речь с микрофона преобразуется в текст на экране очков. В другом, камера распознает язык жестов и преобразует в звук.  </p>
+<p><img src="../img/img_13.png" alt="desc" width="400"> </p>
+<h3 id="nvidia-jetson">NVIDIA Jetson</h3>
+<p>NVIDIA Jetson™ — ведущая платформа для периферийного ИИ и робототехники, предлагающая мощные компактные компьютеры и комплект SDK NVIDIA JetPack™ для ускоренной разработки. JetPack предоставляет готовые программные сервисы для ускорения разработки сложных периферийных приложений ИИ, включая робототехнику, генеративный ИИ и компьютерное зрение. </p>
+<table>
+  <thead>
+    <tr>
+      <th>Серия / модель</th>
+      <th>Примеры модулей и наборов</th>
+      <th>ИИ-перф. (как у NVIDIA)</th>
+      <th>Примечание</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Jetson AGX Thor</td>
+      <td>AGX Thor Dev Kit</td>
+      <td>до 2070 TFLOPS FP4 (sparse)</td>
+      <td>Blackwell, 128 GB, 40–130 Вт</td>
+    </tr>
+    <tr>
+      <td>Jetson AGX Orin</td>
+      <td>AGX Orin 64 GB / 32 GB / Industrial; Dev Kit</td>
+      <td>до 275 TOPS</td>
+      <td>15–60 Вт, топовая серия Orin</td>
+    </tr>
+    <tr>
+      <td>Jetson Orin NX</td>
+      <td>Orin NX 16 GB / 8 GB</td>
+      <td>до 157 TOPS</td>
+      <td>10–40 Вт, форм-фактор 70×45 мм</td>
+    </tr>
+    <tr>
+      <td>Jetson Orin Nano</td>
+      <td>Orin Nano 8 GB / 4 GB; Orin Nano Super Dev Kit</td>
+      <td>до 67 TOPS (Super)</td>
+      <td>JetPack 6.2 повысил предел с 40 до 67 TOPS</td>
+    </tr>
+    <tr>
+      <td>Jetson AGX Xavier</td>
+      <td>AGX Xavier 32 GB / 64 GB / Industrial</td>
+      <td>32 TOPS (AGX), 30 TOPS (Industrial)</td>
+      <td>Предыдущее поколение AGX</td>
+    </tr>
+    <tr>
+      <td>Jetson Xavier NX</td>
+      <td>Xavier NX 8 GB / 16 GB</td>
+      <td>21 TOPS</td>
+      <td>Малый форм-фактор 70×45 мм</td>
+    </tr>
+    <tr>
+      <td>Jetson TX2 (семейство)</td>
+      <td>TX2, TX2 4GB, TX2i, TX2 NX</td>
+      <td>~1.3 TFLOPS FP16</td>
+      <td>Pascal-GPU, 7.5–15 Вт</td>
+    </tr>
+    <tr>
+      <td>Jetson TX1</td>
+      <td>TX1</td>
+      <td>~1 TFLOPS FP16</td>
+      <td>Maxwell-GPU, 4 GB LPDDR4</td>
+    </tr>
+    <tr>
+      <td>Jetson Nano</td>
+      <td>Nano Module; Nano Dev Kit</td>
+      <td>472 GFLOPS FP16</td>
+      <td>Maxwell-GPU, 4 GB LPDDR4</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Подробнее о <a href="../jetson/">Jetson Nano</a></p>
+<p>Пример 1: Проект – лодка спасатель. При обнаружении человека Jetson Nano передает координаты человека в кадре по UART в Arduino. В зависимости от этого лодка меняет свой маршрут.</p>
+<p><img src="../img/img_14.png" alt="desc" width="500"> </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>

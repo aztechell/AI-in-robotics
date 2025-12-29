@@ -1,0 +1,1377 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../face_recognition/">
+      
+      
+        <link rel="next" href="../tts/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Распознавание речи - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/tabs.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Распознавание речи
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Способы внедрения
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Способы внедрения
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подходы к внедрению
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegram Bot + AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фреймфорки
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Фреймфорки
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Технологии
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Технологии
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whisper-openai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Whisper от OpenAI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Whisper от OpenAI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Доступные модели:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Инструкция:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Большие языковые модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python + Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XBOX Kinect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ камеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа с API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ помощники
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    На будущее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocktest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тестовая страница
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#whisper-openai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Whisper от OpenAI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Whisper от OpenAI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Доступные модели:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Инструкция:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Распознавание речи</h1>
+<p>Распознавание речи (speech-to-text (STT)) — автоматический процесс преобразования речевого сигнала в цифровую информацию (например, текстовые данные).</p>
+<h2 id="whisper-openai">Whisper от OpenAI</h2>
+<p>Whisper — это система автоматического распознавания речи от OpenAI, обученная на 680 000 часах многоязычных и многозадачных данных, собранных из интернета под наблюдением. Она умеет превращать речь в текст, переводить её на английский, автоматически определять язык и возвращать таймкоды для сегментов. Модель устойчива к шумам и акцентам, а всего поддерживает около 100 языков.<br />
+<a href="https://openai.com/index/whisper/">Сайт</a>, <a href="https://github.com/openai/whisper">GitHub</a>. </p>
+<h3 id="_2">Доступные модели:</h3>
+<table>
+  <thead>
+    <tr><th>Model</th><th>Size (GB)</th><th>Req. VRAM (~)</th><th>Download</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>tiny</td><td>0.076</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/65147644a518d12f04e32d6f3b26facc3f8dd46e5390956a9424a650c0ce22b9/tiny.pt">link</a></td></tr>
+    <tr><td>tiny.en</td><td>0.076</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03/tiny.en.pt">link</a></td></tr>
+    <tr><td>base</td><td>0.145</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/ed3a0b6b1c0edf879ad9b11b1af5a0e6ab5db9205f891f668f8b0e6c6326e34e/base.pt">link</a></td></tr>
+    <tr><td>base.en</td><td>0.145</td><td>~1 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/25a8566e1d0c1e2231d1c762132cd20e0f96a85d16145c3a00adf5d1ac670ead/base.en.pt">link</a></td></tr>
+    <tr><td>small</td><td>0.484</td><td>~2 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/9ecf779972d90ba49c06d968637d720dd632c55bbf19d441fb42bf17a411e794/small.pt">link</a></td></tr>
+    <tr><td>small.en</td><td>0.484</td><td>~2 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/f953ad0fd29cacd07d5a9eda5624af0f6bcf2258be67c92b79389873d91e0872/small.en.pt">link</a></td></tr>
+    <tr><td>medium</td><td>1.528</td><td>~5 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/345ae4da62f9b3d59415adc60127b97c714f32e89e936602e85993674d08dcb1/medium.pt">link</a></td></tr>
+    <tr><td>medium.en</td><td>1.528</td><td>~5 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/d7440d1dc186f76616474e0ff0b3b6b879abc9d1a4926b7adfa41db2d497ab4f/medium.en.pt">link</a></td></tr>
+    <tr><td>large-v1</td><td>3.087</td><td>~10 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/e4b87e7e0bf463eb8e6956e646f1e277e901512310def2c24bf0e11bd3c28e9a/large-v1.pt">link</a></td></tr>
+    <tr><td>large-v2</td><td>3.087</td><td>~10 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/81f7c96c852ee8fc832187b0132e569d6c3065a3252ed18e56effd0b6a73e524/large-v2.pt">link</a></td></tr>
+    <tr><td>large-v3</td><td>3.087</td><td>~10 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/e5b1a55b89c1367dacf97e3e19bfd829a01529dbfdeefa8caeb59b3f1b81dadb/large-v3.pt">link</a></td></tr>
+    <tr><td>large-v3-turbo</td><td>1.618</td><td>~6 GB</td><td><a href="https://openaipublic.azureedge.net/main/whisper/models/aff26ae408abcba5fbf8813c21e62b0941638c5f6eebfb145be0c9839262a19a/large-v3-turbo.pt">link</a></td></tr>
+  </tbody>
+</table>
+
+<h3 id="_3">Инструкция:</h3>
+<p>Рекомендую работать не в IDLE а в PyCharm (или другой нормальной IDE)<br />
+1. установить python (не выше 3.11) и библиотеки <br />
+    &gt; pip install librosa, whisper <br />
+2. Скачать модель из <a href="./#доступные-модели">таблицы</a> сверху и загрузить в папку с проектом. <br />
+3. Записать или скачать аудиофайл с человеческой речью и загрузить в папку проекта. <br />
+4. Написать код:   </p>
+<p><div class="highlight"><pre><span></span><code>import librosa, whisper
+
+MODEL_PATH = r&quot;C:\Users\aztec\PycharmProjects\whisper-test\tiny.pt&quot;
+
+model = whisper.load_model(MODEL_PATH, device=&quot;cpu&quot;)
+audio = librosa.load(&quot;2.wav&quot;, sr=16000, mono=True, dtype=&quot;float32&quot;)[0]
+result = model.transcribe(audio, fp16=False)
+
+for seg in result[&quot;segments&quot;]:
+    print(f&quot;[{seg[&#39;start&#39;]:.2f} → {seg[&#39;end&#39;]:.2f}] {seg[&#39;text&#39;]}&quot;)
+</code></pre></div>
+<br></p>
+<details><summary>Код для записи аудио прямо в IDE:</summary>
+
+Для работы надо установить: pip install sounddevice, soundfile  
+
+<div class="highlight"><pre><span></span><code>import sounddevice as sd, soundfile as sf, time
+
+RATE = 16000
+SECONDS = 10 #время записи в секндах
+print(&quot;Recording...&quot;)
+audio = sd.rec(int(SECONDS*RATE), samplerate=RATE, channels=1, dtype=&#39;float32&#39;)
+sd.wait()
+fname = f&quot;rec_{int(time.time())}.wav&quot;
+sf.write(fname, audio, RATE)
+print(&quot;Saved:&quot;, fname)
+</code></pre></div>
+
+</details>
+
+<p><br></p>
+<details><summary>Запись + распознание</summary>
+
+<div class="highlight"><pre><span></span><code>import librosa, whisper
+import sounddevice as sd, soundfile as sf, time
+
+MODEL_PATH = r&quot;C:\Users\aztec\PycharmProjects\whisper-test\tiny.pt&quot;
+model = whisper.load_model(MODEL_PATH, device=&quot;cpu&quot;)
+SECONDS = 10
+
+print(&quot;Recording for &quot;, SECONDS, &quot;seconds...&quot;)
+audio = sd.rec(int(SECONDS*16000), samplerate=16000, channels=1, dtype=&#39;float32&#39;)
+sd.wait()
+fname = f&quot;rec_{int(time.time())}.wav&quot;
+sf.write(fname, audio, 16000)
+print(&quot;Saved:&quot;, fname)
+
+audio = librosa.load(fname, sr=16000, mono=True, dtype=&quot;float32&quot;)[0]
+result = model.transcribe(audio, fp16=False)
+
+for seg in result[&quot;segments&quot;]:
+    print(f&quot;[{seg[&#39;start&#39;]:.2f} → {seg[&#39;end&#39;]:.2f}] {seg[&#39;text&#39;]}&quot;)
+</code></pre></div>
+
+</details>
+<p><br></p>
+<details><summary>Распознание на лету</summary>
+
+<div class="highlight"><pre><span></span><code>import numpy as np, webrtcvad, sounddevice as sd, queue, threading, time, whisper, collections, os
+
+SR = 16000
+FRAME_MS = 20                           # 10/20/30 only
+FRAME_SAMPLES = SR * FRAME_MS // 1000
+VAD_AGGR = 2                            # 0..3
+PRE_MS, END_MS, MAX_SEG_MS = 300, 600, 30000
+
+# choose device automatically
+DEVICE = &quot;cuda&quot; if (os.environ.get(&quot;CUDA_VISIBLE_DEVICES&quot;, &quot;&quot;) != &quot;&quot; or
+                    (hasattr(__import__(&quot;torch&quot;), &quot;cuda&quot;) and __import__(&quot;torch&quot;).cuda.is_available())) else &quot;cpu&quot;
+
+model = whisper.load_model(&quot;turbo&quot;, device=DEVICE)  # or path to .pt
+
+# queues
+frames_q = queue.Queue(maxsize=128)     # raw int16 frames from audio callback
+segs_q   = queue.Queue(maxsize=32)      # finalized float32 segments for ASR
+stop = threading.Event()
+
+# audio callback: push fixed-size frames ASAP
+def audio_cb(indata, frames, time_info, status):
+    if status: pass
+    try:
+        frames_q.put_nowait(indata.copy())  # int16, shape (N,1)
+    except queue.Full:
+        pass
+
+# VAD segmenter: consume frames_q, emit speech segments to segs_q
+def segmenter():
+    vad = webrtcvad.Vad(VAD_AGGR)
+    ring = collections.deque(maxlen=PRE_MS // FRAME_MS)
+    triggered = False
+    segment = []
+    silence = 0
+    t = 0.0
+    seg_start_time = 0.0
+
+    def i16_to_f32(buf: np.ndarray) -&gt; np.ndarray:
+        x = buf.view(np.int16).astype(np.float32, copy=False) / 32768.0
+        return x
+
+    while not (stop.is_set() and frames_q.empty()):
+        try:
+            frame = frames_q.get(timeout=0.1)      # (N,1) int16
+        except queue.Empty:
+            continue
+
+        b = frame.tobytes()
+        is_speech = vad.is_speech(b, SR)
+
+        if not triggered:
+            ring.append(frame)
+            if is_speech:
+                triggered = True
+                seg_start_time = max(0.0, t - len(ring) * FRAME_MS / 1000.0)
+                segment = list(ring); ring.clear()
+                silence = 0
+        else:
+            segment.append(frame)
+            silence = 0 if is_speech else silence + 1
+
+            dur_ms = len(segment) * FRAME_MS
+            if silence * FRAME_MS &gt;= END_MS or dur_ms &gt;= MAX_SEG_MS:
+                seg = np.concatenate(segment, axis=0).reshape(-1, 1)  # int16 mono
+                audio = i16_to_f32(seg).flatten().astype(np.float32, copy=False)
+                try:
+                    segs_q.put_nowait((audio, seg_start_time))
+                except queue.Full:
+                    pass
+                triggered = False
+                segment = []
+                silence = 0
+
+        t += FRAME_MS / 1000.0
+        frames_q.task_done()
+
+# ASR worker: consume segs_q, run Whisper
+def transcriber():
+    while not (stop.is_set() and segs_q.empty()):
+        try:
+            audio, t0 = segs_q.get(timeout=0.1)
+        except queue.Empty:
+            continue
+        r = model.transcribe(audio, fp16=(DEVICE==&quot;cuda&quot;))
+        for s in r[&quot;segments&quot;]:
+            print(f&quot;[{t0 + s[&#39;start&#39;]:.2f} → {t0 + s[&#39;end&#39;]:.2f}] {s[&#39;text&#39;]}&quot;)
+        segs_q.task_done()
+
+# run
+stream = sd.InputStream(samplerate=SR, channels=1, dtype=&#39;int16&#39;,
+                        blocksize=FRAME_SAMPLES, callback=audio_cb)
+seg_th = threading.Thread(target=segmenter, daemon=True)
+asr_th = threading.Thread(target=transcriber, daemon=True)
+
+print(f&quot;Realtime VAD+ASR; device={DEVICE}. Ctrl+C to stop.&quot;)
+with stream:
+    seg_th.start(); asr_th.start()
+    try:
+        while True: time.sleep(0.2)
+    except KeyboardInterrupt:
+        stop.set()
+        seg_th.join(timeout=2); asr_th.join(timeout=2)
+</code></pre></div>
+
+</details>
+<p><br></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>

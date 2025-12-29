@@ -1,0 +1,1412 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tts/">
+      
+      
+        <link rel="next" href="../llm/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Распознавание ключевых слов - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/tabs.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Распознавание ключевых слов
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Способы внедрения
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Способы внедрения
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подходы к внедрению
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegram Bot + AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фреймфорки
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Фреймфорки
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Технологии
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Технологии
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#openwakeword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        openWakeWord
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openWakeWord">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Инструкция
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Примеры
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Большие языковые модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python + Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XBOX Kinect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ камеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа с API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ помощники
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    На будущее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocktest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тестовая страница
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#openwakeword" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        openWakeWord
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="openWakeWord">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Инструкция
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Примеры
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Распознавание ключевых слов</h1>
+<p><strong>Поиск ключевых слов</strong> или <strong>Keyword spotting</strong> (KWS) — это метод распознавания речи, который обнаруживает определенные ключевые слова или триггерные фразы в непрерывном аудиопотоке. </p>
+<h2 id="openwakeword">openWakeWord</h2>
+<p><strong>openWakeWord</strong> — это библиотека с открытым исходным кодом для распознавания слов-будильников, которую можно использовать для создания приложений и интерфейсов с голосовым управлением. Она включает в себя предварительно обученные модели для распространённых слов и фраз, которые хорошо работают в реальных условиях.<br />
+<a href="https://github.com/dscripka/openWakeWord">GitHub</a>, <a href=""></a> <br />
+<strong>openWakeWord</strong> работает с форматами <strong>.onnx</strong> и <strong>.tflite.</strong> Для Windows используется .onnx, а для Linux .tflite.</p>
+<h3 id="_2">Инструкция</h3>
+<ol>
+<li>
+<p>Создать новый проект и установить библиотеки <br />
+    &gt; pip install openwakeword, sounddevice</p>
+</li>
+<li>
+<p>Скачать модель, например hey_jarvis по ссылке <a href="https://github.com/dscripka/openWakeWord/releases/tag/v0.5.1">https://github.com/dscripka/openWakeWord/releases/tag/v0.5.1</a> и сохранить в папку проекта</p>
+</li>
+<li>Запустить код:</li>
+</ol>
+<div class="highlight"><pre><span></span><code>import numpy as np
+import sounddevice as sd
+from openwakeword.model import Model
+import time
+
+SAMPLE_RATE = 16000
+FRAME_MS = 80
+FRAME_SAMPLES = SAMPLE_RATE * FRAME_MS // 1000  # 1280
+THRESHOLD = 0.5          # tune for your room
+COOLDOWN_SEC = 1.0       # suppress duplicate prints
+
+# load only the “hey jarvis” model; omit arg to load all built-ins
+model = Model(wakeword_models=[&quot;./hey_jarvis_v0.1.onnx&quot;], vad_threshold=0.0)  # set &gt;0 to enable VAD
+
+_last_fired = 0.0
+
+def on_audio(indata, frames, t, status):
+    global _last_fired
+    if status:
+        print(status, flush=True)
+    audio = indata.reshape(-1).astype(np.int16)  # 16-bit PCM
+    scores = model.predict(audio)               # dict: {model_name: score 0..1}
+    for name, s in scores.items():
+        if s &gt;= THRESHOLD and (time.time() - _last_fired) &gt;= COOLDOWN_SEC:
+            print(f&quot;[wake] {name}: {s:.2f}&quot;)
+            _last_fired = time.time()
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;Listening at 16 kHz… Ctrl+C to exit&quot;)
+    with sd.InputStream(
+        channels=1, samplerate=SAMPLE_RATE, dtype=&quot;int16&quot;,
+        blocksize=FRAME_SAMPLES, callback=on_audio
+    ):
+        while True:
+            sd.sleep(1000)
+</code></pre></div>
+<p>Коллекция тренированных слов: </p>
+<blockquote>
+<p><a href="https://github.com/fwartner/home-assistant-wakewords-collection/tree/main/en">https://github.com/fwartner/home-assistant-wakewords-collection/tree/main/en</a>   </p>
+</blockquote>
+<p>Автоматическая тренировка новых слов в Google Colab: </p>
+<blockquote>
+<p><a href="https://colab.research.google.com/drive/1q1oe2zOyZp7UsB3jJiQ1IFn8z5YfjwEb?usp=sharing">https://colab.research.google.com/drive/1q1oe2zOyZp7UsB3jJiQ1IFn8z5YfjwEb?usp=sharing</a>   </p>
+</blockquote>
+<h3 id="_3">Примеры</h3>
+<p>Скачать файл и загрузить в папку проекта   </p>
+<blockquote>
+<p><a href="../files/jarvis.wav">jarvis.wav</a></p>
+</blockquote>
+<details><summary>Jarvis sound</summary>
+
+<div class="highlight"><pre><span></span><code>import os
+import numpy as np
+import sounddevice as sd
+from openwakeword.model import Model
+import time
+import winsound
+
+SAMPLE_RATE = 16000
+FRAME_MS = 80
+FRAME_SAMPLES = SAMPLE_RATE * FRAME_MS // 1000  # 1280
+THRESHOLD = 0.5
+COOLDOWN_SEC = 1.0
+
+model = Model(wakeword_models=[&quot;./hey_jarvis_v0.1.onnx&quot;], vad_threshold=0.0)
+#[&quot;./hey_jarvis_v0.1.onnx&quot;, &quot;./yo_bitch.onnx&quot;]
+_last_fired = 0.0
+JARVIS_WAV = os.path.join(os.path.dirname(os.path.abspath(__file__)), &quot;jarvis.wav&quot;)
+
+def play_jarvis():
+    if os.path.isfile(JARVIS_WAV):
+        winsound.PlaySound(JARVIS_WAV, winsound.SND_FILENAME | winsound.SND_ASYNC)
+    else:
+        print(f&quot;[warn] WAV not found: {JARVIS_WAV}&quot;)
+
+def on_audio(indata, frames, t, status):
+    global _last_fired
+    if status:
+        print(status, flush=True)
+    audio = indata.reshape(-1).astype(np.int16)
+    scores = model.predict(audio)
+    for name, s in scores.items():
+        if s &gt;= THRESHOLD and (time.time() - _last_fired) &gt;= COOLDOWN_SEC:
+            print(f&quot;[wake] {name}: {s:.2f}&quot;)
+            play_jarvis()
+            _last_fired = time.time()
+
+if __name__ == &quot;__main__&quot;:
+    print(&quot;Listening at 16 kHz… Ctrl+C to exit&quot;)
+    with sd.InputStream(
+        channels=1, samplerate=SAMPLE_RATE, dtype=&quot;int16&quot;,
+        blocksize=FRAME_SAMPLES, callback=on_audio
+    ):
+        while True:
+            sd.sleep(1000)
+</code></pre></div>
+
+</details>
+
+<details><summary>Jarvis sound + arduino</summary>
+
+<div class="highlight"><pre><span></span><code>import os
+import time
+import numpy as np
+import sounddevice as sd
+from openwakeword.model import Model
+import winsound
+
+import serial
+from serial.tools import list_ports
+
+COM_PORT = None
+COM_VID  = &quot;1A86&quot;
+COM_PID  = &quot;7523&quot;
+BAUD     = 9600
+SEND_BYTE = b&quot;1&quot;
+SEND_BYTE2 = b&quot;2&quot;
+
+def _to_int_hex(x):
+    if isinstance(x, str):
+        return int(x, 16)
+    return x
+
+def com_ports_by_vid_pid(vid, pid, serial_substr=None):
+    &quot;&quot;&quot;Adapted from your 0.py.&quot;&quot;&quot;
+    vid = _to_int_hex(vid)
+    pid = _to_int_hex(pid)
+    out = []
+    for p in list_ports.comports():
+        if p.vid == vid and p.pid == pid:
+            if serial_substr and (not p.serial_number or serial_substr not in p.serial_number):
+                continue
+            out.append(p.device)
+    return out
+
+_ser = None
+
+def _open_serial():
+    global _ser
+    if _ser and _ser.is_open:
+        return _ser
+    port_candidates = [COM_PORT] if COM_PORT else com_ports_by_vid_pid(COM_VID, COM_PID)
+    for port in filter(None, port_candidates):
+        try:
+            _ser = serial.Serial(port, BAUD, timeout=0)
+            print(f&quot;[serial] connected {port} @ {BAUD}&quot;)
+            return _ser
+        except Exception as e:
+            print(f&quot;[serial] open failed on {port}: {e}&quot;)
+    print(&quot;[serial] no port&quot;)
+    _ser = None
+    return None
+
+def send_one():
+    s = _open_serial()
+    if not s:
+        return
+    try:
+        s.write(SEND_BYTE)
+        print(&quot;[serial] sent 1&quot;)
+        time.sleep(2)
+        s.write(SEND_BYTE2)
+        s.flush()
+        print(&quot;[serial] sent 2&quot;)
+    except Exception as e:
+        print(f&quot;[serial] write error: {e}&quot;)
+        try:
+            s.close()
+        except:
+            pass
+
+SAMPLE_RATE = 16000
+FRAME_MS = 80
+FRAME_SAMPLES = SAMPLE_RATE * FRAME_MS // 1000
+THRESHOLD = 0.5
+COOLDOWN_SEC = 1.0
+
+model = Model(wakeword_models=[&quot;./hey_jarvis_v0.1.onnx&quot;], vad_threshold=0.0)
+_last_fired = 0.0
+JARVIS_WAV = os.path.join(os.path.dirname(os.path.abspath(__file__)), &quot;jarvis.wav&quot;)
+
+def play_jarvis():
+    if os.path.isfile(JARVIS_WAV):
+        winsound.PlaySound(JARVIS_WAV, winsound.SND_FILENAME | winsound.SND_ASYNC)
+    else:
+        print(f&quot;[warn] WAV not found: {JARVIS_WAV}&quot;)
+
+def on_audio(indata, frames, t, status):
+    global _last_fired
+    if status:
+        print(status, flush=True)
+    audio = indata.reshape(-1).astype(np.int16)
+    scores = model.predict(audio)
+
+    for name, s in scores.items():
+        if s &gt;= THRESHOLD and (time.time() - _last_fired) &gt;= COOLDOWN_SEC:
+            print(f&quot;[wake] {name}: {s:.2f}&quot;)
+            # Only act on &quot;jarvis&quot; wakewords
+            if &quot;jarvis&quot; in str(name).lower():
+                play_jarvis()
+                send_one()
+            _last_fired = time.time()
+
+if __name__ == &quot;__main__&quot;:
+    _open_serial()  # try early; will retry on demand
+    print(&quot;Listening at 16 kHz… Ctrl+C to exit&quot;)
+    with sd.InputStream(
+        channels=1, samplerate=SAMPLE_RATE, dtype=&quot;int16&quot;,
+        blocksize=FRAME_SAMPLES, callback=on_audio
+    ):
+        while True:
+            sd.sleep(1000)
+</code></pre></div>
+
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2025. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>
