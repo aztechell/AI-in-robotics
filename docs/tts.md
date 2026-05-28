@@ -2,6 +2,25 @@
 
 **Синтез речи (Text-to-Speech, TTS)** — это технология, которая преобразует текст в искусственно сгенерированную человеческую речь.   
 
+### Примеры озвучки
+
+Тексты ниже — краткий пересказ идей трех законов робототехники Азимова, не дословная цитата.
+
+**1 закон — Windows SAPI, Microsoft Irina Desktop**  
+Первый принцип: безопасность человека важнее любых действий робота.
+
+<audio controls src="files/tts_sapi_law1.wav"></audio>
+
+**2 закон — TinyTTS, FEMALE**  
+Second principle: a robot follows human instructions only when they do not put people at risk.
+
+<audio controls src="files/tts_tinytts_law2_female.wav"></audio>
+
+**3 закон — Piper, ru_RU-ruslan-medium**  
+Третий принцип: робот бережёт себя, пока это не мешает безопасности и приказам человека.
+
+<audio controls src="files/tts_piper_law3_ruslan.wav"></audio>
+
 ## Windows SAPI
 
 **Windows SAPI** — это встроенный синтез речи в Windows.  
