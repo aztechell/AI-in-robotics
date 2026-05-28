@@ -2,16 +2,6 @@
 
 **Синтез речи (Text-to-Speech, TTS)** — это технология, которая преобразует текст в искусственно сгенерированную человеческую речь.   
 
-## KazEmoTTS
-- Оригинальный проект [Github KazEmoTTS](https://github.com/IS2AI/KazEmoTTS)   
-- Немного исправленная и упрощенная версия [https://github.com/aztechell/KazEmoTTS](https://github.com/aztechell/KazEmoTTS)   
-- Упрощенный код только для генерации речи [https://github.com/aztechell/KazEmoTTS_only_inference](https://github.com/aztechell/KazEmoTTS_only_inference)
-
-## VibeVoice
-
-Скачать [VibeVoicePortable_v3.bat](files/VibeVoicePortable_v3.bat).   
-Запустить файл и выбрать запуск установки. После установки можно будет запустить веб интерфейс.
-
 ## TinyTTS
 
 **TinyTTS** — это очень маленькая модель синтеза речи для английского языка.  
@@ -131,3 +121,131 @@ TinyTTS удобно использовать в связке:
 
 TinyTTS не подходит для русского языка.  
 Если передать русский текст, произношение будет неправильным, потому что модель и фонемизация рассчитаны на английский язык.
+
+## Piper
+
+**Piper** — это локальный нейросетевой синтезатор речи.  
+Он работает через ONNX модели и подходит для роботов, голосовых ассистентов и локальных приложений, где нужна речь без облачных API.
+
+[GitHub](https://github.com/rhasspy/piper), [Releases](https://github.com/rhasspy/piper/releases), [Voices](https://huggingface.co/rhasspy/piper-voices)
+
+### Особенности
+
+- работает локально;
+- не требует интернета после скачивания модели;
+- использует ONNX Runtime;
+- поддерживает много языков, включая русский;
+- для каждого голоса нужны два файла: `.onnx` и `.onnx.json`;
+- можно запускать из командной строки или из Python.
+
+Для русского языка есть готовые голоса:
+
+| Голос | Язык | Качество |
+|---|---|---|
+| `ru_RU-denis-medium` | русский | medium |
+| `ru_RU-dmitri-medium` | русский | medium |
+| `ru_RU-irina-medium` | русский | medium |
+| `ru_RU-ruslan-medium` | русский | medium |
+
+### Установка и запуск
+
+=== "Windows"
+
+    Скачать архив для Windows:
+
+    > [piper_windows_amd64.zip](https://github.com/rhasspy/piper/releases)
+
+    Распаковать архив, например в папку `piper`.
+
+    ??? tip "Где брать голоса"
+
+        Голоса Piper хранятся отдельно от программы.  
+        Для каждого голоса надо скачать два файла:
+
+        - `имя_голоса.onnx`
+        - `имя_голоса.onnx.json`
+
+        Русские голоса можно найти здесь:
+
+        [https://huggingface.co/rhasspy/piper-voices/tree/main/ru/ru_RU](https://huggingface.co/rhasspy/piper-voices/tree/main/ru/ru_RU)
+
+    Пример для голоса `ru_RU-irina-medium`:
+
+    ```bash
+    ru_RU-irina-medium.onnx
+    ru_RU-irina-medium.onnx.json
+    ```
+
+    Запуск из терминала:
+
+    ```bash
+    echo Привет! Это тест синтеза речи через Piper. | piper.exe --model ru_RU-irina-medium.onnx --config ru_RU-irina-medium.onnx.json --output_file output.wav
+    ```
+
+    После запуска появится файл `output.wav`.
+
+=== "Python"
+
+    Установить Piper через pip:
+
+    ```bash
+    pip install piper-tts
+    ```
+
+    Скачать голос, например `ru_RU-irina-medium`:
+
+    ```bash
+    ru_RU-irina-medium.onnx
+    ru_RU-irina-medium.onnx.json
+    ```
+
+    Запустить синтез речи:
+
+    ```bash
+    echo "Привет! Это тест синтеза речи через Piper." | piper --model ru_RU-irina-medium.onnx --config ru_RU-irina-medium.onnx.json --output_file output.wav
+    ```
+
+    После запуска появится файл `output.wav`.
+
+### Параметры
+
+| Параметр | Описание |
+|---|---|
+| `--model` | путь к `.onnx` модели голоса |
+| `--config` | путь к `.onnx.json` конфигу модели |
+| `--output_file` | имя WAV файла |
+| `--speaker` | номер голоса, если модель мультиспикерная |
+| `--length_scale` | длина фонем, влияет на скорость речи |
+| `--noise_scale` | вариативность генерации |
+| `--noise_w` | вариативность длительности фонем |
+| `--sentence_silence` | пауза между предложениями |
+
+Обычно для простого запуска достаточно указать только модель, конфиг и выходной файл.
+
+### Пример с настройками
+
+```bash
+echo "Робот готов к работе." | piper --model ru_RU-irina-medium.onnx --config ru_RU-irina-medium.onnx.json --output_file robot.wav --length_scale 1.0 --noise_scale 0.667 --noise_w 0.8 --sentence_silence 0.2
+```
+
+Если `length_scale` меньше `1.0`, речь будет быстрее.  
+Если больше `1.0`, речь будет медленнее.
+
+### Ограничения
+
+Piper не клонирует голос сам по себе.  
+Он использует заранее обученные модели голосов.
+
+Качество зависит от выбранной модели.  
+Для простых голосовых ответов робота Piper подходит хорошо, но для очень эмоциональной или актерской речи лучше использовать более тяжелые TTS модели.
+
+## KazEmoTTS
+
+- Оригинальный проект [Github KazEmoTTS](https://github.com/IS2AI/KazEmoTTS)   
+- Немного исправленная и упрощенная версия [https://github.com/aztechell/KazEmoTTS](https://github.com/aztechell/KazEmoTTS)   
+- Упрощенный код только для генерации речи [https://github.com/aztechell/KazEmoTTS_only_inference](https://github.com/aztechell/KazEmoTTS_only_inference)
+
+## VibeVoice
+
+Скачать [VibeVoicePortable_v3.bat](files/VibeVoicePortable_v3.bat).   
+Запустить файл и выбрать запуск установки. После установки можно будет запустить веб интерфейс.
