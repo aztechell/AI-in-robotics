@@ -2,25 +2,6 @@
 
 **Синтез речи (Text-to-Speech, TTS)** — это технология, которая преобразует текст в искусственно сгенерированную человеческую речь.   
 
-### Примеры озвучки
-
-Тексты ниже — краткий пересказ идей трех законов робототехники Азимова, не дословная цитата.
-
-**1 закон — Windows SAPI, Microsoft Irina Desktop**  
-Первый принцип: безопасность человека важнее любых действий робота.
-
-<audio controls src="files/tts_sapi_law1.wav"></audio>
-
-**2 закон — TinyTTS, FEMALE**  
-Second principle: a robot follows human instructions only when they do not put people at risk.
-
-<audio controls src="files/tts_tinytts_law2_female.wav"></audio>
-
-**3 закон — Piper, ru_RU-ruslan-medium**  
-Третий принцип: робот бережёт себя, пока это не мешает безопасности и приказам человека.
-
-<audio controls src="files/tts_piper_law3_ruslan.wav"></audio>
-
 ## Windows SAPI
 
 **Windows SAPI** — это встроенный синтез речи в Windows.  
@@ -148,6 +129,17 @@ Windows SAPI не является нейросетевым TTS.
 Набор голосов зависит от установленных языковых пакетов Windows.  
 Если русского голоса нет в списке, его надо установить в настройках Windows.
 
+### Пример озвучки
+
+Текст ниже — краткий пересказ идеи первого закона робототехники Азимова, не дословная цитата.
+
+**Windows SAPI, Microsoft Irina Desktop**  
+Первый принцип: безопасность человека важнее любых действий робота.
+
+<audio controls preload="metadata">
+  <source src="../files/tts_sapi_law1.wav" type="audio/wav">
+</audio>
+
 ## TinyTTS
 
 **TinyTTS** — это очень маленькая модель синтеза речи для английского языка.  
@@ -268,6 +260,17 @@ TinyTTS удобно использовать в связке:
 TinyTTS не подходит для русского языка.  
 Если передать русский текст, произношение будет неправильным, потому что модель и фонемизация рассчитаны на английский язык.
 
+### Пример озвучки
+
+Текст ниже — краткий пересказ идеи второго закона робототехники Азимова, не дословная цитата.
+
+**TinyTTS, FEMALE**  
+Second principle: a robot follows human instructions only when they do not put people at risk.
+
+<audio controls preload="metadata">
+  <source src="../files/tts_tinytts_law2_female.wav" type="audio/wav">
+</audio>
+
 ## Piper
 
 **Piper** — это локальный нейросетевой синтезатор речи.  
@@ -384,6 +387,17 @@ Piper не клонирует голос сам по себе.
 
 Качество зависит от выбранной модели.  
 Для простых голосовых ответов робота Piper подходит хорошо, но для очень эмоциональной или актерской речи лучше использовать более тяжелые TTS модели.
+
+### Пример озвучки
+
+Текст ниже — краткий пересказ идеи третьего закона робототехники Азимова, не дословная цитата.
+
+**Piper, ru_RU-ruslan-medium**  
+Третий принцип: робот бережёт себя, пока это не мешает безопасности и приказам человека.
+
+<audio controls preload="metadata">
+  <source src="../files/tts_piper_law3_ruslan.wav" type="audio/wav">
+</audio>
 
 ## KazEmoTTS
 
