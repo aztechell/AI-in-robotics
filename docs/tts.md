@@ -2,6 +2,133 @@
 
 **Синтез речи (Text-to-Speech, TTS)** — это технология, которая преобразует текст в искусственно сгенерированную человеческую речь.   
 
+## Windows SAPI
+
+**Windows SAPI** — это встроенный синтез речи в Windows.  
+Он использует системные голоса, которые уже установлены в операционной системе, поэтому не требует скачивания нейросетевых моделей.
+
+Такой вариант подходит для простых голосовых уведомлений робота, отладки и быстрых экспериментов.
+
+### Особенности
+
+- работает без интернета;
+- не требует видеокарту;
+- не требует скачивания TTS моделей;
+- использует встроенные голоса Windows;
+- можно запускать из PowerShell, Python или C#;
+- качество зависит от установленных голосов Windows.
+
+### Установка и запуск
+
+=== "PowerShell"
+
+    Устанавливать ничего не нужно.  
+    Открыть PowerShell и посмотреть список доступных голосов:
+
+    ```powershell
+    Add-Type -AssemblyName System.Speech
+    $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer
+
+    $synth.GetInstalledVoices() | ForEach-Object {
+        $_.VoiceInfo.Name
+    }
+    ```
+
+    Произнести текст:
+
+    ```powershell
+    Add-Type -AssemblyName System.Speech
+    $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer
+
+    $synth.SelectVoice("Microsoft Irina Desktop")
+    $synth.Speak("Привет! Это встроенный голос Windows.")
+    ```
+
+    Сохранить речь в WAV файл:
+
+    ```powershell
+    Add-Type -AssemblyName System.Speech
+    $synth = New-Object System.Speech.Synthesis.SpeechSynthesizer
+
+    $synth.SelectVoice("Microsoft Irina Desktop")
+    $synth.SetOutputToWaveFile("output.wav")
+    $synth.Speak("Привет! Это тест синтеза речи.")
+    $synth.Dispose()
+    ```
+
+=== "Python"
+
+    Установить библиотеку:
+
+    ```bash
+    pip install pyttsx3
+    ```
+
+    Посмотреть список доступных голосов:
+
+    ```python
+    import pyttsx3
+
+    engine = pyttsx3.init("sapi5")
+
+    for voice in engine.getProperty("voices"):
+        print(voice.id, voice.name)
+    ```
+
+    Произнести текст:
+
+    ```python
+    import pyttsx3
+
+    engine = pyttsx3.init("sapi5")
+    engine.setProperty("voice", "Microsoft Irina Desktop")
+    engine.say("Привет! Это встроенный голос Windows.")
+    engine.runAndWait()
+    ```
+
+    Если имя голоса не сработало, надо взять `voice.id` из списка голосов и передать его в `setProperty`.
+
+### Сохранение в WAV через Python
+
+```python
+import pyttsx3
+
+engine = pyttsx3.init("sapi5")
+engine.setProperty("voice", "Microsoft Irina Desktop")
+engine.save_to_file("Привет! Это тест синтеза речи.", "output.wav")
+engine.runAndWait()
+```
+
+После запуска появится файл `output.wav`.
+
+### Параметры
+
+| Параметр | Описание |
+|---|---|
+| `voice` | выбранный системный голос |
+| `rate` | скорость речи |
+| `volume` | громкость от `0.0` до `1.0` |
+
+Пример настройки скорости и громкости:
+
+```python
+import pyttsx3
+
+engine = pyttsx3.init("sapi5")
+engine.setProperty("rate", 160)
+engine.setProperty("volume", 1.0)
+engine.say("Робот готов к работе.")
+engine.runAndWait()
+```
+
+### Ограничения
+
+Windows SAPI не является нейросетевым TTS.  
+Качество речи обычно проще, чем у Piper, Silero или VibeVoice.
+
+Набор голосов зависит от установленных языковых пакетов Windows.  
+Если русского голоса нет в списке, его надо установить в настройках Windows.
+
 ## TinyTTS
 
 **TinyTTS** — это очень маленькая модель синтеза речи для английского языка.  
