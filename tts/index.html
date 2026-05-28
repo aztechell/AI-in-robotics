@@ -1,0 +1,2019 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../speech-to-text/">
+      
+      
+        <link rel="next" href="../KWS/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../img/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Синтез речи - AI in robotics</title>
+      
+    
+    
+
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+<link rel="stylesheet" type="text/css" href="../css/fonts.css" />
+<link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../css/tabs.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+
+<script type="text/javascript">
+    if ( window !== window.parent ) {
+        // The page is in an iframe
+        window.addEventListener("DOMContentLoaded", function externalLinks() {
+            var anchors = document.getElementsByTagName("a");
+            for (var i = 0; i < anchors.length; i++) {
+                    if (anchors[i].hostname !== window.location.hostname) {
+                        anchors[i].setAttribute("target", "_blank");
+                        anchors[i].setAttribute("rel", "noopener");
+                    }
+                    // Handle 'Open in SWAN' badges in the parent JupyterLab window
+                    if (anchors[i].hostname == 'cern.ch' && anchors[i].pathname == '/swanserver/cgi-bin/go') {
+                        const projectUrl = new URLSearchParams(anchors[i].search).get('projurl');
+                        if (projectUrl) {
+                                anchors[i].onclick = () => {
+                                window.parent.postMessage(projectUrl,'*');
+                                //  Skip redirecting the iframe page to the link 
+                                return false;
+                            }
+                        }
+                    }
+            }
+        }); 
+    }
+</script>
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI in robotics" class="md-header__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI in robotics
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Синтез речи
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI in robotics" class="md-nav__button md-logo" aria-label="AI in robotics" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    AI in robotics
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pycharm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа в PyCharm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Способы внедрения
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Способы внедрения
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hardware/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Подходы к внедрению
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tgai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Telegram Bot + AI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фреймфорки
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Фреймфорки
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../yolo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    YOLO
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mediapipe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MediaPipe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Технологии
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Технологии
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../face_recognition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание лица
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../speech-to-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Синтез речи
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#windows-sapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows SAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows SAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особенности
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка и запуск
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wav-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сохранение в WAV через Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Параметры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример озвучки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tinytts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TinyTTS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TinyTTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особенности
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка и запуск
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Параметры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример озвучки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#piper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Piper
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Piper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особенности
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка и запуск
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Параметры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример с настройками
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример озвучки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kazemotts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KazEmoTTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vibevoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VibeVoice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../KWS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Распознавание ключевых слов
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../llm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Большие языковые модели
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../py%2Bard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python + Arduino
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jetson/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Jetson Nano
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raspberry Pi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kinect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    XBOX Kinect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cams/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ камеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Работа с API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../assistants/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ИИ помощники
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../todo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    На будущее
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mkdocktest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Тестовая страница
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#windows-sapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows SAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Windows SAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особенности
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка и запуск
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wav-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Сохранение в WAV через Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Параметры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример озвучки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tinytts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TinyTTS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TinyTTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особенности
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка и запуск
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Параметры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример озвучки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#piper" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Piper
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Piper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Особенности
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Установка и запуск
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Параметры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример с настройками
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ограничения
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Пример озвучки
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kazemotts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        KazEmoTTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vibevoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VibeVoice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">Синтез речи</h1>
+<p><strong>Синтез речи (Text-to-Speech, TTS)</strong> — это технология, которая преобразует текст в искусственно сгенерированную человеческую речь.   </p>
+<h2 id="windows-sapi">Windows SAPI</h2>
+<p><strong>Windows SAPI</strong> — это встроенный синтез речи в Windows.<br />
+Он использует системные голоса, которые уже установлены в операционной системе, поэтому не требует скачивания нейросетевых моделей.</p>
+<p>Такой вариант подходит для простых голосовых уведомлений робота, отладки и быстрых экспериментов.</p>
+<h3 id="_2">Особенности</h3>
+<ul>
+<li>работает без интернета;</li>
+<li>не требует видеокарту;</li>
+<li>не требует скачивания TTS моделей;</li>
+<li>использует встроенные голоса Windows;</li>
+<li>можно запускать из PowerShell, Python или C#;</li>
+<li>качество зависит от установленных голосов Windows.</li>
+</ul>
+<h3 id="_3">Установка и запуск</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PowerShell</label><label for="__tabbed_1_2">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Устанавливать ничего не нужно.<br />
+Открыть PowerShell и посмотреть список доступных голосов:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="n">Speech</span>
+<span class="nv">$synth</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Speech</span><span class="p">.</span><span class="n">Synthesis</span><span class="p">.</span><span class="n">SpeechSynthesizer</span>
+
+<span class="nv">$synth</span><span class="p">.</span><span class="n">GetInstalledVoices</span><span class="p">()</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+    <span class="nv">$_</span><span class="p">.</span><span class="n">VoiceInfo</span><span class="p">.</span><span class="n">Name</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Произнести текст:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="n">Speech</span>
+<span class="nv">$synth</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Speech</span><span class="p">.</span><span class="n">Synthesis</span><span class="p">.</span><span class="n">SpeechSynthesizer</span>
+
+<span class="nv">$synth</span><span class="p">.</span><span class="n">SelectVoice</span><span class="p">(</span><span class="s2">&quot;Microsoft Irina Desktop&quot;</span><span class="p">)</span>
+<span class="nv">$synth</span><span class="p">.</span><span class="n">Speak</span><span class="p">(</span><span class="s2">&quot;Привет! Это встроенный голос Windows.&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Сохранить речь в WAV файл:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Add-Type</span> <span class="n">-AssemblyName</span> <span class="n">System</span><span class="p">.</span><span class="n">Speech</span>
+<span class="nv">$synth</span> <span class="p">=</span> <span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="n">Speech</span><span class="p">.</span><span class="n">Synthesis</span><span class="p">.</span><span class="n">SpeechSynthesizer</span>
+
+<span class="nv">$synth</span><span class="p">.</span><span class="n">SelectVoice</span><span class="p">(</span><span class="s2">&quot;Microsoft Irina Desktop&quot;</span><span class="p">)</span>
+<span class="nv">$synth</span><span class="p">.</span><span class="n">SetOutputToWaveFile</span><span class="p">(</span><span class="s2">&quot;output.wav&quot;</span><span class="p">)</span>
+<span class="nv">$synth</span><span class="p">.</span><span class="n">Speak</span><span class="p">(</span><span class="s2">&quot;Привет! Это тест синтеза речи.&quot;</span><span class="p">)</span>
+<span class="nv">$synth</span><span class="p">.</span><span class="n">Dispose</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Установить библиотеку:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pyttsx3
+</code></pre></div>
+<p>Посмотреть список доступных голосов:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyttsx3</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pyttsx3</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;sapi5&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">voice</span> <span class="ow">in</span> <span class="n">engine</span><span class="o">.</span><span class="n">getProperty</span><span class="p">(</span><span class="s2">&quot;voices&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">voice</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">voice</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>Произнести текст:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyttsx3</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pyttsx3</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;sapi5&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;voice&quot;</span><span class="p">,</span> <span class="s2">&quot;Microsoft Irina Desktop&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s2">&quot;Привет! Это встроенный голос Windows.&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">runAndWait</span><span class="p">()</span>
+</code></pre></div>
+<p>Если имя голоса не сработало, надо взять <code>voice.id</code> из списка голосов и передать его в <code>setProperty</code>.</p>
+</div>
+</div>
+</div>
+<h3 id="wav-python">Сохранение в WAV через Python</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyttsx3</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pyttsx3</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;sapi5&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;voice&quot;</span><span class="p">,</span> <span class="s2">&quot;Microsoft Irina Desktop&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">save_to_file</span><span class="p">(</span><span class="s2">&quot;Привет! Это тест синтеза речи.&quot;</span><span class="p">,</span> <span class="s2">&quot;output.wav&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">runAndWait</span><span class="p">()</span>
+</code></pre></div>
+<p>После запуска появится файл <code>output.wav</code>.</p>
+<h3 id="_4">Параметры</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>voice</code></td>
+<td>выбранный системный голос</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td>скорость речи</td>
+</tr>
+<tr>
+<td><code>volume</code></td>
+<td>громкость от <code>0.0</code> до <code>1.0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Пример настройки скорости и громкости:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pyttsx3</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">pyttsx3</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="s2">&quot;sapi5&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;rate&quot;</span><span class="p">,</span> <span class="mi">160</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">setProperty</span><span class="p">(</span><span class="s2">&quot;volume&quot;</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s2">&quot;Робот готов к работе.&quot;</span><span class="p">)</span>
+<span class="n">engine</span><span class="o">.</span><span class="n">runAndWait</span><span class="p">()</span>
+</code></pre></div>
+<h3 id="_5">Ограничения</h3>
+<p>Windows SAPI не является нейросетевым TTS.<br />
+Качество речи обычно проще, чем у Piper, Silero или VibeVoice.</p>
+<p>Набор голосов зависит от установленных языковых пакетов Windows.<br />
+Если русского голоса нет в списке, его надо установить в настройках Windows.</p>
+<h3 id="_6">Пример озвучки</h3>
+<p>Текст ниже — краткий пересказ идеи первого закона робототехники Азимова, не дословная цитата.</p>
+<p><strong>Windows SAPI, Microsoft Irina Desktop</strong><br />
+Первый принцип: безопасность человека важнее любых действий робота.</p>
+<p><audio controls preload="metadata">
+  <source src="../files/tts_sapi_law1.wav" type="audio/wav">
+</audio></p>
+<h2 id="tinytts">TinyTTS</h2>
+<p><strong>TinyTTS</strong> — это очень маленькая модель синтеза речи для английского языка.<br />
+Она подходит для простых голосовых ответов робота, ассистента или локального веб интерфейса, когда не хочется использовать облачные API и большую модель.</p>
+<p><a href="https://github.com/tronghieuit/tiny-tts">GitHub</a>, <a href="https://pypi.org/project/tiny-tts/">PyPI</a>, <a href="https://www.npmjs.com/package/tiny-tts">npm</a></p>
+<h3 id="_7">Особенности</h3>
+<ul>
+<li>работает локально на CPU;</li>
+<li>не требует видеокарту;</li>
+<li>модель маленькая;</li>
+<li>генерирует WAV аудио;</li>
+<li>поддерживает только английский язык;</li>
+<li>есть версия для Python и Node.js.</li>
+</ul>
+<p>TinyTTS удобно использовать в связке:</p>
+<blockquote>
+<p>LLM → текст ответа → TinyTTS → WAV → динамик робота</p>
+</blockquote>
+<h3 id="_8">Установка и запуск</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Python</label><label for="__tabbed_2_2">Node.js</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Установить библиотеку:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>tiny-tts
+</code></pre></div>
+<p>Пример генерации речи:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tiny_tts</span><span class="w"> </span><span class="kn">import</span> <span class="n">TinyTTS</span>
+
+<span class="n">tts</span> <span class="o">=</span> <span class="n">TinyTTS</span><span class="p">()</span>
+<span class="n">tts</span><span class="o">.</span><span class="n">speak</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s2">&quot;hello.wav&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>После запуска появится файл <code>hello.wav</code>.</p>
+<p>Python-версия удобна, если основной код робота уже написан на Python.<br />
+Но она может требовать дополнительные зависимости, например PyTorch.</p>
+</div>
+<div class="tabbed-block">
+<details class="tip">
+<summary>Как установить Node.js</summary>
+<p>Node.js нужен только для версии TinyTTS на JavaScript.<br />
+Скачать установщик можно с официального сайта:</p>
+<p><a href="https://nodejs.org/en/download">https://nodejs.org/en/download</a></p>
+<p>После установки проверить в терминале:</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>--version
+npm<span class="w"> </span>--version
+</code></pre></div>
+<p>Если команды выводят версии, Node.js установлен правильно.</p>
+</details>
+<p>Установить библиотеку:</p>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>init<span class="w"> </span>-y
+npm<span class="w"> </span>install<span class="w"> </span>tiny-tts
+</code></pre></div>
+<p>Создать файл <code>tts.js</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">TinyTTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;tiny-tts&#39;</span><span class="p">);</span>
+
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">tts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">TinyTTS</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">tts</span><span class="p">.</span><span class="nx">speak</span><span class="p">(</span><span class="s1">&#39;Hello world!&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">output</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;hello.wav&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">speaker</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;MALE&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">speed</span><span class="o">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">tts</span><span class="p">.</span><span class="nx">dispose</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">main</span><span class="p">()</span>
+<span class="w">  </span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">0</span><span class="p">))</span>
+<span class="w">  </span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+</code></pre></div>
+<p>Запустить:</p>
+<div class="highlight"><pre><span></span><code>node<span class="w"> </span>tts.js
+</code></pre></div>
+<p>Node.js версия удобна для локального веб интерфейса.<br />
+Она работает через ONNX Runtime и не требует Python.</p>
+</div>
+</div>
+</div>
+<h3 id="_9">Параметры</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>output</code> / <code>output_path</code></td>
+<td>имя WAV файла</td>
+</tr>
+<tr>
+<td><code>speaker</code></td>
+<td>голос: <code>MALE</code> или <code>FEMALE</code></td>
+</tr>
+<tr>
+<td><code>speed</code></td>
+<td>скорость речи, <code>1.0</code> — обычная</td>
+</tr>
+</tbody>
+</table>
+<p>У TinyTTS нет большого набора голосов. Это маленькая модель для простого английского синтеза речи, поэтому выбор голоса ограничен.</p>
+<h3 id="_10">Ограничения</h3>
+<p>TinyTTS не подходит для русского языка.<br />
+Если передать русский текст, произношение будет неправильным, потому что модель и фонемизация рассчитаны на английский язык.</p>
+<h3 id="_11">Пример озвучки</h3>
+<p>Текст ниже — краткий пересказ идеи второго закона робототехники Азимова, не дословная цитата.</p>
+<p><strong>TinyTTS, FEMALE</strong><br />
+Second principle: a robot follows human instructions only when they do not put people at risk.</p>
+<p><audio controls preload="metadata">
+  <source src="../files/tts_tinytts_law2_female.wav" type="audio/wav">
+</audio></p>
+<h2 id="piper">Piper</h2>
+<p><strong>Piper</strong> — это локальный нейросетевой синтезатор речи.<br />
+Он работает через ONNX модели и подходит для роботов, голосовых ассистентов и локальных приложений, где нужна речь без облачных API.</p>
+<p><a href="https://github.com/rhasspy/piper">GitHub</a>, <a href="https://github.com/rhasspy/piper/releases">Releases</a>, <a href="https://huggingface.co/rhasspy/piper-voices">Voices</a></p>
+<h3 id="_12">Особенности</h3>
+<ul>
+<li>работает локально;</li>
+<li>не требует интернета после скачивания модели;</li>
+<li>использует ONNX Runtime;</li>
+<li>поддерживает много языков, включая русский;</li>
+<li>для каждого голоса нужны два файла: <code>.onnx</code> и <code>.onnx.json</code>;</li>
+<li>можно запускать из командной строки или из Python.</li>
+</ul>
+<p>Для русского языка есть готовые голоса:</p>
+<table>
+<thead>
+<tr>
+<th>Голос</th>
+<th>Язык</th>
+<th>Качество</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ru_RU-denis-medium</code></td>
+<td>русский</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><code>ru_RU-dmitri-medium</code></td>
+<td>русский</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><code>ru_RU-irina-medium</code></td>
+<td>русский</td>
+<td>medium</td>
+</tr>
+<tr>
+<td><code>ru_RU-ruslan-medium</code></td>
+<td>русский</td>
+<td>medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_13">Установка и запуск</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Windows</label><label for="__tabbed_3_2">Python</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Скачать архив для Windows:</p>
+<blockquote>
+<p><a href="https://github.com/rhasspy/piper/releases">piper_windows_amd64.zip</a></p>
+</blockquote>
+<p>Распаковать архив, например в папку <code>piper</code>.</p>
+<details class="tip">
+<summary>Где брать голоса</summary>
+<p>Голоса Piper хранятся отдельно от программы.<br />
+Для каждого голоса надо скачать два файла:</p>
+<ul>
+<li><code>имя_голоса.onnx</code></li>
+<li><code>имя_голоса.onnx.json</code></li>
+</ul>
+<p>Русские голоса можно найти здесь:</p>
+<p><a href="https://huggingface.co/rhasspy/piper-voices/tree/main/ru/ru_RU">https://huggingface.co/rhasspy/piper-voices/tree/main/ru/ru_RU</a></p>
+</details>
+<p>Пример для голоса <code>ru_RU-irina-medium</code>:</p>
+<div class="highlight"><pre><span></span><code>ru_RU-irina-medium.onnx
+ru_RU-irina-medium.onnx.json
+</code></pre></div>
+<p>Запуск из терминала:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>Привет!<span class="w"> </span>Это<span class="w"> </span>тест<span class="w"> </span>синтеза<span class="w"> </span>речи<span class="w"> </span>через<span class="w"> </span>Piper.<span class="w"> </span><span class="p">|</span><span class="w"> </span>piper.exe<span class="w"> </span>--model<span class="w"> </span>ru_RU-irina-medium.onnx<span class="w"> </span>--config<span class="w"> </span>ru_RU-irina-medium.onnx.json<span class="w"> </span>--output_file<span class="w"> </span>output.wav
+</code></pre></div>
+<p>После запуска появится файл <code>output.wav</code>.</p>
+</div>
+<div class="tabbed-block">
+<p>Установить Piper через pip:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>piper-tts
+</code></pre></div>
+<p>Скачать голос, например <code>ru_RU-irina-medium</code>:</p>
+<div class="highlight"><pre><span></span><code>ru_RU-irina-medium.onnx
+ru_RU-irina-medium.onnx.json
+</code></pre></div>
+<p>Запустить синтез речи:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Привет! Это тест синтеза речи через Piper.&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>piper<span class="w"> </span>--model<span class="w"> </span>ru_RU-irina-medium.onnx<span class="w"> </span>--config<span class="w"> </span>ru_RU-irina-medium.onnx.json<span class="w"> </span>--output_file<span class="w"> </span>output.wav
+</code></pre></div>
+<p>После запуска появится файл <code>output.wav</code>.</p>
+</div>
+</div>
+</div>
+<h3 id="_14">Параметры</h3>
+<table>
+<thead>
+<tr>
+<th>Параметр</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--model</code></td>
+<td>путь к <code>.onnx</code> модели голоса</td>
+</tr>
+<tr>
+<td><code>--config</code></td>
+<td>путь к <code>.onnx.json</code> конфигу модели</td>
+</tr>
+<tr>
+<td><code>--output_file</code></td>
+<td>имя WAV файла</td>
+</tr>
+<tr>
+<td><code>--speaker</code></td>
+<td>номер голоса, если модель мультиспикерная</td>
+</tr>
+<tr>
+<td><code>--length_scale</code></td>
+<td>длина фонем, влияет на скорость речи</td>
+</tr>
+<tr>
+<td><code>--noise_scale</code></td>
+<td>вариативность генерации</td>
+</tr>
+<tr>
+<td><code>--noise_w</code></td>
+<td>вариативность длительности фонем</td>
+</tr>
+<tr>
+<td><code>--sentence_silence</code></td>
+<td>пауза между предложениями</td>
+</tr>
+</tbody>
+</table>
+<p>Обычно для простого запуска достаточно указать только модель, конфиг и выходной файл.</p>
+<h3 id="_15">Пример с настройками</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Робот готов к работе.&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>piper<span class="w"> </span>--model<span class="w"> </span>ru_RU-irina-medium.onnx<span class="w"> </span>--config<span class="w"> </span>ru_RU-irina-medium.onnx.json<span class="w"> </span>--output_file<span class="w"> </span>robot.wav<span class="w"> </span>--length_scale<span class="w"> </span><span class="m">1</span>.0<span class="w"> </span>--noise_scale<span class="w"> </span><span class="m">0</span>.667<span class="w"> </span>--noise_w<span class="w"> </span><span class="m">0</span>.8<span class="w"> </span>--sentence_silence<span class="w"> </span><span class="m">0</span>.2
+</code></pre></div>
+<p>Если <code>length_scale</code> меньше <code>1.0</code>, речь будет быстрее.<br />
+Если больше <code>1.0</code>, речь будет медленнее.</p>
+<h3 id="_16">Ограничения</h3>
+<p>Piper не клонирует голос сам по себе.<br />
+Он использует заранее обученные модели голосов.</p>
+<p>Качество зависит от выбранной модели.<br />
+Для простых голосовых ответов робота Piper подходит хорошо, но для очень эмоциональной или актерской речи лучше использовать более тяжелые TTS модели.</p>
+<h3 id="_17">Пример озвучки</h3>
+<p>Текст ниже — краткий пересказ идеи третьего закона робототехники Азимова, не дословная цитата.</p>
+<p><strong>Piper, ru_RU-ruslan-medium</strong><br />
+Третий принцип: робот бережёт себя, пока это не мешает безопасности и приказам человека.</p>
+<p><audio controls preload="metadata">
+  <source src="../files/tts_piper_law3_ruslan.wav" type="audio/wav">
+</audio></p>
+<h2 id="kazemotts">KazEmoTTS</h2>
+<ul>
+<li>Оригинальный проект <a href="https://github.com/IS2AI/KazEmoTTS">Github KazEmoTTS</a>   </li>
+<li>Немного исправленная и упрощенная версия <a href="https://github.com/aztechell/KazEmoTTS">https://github.com/aztechell/KazEmoTTS</a>   </li>
+<li>Упрощенный код только для генерации речи <a href="https://github.com/aztechell/KazEmoTTS_only_inference">https://github.com/aztechell/KazEmoTTS_only_inference</a></li>
+</ul>
+<h2 id="vibevoice">VibeVoice</h2>
+<p>Скачать <a href="../files/VibeVoicePortable_v3.bat">VibeVoicePortable_v3.bat</a>. <br />
+Запустить файл и выбрать запуск установки. После установки можно будет запустить веб интерфейс.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class=" text">
+    <p>SWAN © Copyright CERN 2016-2026. All rights reserved.</p>
+    <ul>
+        <li><a target="_blank" href="https://cern.ch/swan/">Home</a></li>
+        <li><a target="_blank" href="https://cern.ch/swan-community/">Community</a></li>
+        <li><a target="_blank" href="https://cern.service-now.com/service-portal/?id=functional_element&name=swan">Support</a></li>
+        <li><a target="_blank" href="https://github.com/swan-cern">Github</a></li>
+    </ul>
+    <p class="poweredby">Powered by <strong><a href="https://www.mkdocs.org">MkDocs</a></strong> and <strong><a href="https://squidfunk.github.io/mkdocs-material/"> Material for MkDocs</a></strong></p>
+</div>
+<div class="md-layout-grid--align-right logo">
+    <img src="../images/logo_cern.png" alt="CERN">
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../search/main.js"></script>
+      
+    
+  </body>
+</html>
